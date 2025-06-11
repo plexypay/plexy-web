@@ -5,12 +5,13 @@ import checkBalance from '../Services/sessions/check-balance';
 import Storage from '../../utils/Storage';
 import createOrder from '../Services/sessions/create-order';
 import { sanitizeSession } from './utils';
-import {
+import type {
     CheckoutSession,
     CheckoutSessionBalanceResponse,
     CheckoutSessionDetailsResponse,
     CheckoutSessionOrdersResponse,
     CheckoutSessionPaymentResponse,
+    CheckoutSessionProvidersResponse,
     CheckoutSessionSetupResponse,
     SessionConfiguration,
     SetupSessionOptions
@@ -19,6 +20,7 @@ import cancelOrder from '../Services/sessions/cancel-order';
 import { onOrderCancelData } from '../../components/Dropin/types';
 import type { AdditionalDetailsData } from '../types';
 import collectBrowserInfo from '../../utils/browserInfo';
+import requestShopperProvider from '../Services/sessions/request-shopper-provider';
 
 class Session {
     private readonly session: CheckoutSession;
@@ -75,6 +77,21 @@ class Session {
                 this.configuration = { ...response.configuration };
             }
 
+            if (response.sessionData) {
+                this.updateSessionData(response.sessionData);
+            }
+
+            return response;
+        });
+    }
+
+    /**
+     * Request a valid FastCheckout provider based on the shopper email
+     *
+     * @param shopperEmail
+     */
+    public requestShopperProvider(shopperEmail: string): Promise<CheckoutSessionProvidersResponse> {
+        return requestShopperProvider(this, shopperEmail).then(response => {
             if (response.sessionData) {
                 this.updateSessionData(response.sessionData);
             }

@@ -38,6 +38,17 @@ export type CheckoutSessionPaymentResponse = {
     action?: PaymentAction;
 };
 
+export type CheckoutSessionProvidersResponse = {
+    sessionData: string;
+    providers: Array<{
+        type: 'bolt';
+        name: string;
+        configuration: {
+            publishableKey: string;
+        };
+    }>;
+};
+
 export type CheckoutSessionDetailsResponse = {
     sessionData: string;
     sessionResult: string;
