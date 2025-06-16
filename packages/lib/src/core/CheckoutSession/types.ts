@@ -1,5 +1,6 @@
 import { InstallmentOptions } from '../../components/Card/components/CardInput/components/types';
 import { BrowserInfo, Order, PaymentAction, PaymentAmount, ResultCode } from '../../types/global-types';
+import { BoltConfiguration, SkipifyConfiguration } from '../../components/internal/FastCheckout/types';
 
 export type CheckoutSession = {
     id: string;
@@ -40,13 +41,7 @@ export type CheckoutSessionPaymentResponse = {
 
 export type CheckoutSessionProvidersResponse = {
     sessionData: string;
-    providers: Array<{
-        type: 'bolt';
-        name: string;
-        configuration: {
-            publishableKey: string;
-        };
-    }>;
+    providers: Array<BoltConfiguration | SkipifyConfiguration>;
 };
 
 export type CheckoutSessionDetailsResponse = {

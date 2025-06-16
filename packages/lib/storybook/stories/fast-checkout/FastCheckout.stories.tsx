@@ -18,7 +18,7 @@ export const Default = {
             clientKey: 'test_XXX'
         });
 
-        void fastCheckout.lookupShopper('shopper@adyen.com').then(providersResponse => {
+        void fastCheckout.authenticate('guilhermemrr@gmail.com').then(providersResponse => {
             console.log(providersResponse);
         });
 

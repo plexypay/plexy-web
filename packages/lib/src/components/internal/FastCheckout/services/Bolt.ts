@@ -1,7 +1,8 @@
 import { BoltSDKLoader } from './BoltSDKLoader';
 import type { IBoltSDK } from './types';
+import { AbstractFastCheckoutProvider } from './AbstractFastCheckoutProvider';
 
-class Bolt {
+class Bolt implements AbstractFastCheckoutProvider {
     private readonly sdkLoader: BoltSDKLoader;
     private readonly publishableKey: string;
     private boltSdk: IBoltSDK;
@@ -41,11 +42,12 @@ class Bolt {
      * https://help.bolt.com/products/ignite/api-implementation/components/login-modal/#manual-handling-alternative
      * @param email
      */
-    public async authenticate(email: string): Promise<void> {
+    public async authenticate(email: string): Promise<any> {
         const loginModal = this.boltSdk.create('login_modal', { autoDetectEmail: false });
         const result = await loginModal.attemptLogin({ email });
+        console.log('Bolt :: authenticate result ->', result);
 
-        console.log('authenticate result:', result);
+        return result;
     }
 }
 

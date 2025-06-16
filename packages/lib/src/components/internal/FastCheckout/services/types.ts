@@ -1,3 +1,7 @@
+export interface IFastCheckoutProvider {
+    authenticate(email: string): Promise<any>;
+}
+
 interface BoltCreateOptions {
     autoDetectEmail?: boolean;
 }
