@@ -2,27 +2,17 @@ import { h } from 'preact';
 import { http, HttpResponse } from 'msw';
 import type { MetaConfiguration, StoryConfiguration } from '../types';
 
-import { FastCheckout } from '../../../src/components/internal/FastCheckout/FastCheckout';
+import { FastCheckoutAuthentication } from './components/FastCheckoutAuthentication';
 
 type FastCheckoutStory = StoryConfiguration<{}>;
 
 const meta: MetaConfiguration<FastCheckoutStory> = {
-    title: 'FastCheckout/FastCheckout'
+    title: 'FastCheckout/Default'
 };
 
 export const Default = {
     render: () => {
-        const fastCheckout = new FastCheckout({
-            session: { id: 'xxx', sessionData: 'yyyy' },
-            environment: 'test',
-            clientKey: 'test_XXX'
-        });
-
-        void fastCheckout.authenticate('guilhermemrr@gmail.com').then(providersResponse => {
-            console.log(providersResponse);
-        });
-
-        return <div>Look at the console</div>;
+        return <FastCheckoutAuthentication />;
     },
     parameters: {
         msw: {
@@ -39,6 +29,33 @@ export const Default = {
                                 name: 'Bolt'
                             }
                         ]
+                    });
+                }),
+                http.post('https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/:sessionId/providers/submit', () => {
+                    return HttpResponse.json({
+                        sessionData: 'session-data-when-requesting-shopper-details',
+                        profile: {
+                            shopperEmail: 'alan.watts@example.com',
+                            firstName: 'Alan',
+                            LastName: 'Watts',
+                            telephoneNumber: '+12125550199'
+                        },
+                        deliveryAddresses: {
+                            city: 'Brooklyn',
+                            country: 'US',
+                            houseNumberOrName: 'apt 3021',
+                            postalCode: '10044',
+                            stateOrProvince: 'NY',
+                            street: '888 main street'
+                        },
+                        billingAddresses: {
+                            city: 'Brooklyn',
+                            country: 'US',
+                            houseNumberOrName: 'apt 3021',
+                            postalCode: '10044',
+                            stateOrProvince: 'NY',
+                            street: '888 main street'
+                        }
                     });
                 })
             ]

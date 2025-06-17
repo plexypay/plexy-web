@@ -5,7 +5,7 @@ import checkBalance from '../Services/sessions/check-balance';
 import Storage from '../../utils/Storage';
 import createOrder from '../Services/sessions/create-order';
 import { sanitizeSession } from './utils';
-import type {
+import {
     CheckoutSession,
     CheckoutSessionBalanceResponse,
     CheckoutSessionDetailsResponse,
@@ -13,6 +13,7 @@ import type {
     CheckoutSessionPaymentResponse,
     CheckoutSessionProvidersResponse,
     CheckoutSessionSetupResponse,
+    CheckoutSessionShopperDetailsResponse,
     SessionConfiguration,
     SetupSessionOptions
 } from './types';
@@ -21,6 +22,7 @@ import { onOrderCancelData } from '../../components/Dropin/types';
 import type { AdditionalDetailsData } from '../types';
 import collectBrowserInfo from '../../utils/browserInfo';
 import requestShopperProvider from '../Services/sessions/request-shopper-provider';
+import requestBoltShopperDetails from '../Services/sessions/fastcheckout/request-bolt-shopper-details';
 
 class Session {
     private readonly session: CheckoutSession;
@@ -92,6 +94,22 @@ class Session {
      */
     public requestShopperProvider(shopperEmail: string): Promise<CheckoutSessionProvidersResponse> {
         return requestShopperProvider(this, shopperEmail).then(response => {
+            if (response.sessionData) {
+                this.updateSessionData(response.sessionData);
+            }
+
+            return response;
+        });
+    }
+
+    /**
+     * Request the shopper details from Bolt provider by passing the "authorization code"
+     * TODO: It can be more generic but for now we are sticking to the Bolt provider which uses authCode
+     *
+     * @param authorizationCode - Code returned by Bolt SDK when the OTP is completed
+     */
+    public requestBoltShopperDetails(authorizationCode: string): Promise<CheckoutSessionShopperDetailsResponse> {
+        return requestBoltShopperDetails(this, authorizationCode).then(response => {
             if (response.sessionData) {
                 this.updateSessionData(response.sessionData);
             }

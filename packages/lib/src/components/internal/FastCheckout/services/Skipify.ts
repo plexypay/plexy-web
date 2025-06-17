@@ -1,4 +1,5 @@
 import { AbstractFastCheckoutProvider } from './AbstractFastCheckoutProvider';
+import { FastCheckoutAuthResult } from '../models/FastCheckoutAuthResult';
 
 // TODO
 class Skipify implements AbstractFastCheckoutProvider {
@@ -13,7 +14,7 @@ class Skipify implements AbstractFastCheckoutProvider {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public authenticate(email: string): Promise<any> {
+    public authenticate(email: string): Promise<FastCheckoutAuthResult> {
         throw new Error('Method not implemented.');
     }
 }

@@ -1,33 +1,32 @@
 import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 
-import { Bolt } from '../../../../../src/components/internal/FastCheckout/services/Bolt';
+import FastCheckout from '../../../../src/components/internal/FastCheckout';
 
-export const LoginUsingManualHandling = () => {
+export const FastCheckoutAuthentication = () => {
     const [email, setEmail] = useState<string>(null);
-    const [bolt, setBolt] = useState<Bolt>();
+    const [fastcheckout, setFastCheckout] = useState<FastCheckout>();
 
-    const initiateBolt = async () => {
-        const bolt = new Bolt('test', 'jJlQrGFGXW0w.7bZW4EH8QaWh.6db859dd04fe80a2c5a7ab310aad6d89a3a3695fdf09570b1983e8231c4ed610');
-        await bolt.initialize();
-
-        setBolt(bolt);
+    const initiate = () => {
+        const fastcheckout = new FastCheckout({ session: { id: 'xxx', sessionData: 'yyyy' }, environment: 'test', clientKey: 'test_XXX' });
+        setFastCheckout(fastcheckout);
     };
 
     const handleEmailInput = event => {
         setEmail(event.currentTarget.value);
     };
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         try {
-            void bolt.authenticate(email);
+            const result = await fastcheckout.authenticate(email);
+            console.log('FastCheckout Result ::', result);
         } catch (error) {
             console.log(error);
         }
     };
 
     useEffect(() => {
-        void initiateBolt();
+        void initiate();
     }, []);
 
     return (

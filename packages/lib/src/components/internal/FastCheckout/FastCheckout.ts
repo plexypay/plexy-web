@@ -6,7 +6,8 @@ import { Bolt } from './services/Bolt';
 import { Skipify } from './services/Skipify';
 
 import type { CoreConfiguration } from '../../../core/types';
-import type { FastCheckoutAuthenticationResult, FastCheckoutConfiguration, ProviderConfiguration } from './types';
+import type { FastCheckoutConfiguration, ProviderConfiguration } from './types';
+import { FastCheckoutAuthResult } from './models/FastCheckoutAuthResult';
 
 class FastCheckout {
     private readonly session: CheckoutSession;
@@ -22,7 +23,7 @@ class FastCheckout {
         this.session = new CheckoutSession({ id: session.id, sessionData: session.sessionData }, clientKey, apiUrl);
     }
 
-    public async authenticate(email: string): Promise<FastCheckoutAuthenticationResult> {
+    public async authenticate(email: string): Promise<FastCheckoutAuthResult> {
         if (!email) {
             throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'You must pass a valid email');
         }
@@ -31,16 +32,13 @@ class FastCheckout {
             const { providers } = await this.session.requestShopperProvider(email);
 
             if (providers?.length === 0) {
-                return { authenticationState: 'not_found' };
+                return new FastCheckoutAuthResult('not_found');
             }
 
             const provider = await this.initializeProviderIfNeeded(providers[0]);
-            const authResult = await provider.authenticate(email);
-
-            console.log('FastCheckout :: authenticate result -> ', authResult);
-        } catch (error) {
-            console.error('authenticate:', error);
-            return { authenticationState: 'failed', error };
+            return await provider.authenticate(email);
+        } catch (error: unknown) {
+            return new FastCheckoutAuthResult('failed', null, error);
         }
     }
 
@@ -65,7 +63,7 @@ class FastCheckout {
 
         switch (type) {
             case 'bolt':
-                return new Bolt(this.environment, configuration.publishableKey);
+                return new Bolt(this.environment, configuration.publishableKey, this.session);
             case 'skipify':
                 return new Skipify(configuration.merchantId);
             default:
@@ -74,4 +72,4 @@ class FastCheckout {
     }
 }
 
-export { FastCheckout };
+export default FastCheckout;

@@ -10,8 +10,14 @@ interface ILoginModalAttachOptions {
     context: string;
 }
 
+type BoltLoginResponse = {
+    authorizationCode: string;
+    loginRedirectUrl?: string; // Might not be needed
+    scope: string; // Might not be needed
+};
+
 interface ILoginModal {
-    attemptLogin({ email }: { email: string }): Promise<void>;
+    attemptLogin({ email }: { email: string }): Promise<BoltLoginResponse>;
     attach(containerId: string, options: ILoginModalAttachOptions): void;
 }
 

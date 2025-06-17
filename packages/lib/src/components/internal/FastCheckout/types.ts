@@ -25,17 +25,21 @@ export type BoltConfiguration = {
 };
 export type ProviderConfiguration = BoltConfiguration | SkipifyConfiguration;
 
-interface FastCheckoutProfile {}
-
-interface FastCheckoutAuthenticationSucceeded {
-    authenticationState: 'succeeded';
-    profileData: FastCheckoutProfile;
+export interface FastCheckoutProfile {
+    profile: any;
+    deliveryAddress: any;
+    billingAddress: any;
 }
 
-interface FastCheckoutAuthenticationFailed {
-    authenticationState: 'failed' | 'canceled' | 'not_found';
-    profileData?: undefined;
-    error?: unknown;
-}
+// interface FastCheckoutAuthenticationSucceeded {
+//     authenticationState: 'succeeded';
+//     profileData: FastCheckoutProfile;
+// }
+//
+// interface FastCheckoutAuthenticationFailed {
+//     authenticationState: 'failed' | 'canceled' | 'not_found';
+//     profileData?: undefined;
+//     error?: unknown;
+// }
 
-export type FastCheckoutAuthenticationResult = FastCheckoutAuthenticationFailed | FastCheckoutAuthenticationSucceeded;
+// export type FastCheckoutAuthenticationResult = FastCheckoutAuthenticationFailed | FastCheckoutAuthenticationSucceeded;
