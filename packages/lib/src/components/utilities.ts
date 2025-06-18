@@ -3,3 +3,4 @@
  */
 
 export { default as initializeFastlane } from './PayPalFastlane/initializeFastlane';
+export { default as FastCheckout } from './internal/FastCheckout';

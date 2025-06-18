@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 
-import FastCheckout from '../../../../src/components/internal/FastCheckout';
+import { FastCheckout } from '../../../../src/components/utilities';
 
 export const FastCheckoutAuthentication = () => {
     const [email, setEmail] = useState<string>(null);

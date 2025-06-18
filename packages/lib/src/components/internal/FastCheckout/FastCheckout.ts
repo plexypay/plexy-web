@@ -4,10 +4,10 @@ import { resolveEnvironments } from '../../../core/Environment';
 import { AbstractFastCheckoutProvider } from './services/AbstractFastCheckoutProvider';
 import { Bolt } from './services/Bolt';
 import { Skipify } from './services/Skipify';
+import { FastCheckoutAuthResult } from './models/FastCheckoutAuthResult';
 
 import type { CoreConfiguration } from '../../../core/types';
 import type { FastCheckoutConfiguration, ProviderConfiguration } from './types';
-import { FastCheckoutAuthResult } from './models/FastCheckoutAuthResult';
 
 class FastCheckout {
     private readonly session: CheckoutSession;

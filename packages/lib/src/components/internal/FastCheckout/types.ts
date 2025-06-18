@@ -25,21 +25,11 @@ export type BoltConfiguration = {
 };
 export type ProviderConfiguration = BoltConfiguration | SkipifyConfiguration;
 
+/**
+ * Shopper profile returned by the Adyen Backend
+ */
 export interface FastCheckoutProfile {
     profile: any;
     deliveryAddress: any;
     billingAddress: any;
 }
-
-// interface FastCheckoutAuthenticationSucceeded {
-//     authenticationState: 'succeeded';
-//     profileData: FastCheckoutProfile;
-// }
-//
-// interface FastCheckoutAuthenticationFailed {
-//     authenticationState: 'failed' | 'canceled' | 'not_found';
-//     profileData?: undefined;
-//     error?: unknown;
-// }
-
-// export type FastCheckoutAuthenticationResult = FastCheckoutAuthenticationFailed | FastCheckoutAuthenticationSucceeded;
