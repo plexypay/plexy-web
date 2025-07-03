@@ -15,7 +15,7 @@ function requestBoltShopperDetails(session: CheckoutSession, authorizationCode: 
 
     const data = {
         sessionData: session.data,
-        authorizationCode
+        authToken: authorizationCode
     };
 
     return httpPost<CheckoutSessionShopperDetailsResponse>(
