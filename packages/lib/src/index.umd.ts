@@ -1,6 +1,7 @@
 import { AdyenCheckout } from './core/AdyenCheckout';
 import { NewableComponent } from './core/core.registry';
 import * as components from './components';
+import * as utilities from './components/utilities';
 import createComponent from './create-component.umd';
 
 const { Dropin, ...Components } = components;
@@ -12,6 +13,7 @@ AdyenCheckout.register(...Classes);
 const AdyenWeb = {
     AdyenCheckout,
     createComponent,
+    ...utilities,
     ...components
 };
 

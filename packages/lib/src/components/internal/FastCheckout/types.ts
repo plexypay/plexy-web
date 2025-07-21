@@ -14,6 +14,7 @@ export type SkipifyConfiguration = {
     name: string;
     configuration: {
         merchantId: string;
+        skipifyJson: string;
     };
 };
 export type BoltConfiguration = {

@@ -7,7 +7,7 @@ import { Skipify } from './services/Skipify';
 import { FastCheckoutAuthResult } from './models/FastCheckoutAuthResult';
 
 import type { CoreConfiguration } from '../../../core/types';
-import type { FastCheckoutConfiguration, ProviderConfiguration } from './types';
+import { BoltConfiguration, FastCheckoutConfiguration, ProviderConfiguration, SkipifyConfiguration } from './types';
 
 class FastCheckout {
     private readonly session: CheckoutSession;
@@ -30,16 +30,58 @@ class FastCheckout {
 
         try {
             const { providers } = await this.session.requestShopperProvider(email);
+            console.log('Providers Response', providers);
 
-            if (providers?.length === 0) {
+            const selectedProvider = this.selectMyTestingProvider(providers);
+
+            if (!selectedProvider) {
                 return new FastCheckoutAuthResult('not_found');
             }
 
-            const provider = await this.initializeProviderIfNeeded(providers[0]);
-            return await provider.authenticate(email);
+            const provider = await this.initializeProviderIfNeeded(selectedProvider);
+            const authCredential = this.getAuthenticationCredentials(selectedProvider, email);
+
+            return await provider.authenticate(authCredential);
         } catch (error: unknown) {
+            console.log(error);
             return new FastCheckoutAuthResult('failed', null, error);
         }
+    }
+
+    /**
+     * TODO: For testing purposes. Should be removed
+     * Set the provider that you want to use on 'providerBeingTested' string.
+     *
+     * Use-case: useful when you want to test Skipify but Bolt is returned first or vice-versa
+     *
+     * @deprecated
+     * @param providers
+     * @private
+     */
+    private selectMyTestingProvider(providers: Array<BoltConfiguration | SkipifyConfiguration>) {
+        if (providers.length === 0) {
+            return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const providerFromUrl = urlParams.get('provider');
+
+        const selectedProvider = providerFromUrl && providers.find(p => p.type === providerFromUrl);
+
+        return selectedProvider || providers[0];
+    }
+
+    /**
+     * For Bolt, we use the shopper email provided by the frontend
+     * For Skipify, we use the lookupResult returned by the providers endpoint
+     *
+     * @param provider
+     * @param email
+     * @private
+     */
+    private getAuthenticationCredentials(provider: ProviderConfiguration, email: string): string {
+        if (provider.type === 'bolt') return email;
+        if (provider.type === 'skipify') return provider.configuration.skipifyJson;
     }
 
     private async initializeProviderIfNeeded(providerConfiguration: ProviderConfiguration): Promise<AbstractFastCheckoutProvider> {
@@ -65,7 +107,7 @@ class FastCheckout {
             case 'bolt':
                 return new Bolt(this.environment, configuration.publishableKey, this.session);
             case 'skipify':
-                return new Skipify(configuration.merchantId);
+                return new Skipify(this.environment, configuration?.merchantId || '27c11f77-37ec-4e34-b066-4e645681859b');
             default:
                 throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'The provider is not supported');
         }

@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import { http, HttpResponse } from 'msw';
-import type { MetaConfiguration, StoryConfiguration } from '../types';
-
 import { FastCheckoutAuthentication } from './components/FastCheckoutAuthentication';
+import { Checkout } from '../Checkout';
 
+import type { MetaConfiguration, StoryConfiguration } from '../types';
 type FastCheckoutStory = StoryConfiguration<{}>;
 
 const meta: MetaConfiguration<FastCheckoutStory> = {
@@ -11,26 +11,33 @@ const meta: MetaConfiguration<FastCheckoutStory> = {
 };
 
 export const Default = {
-    render: () => {
-        return <FastCheckoutAuthentication />;
+    render: checkoutConfig => {
+        return <Checkout checkoutConfig={checkoutConfig}>{checkout => <FastCheckoutAuthentication checkout={checkout} />}</Checkout>;
     },
     parameters: {
         msw: {
             handlers: [
-                http.post('https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/:sessionId/providers', () => {
-                    return HttpResponse.json({
-                        sessionData: 'aaa-bbb-ccc',
-                        providers: [
-                            {
-                                type: 'bolt',
-                                configuration: {
-                                    publishableKey: 'jJlQrGFGXW0w.7bZW4EH8QaWh.6db859dd04fe80a2c5a7ab310aad6d89a3a3695fdf09570b1983e8231c4ed610'
-                                },
-                                name: 'Bolt'
-                            }
-                        ]
-                    });
-                }),
+                // http.post('https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/:sessionId/providers', () => {
+                //     return HttpResponse.json({
+                //         sessionData: 'aaa-bbb-ccc',
+                //         providers: [
+                //             {
+                //                 type: 'skipify',
+                //                 name: 'Skipify',
+                //                 configuration: {
+                //                     merchantId: '27c11f77-37ec-4e34-b066-4e645681859b'
+                //                 }
+                //             }
+                //             // {
+                //             //     type: 'bolt',
+                //             //     configuration: {
+                //             //         publishableKey: 'jJlQrGFGXW0w.7bZW4EH8QaWh.6db859dd04fe80a2c5a7ab310aad6d89a3a3695fdf09570b1983e8231c4ed610'
+                //             //     },
+                //             //     name: 'Bolt'
+                //             // }
+                //         ]
+                //     });
+                // }),
                 http.post('https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/:sessionId/providers/submit', () => {
                     return HttpResponse.json({
                         sessionData: 'session-data-when-requesting-shopper-details',

@@ -3,12 +3,20 @@ import { useEffect, useState } from 'preact/hooks';
 
 import { FastCheckout } from '../../../../src/components/utilities';
 
-export const FastCheckoutAuthentication = () => {
+import './FastCheckoutStory.scss';
+
+export const FastCheckoutAuthentication = ({ checkout }) => {
     const [email, setEmail] = useState<string>(null);
     const [fastcheckout, setFastCheckout] = useState<FastCheckout>();
 
+    const { id, sessionData } = checkout.session.session;
+
     const initiate = () => {
-        const fastcheckout = new FastCheckout({ session: { id: 'xxx', sessionData: 'yyyy' }, environment: 'test', clientKey: 'test_XXX' });
+        const fastcheckout = new FastCheckout({
+            session: { id, sessionData },
+            environment: 'test',
+            clientKey: 'test_L6HTEOAXQBCZJHKNU4NLN6EI7IE6VRRW'
+        });
         setFastCheckout(fastcheckout);
     };
 
@@ -20,6 +28,8 @@ export const FastCheckoutAuthentication = () => {
         try {
             const result = await fastcheckout.authenticate(email);
             console.log('FastCheckout Result ::', result);
+
+            if (result.authenticationResult === 'not_found') alert('not found');
         } catch (error) {
             console.log(error);
         }
@@ -50,6 +60,9 @@ export const FastCheckoutAuthentication = () => {
                     Continue
                 </button>
             </div>
+
+            <input type="text" id="skipify-auth-input" placeholder="INPUT FIELD FOR OVERLAY" style={{ width: '200px' }} disabled />
+            <div id="skipify-auth-div"></div>
         </section>
     );
 };
