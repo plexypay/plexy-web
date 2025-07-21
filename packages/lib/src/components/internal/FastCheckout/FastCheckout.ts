@@ -28,19 +28,44 @@ class FastCheckout {
             throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'You must pass a valid email');
         }
 
+        /**
+         * Do shopper lookup (email) - using out /providers endpoint
+         * Initialise the relevant, returned, provider
+         * Authenticate the shopper (via OTP)
+         *
+         * Bolt: retrieve and return the shopper details
+         * Skipify: ...?
+         */
         try {
+            /**
+             * 1. Call /providers endpoint, passing shopper email
+             *
+             * If the shopper email is recognised by any providers we receive an array of those providers, each with the necessary configuration
+             * to initialise the relevant sdk.
+             * (All providers currently insist that OTP is done via their sdks, so we always need to load the provider sdk)
+             */
             const { providers } = await this.session.requestShopperProvider(email);
             console.log('Providers Response', providers);
 
-            const selectedProvider = this.selectMyTestingProvider(providers);
-
-            if (!selectedProvider) {
+            if (!providers || providers.length === 0) {
                 return new FastCheckoutAuthResult('not_found');
             }
 
+            const selectedProvider = this.selectMyTestingProvider(providers);
+
+            /**
+             * 2. Initialise our implementation wrapper for a provider, which will in turn load & initialise the specific provider sdk
+             */
             const provider = await this.initializeProviderIfNeeded(selectedProvider);
             const authCredential = this.getAuthenticationCredentials(selectedProvider, email);
 
+            /**
+             * 3. Tell our provider wrapper to trigger the provider sdk to create an OTP authentication modal.
+             *
+             * Upon successful authentication:
+             *  - in the case of Bolt, it will immediately call the /providers/submit endpoint to retrieve the shoppers details
+             *  - other providers may require the use of their sdks to get this information (TBD)
+             */
             return await provider.authenticate(authCredential);
         } catch (error: unknown) {
             console.log(error);
@@ -59,10 +84,6 @@ class FastCheckout {
      * @private
      */
     private selectMyTestingProvider(providers: Array<BoltConfiguration | SkipifyConfiguration>) {
-        if (providers.length === 0) {
-            return;
-        }
-
         const urlParams = new URLSearchParams(window.location.search);
         const providerFromUrl = urlParams.get('provider');
 
