@@ -34,7 +34,7 @@ class FastCheckout {
          * Authenticate the shopper (via OTP)
          *
          * Bolt: retrieve and return the shopper details
-         * Skipify: ...?
+         * Skipify: ..?
          */
         try {
             /**
