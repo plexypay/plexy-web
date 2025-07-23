@@ -35,7 +35,8 @@ class Skipify implements AbstractFastCheckoutProvider {
                     reject(error);
                 },
                 sendOtp: false,
-                displayMode: 'embedded' // or 'embedded'
+                displayMode: 'embedded' // 'overlay' or 'embedded'.
+                // According to Skipify: 'embedded' should be placed in a separate div. 'overlay' should point towards the email input field
             };
 
             const container = document.getElementById('skipify-auth-div');
