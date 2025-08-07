@@ -25,7 +25,8 @@ export interface IBoltSDK {
 export interface ISkipifySDK {
     // TODO: lookup Not needed. Just added for testing
     lookup({ email, phone }: { email: string; phone?: string }): any;
-    authentication(lookupResult: any, options?: any);
+    authentication(lookupResult: any, options?: any): any;
+    carousel(authResult: any, options: any): any;
 }
 
 export interface ISkipifySDKClass {

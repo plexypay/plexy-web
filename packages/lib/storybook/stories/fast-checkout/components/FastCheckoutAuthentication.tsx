@@ -61,7 +61,7 @@ export const FastCheckoutAuthentication = ({ checkout }) => {
                 </button>
             </div>
 
-            <input type="text" id="skipify-auth-input" placeholder="INPUT FIELD FOR OVERLAY" style={{ width: '200px' }} disabled />
+            <input type="text" id="skipify-auth-input" placeholder="INPUT FIELD FOR OVERLAY. OTP 786786" style={{ width: '300px' }} disabled />
             <div id="skipify-auth-div"></div>
         </section>
     );

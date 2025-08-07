@@ -19,10 +19,20 @@ class Skipify implements AbstractFastCheckoutProvider {
         this.skipifySdk = new Skipify({ merchantId: this.merchantId });
     }
 
-    public authenticate(skipifyJson: string): Promise<any> {
-        return new Promise((resolve, reject) => {
+    public async authenticate(skipifyJson: string): Promise<any> {
+        try {
             const lookupResults: ISkipifyLookupResult = JSON.parse(skipifyJson);
+            const authenticationResult = await this.renderSkipifyAuthenticationComponent(lookupResults);
+            await this.renderSkipifyPaymentComponent(authenticationResult);
 
+            return authenticationResult;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    private async renderSkipifyAuthenticationComponent(lookupResults: ISkipifyLookupResult) {
+        return new Promise((resolve, reject) => {
             console.log('Lookup Results', lookupResults);
 
             const options = {
@@ -34,15 +44,45 @@ class Skipify implements AbstractFastCheckoutProvider {
                     console.error('Skipify onerror', error);
                     reject(error);
                 },
-                sendOtp: false,
-                displayMode: 'embedded' // 'overlay' or 'embedded'.
-                // According to Skipify: 'embedded' should be placed in a separate div. 'overlay' should point towards an input field (they say it should be the *actual* email inout field)
+                sendOtp: true, // bypass the Consent UI and go directly to OTP
+                displayMode: 'overlay'
             };
 
-            const container = document.getElementById('skipify-auth-div');
+            const container = document.getElementById('skipify-auth-input');
             const authComponent = this.skipifySdk.authentication(lookupResults, options);
-
             authComponent.render(container);
+        });
+    }
+
+    private renderSkipifyPaymentComponent(authenticationResult: any): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const options = {
+                // the shopper's selected payment info for checkout
+                onSelect: result => {
+                    console.log('PaymentCarousel -> onSelect', result);
+                    resolve(result);
+                },
+                // handle your error flow
+                onError: error => {
+                    console.log('PaymentCarousel -> onError', error);
+                    reject(error);
+                },
+                amount: 450, // your order total as an integer 450 = $4.50
+                phone: '', // optional
+                config: {
+                    // optional
+                    theme: 'light', // default theme or "dark"
+                    fontFamily: 'default', // default font family is poppins, or "serif", "sans-serif"
+                    fontSize: 'medium', // default font size or "small" or "large"
+                    inputFieldSize: 'medium' // default input field size or "small"
+                }
+            };
+
+            // render the Payment Carousel Component at a specified location
+            const carouselContainer = document.getElementById('skipify-auth-div');
+
+            // render the Payment Carousel Component based on auth results or lookup results
+            this.skipifySdk.carousel(authenticationResult, options).render(carouselContainer);
         });
     }
 }
