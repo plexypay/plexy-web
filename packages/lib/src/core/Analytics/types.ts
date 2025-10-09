@@ -60,10 +60,9 @@ export interface AnalyticsOptions {
 
 export type AnalyticsProps = {
     clientKey: string;
-    analytics?: AnalyticsOptions;
-    locale: string;
-    bundleType: string;
     analyticsContext: string;
+    locale: string;
+    analytics?: AnalyticsOptions;
 };
 
 export type AnalyticsEventCategory = (typeof ANALYTICS_EVENT)[keyof typeof ANALYTICS_EVENT];
@@ -147,6 +146,7 @@ export type CardConfigData = {
     socialSecurityNumberMode: SocialSecurityMode;
     srPanelEnabled: boolean;
     srPanelMoveFocus: boolean;
+    trimTrailingSeparator: boolean;
     // callbacks
     hasOnAllValid: boolean;
     hasOnBinLookup: boolean;

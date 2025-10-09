@@ -3,11 +3,17 @@ import { cancelOrder, checkBalance, createOrder, getPaymentMethods, makeDetailsC
 import { handleError, handleFinalState } from './checkout-handlers';
 import getCurrency from '../utils/get-currency';
 import Checkout from '../../src/core/core';
+import { STORYBOOK_ENVIRONMENT_URLS } from '../config/commonConfig';
 
 import type { PaymentMethodsResponse } from '../../src/types';
 import type { AdyenCheckoutProps, ShopperDetails } from '../stories/types';
 
-async function createAdvancedFlowCheckout(checkoutProps: AdyenCheckoutProps, shopperDetails?: ShopperDetails): Promise<Checkout> {
+async function createAdvancedFlowCheckout(
+    checkoutProps: Omit<AdyenCheckoutProps, 'srConfig'> & {
+        srConfig?: { showPanel: boolean; moveFocus: boolean };
+    },
+    shopperDetails?: ShopperDetails
+): Promise<Checkout> {
     const {
         showPayButton,
         countryCode,
@@ -16,6 +22,7 @@ async function createAdvancedFlowCheckout(checkoutProps: AdyenCheckoutProps, sho
         allowedPaymentTypes = [],
         paymentMethodsOverride,
         paymentsOptions,
+        srConfig = { showPanel: false, moveFocus: true },
         ...restCheckoutProps
     } = checkoutProps;
 
@@ -139,6 +146,8 @@ async function createAdvancedFlowCheckout(checkoutProps: AdyenCheckoutProps, sho
             handleError(error, component);
         },
 
+        _environmentUrls: STORYBOOK_ENVIRONMENT_URLS,
+        srConfig,
         ...restCheckoutProps
     });
 

@@ -23,7 +23,7 @@ You can integrate with Adyen Web in two ways:
 | 6.x.x         | Active     | ---          | ---          |
 | 5.x.x         | Inactive   | TBA          | TBA          |
 | 4.x.x         | Deprecated | August 2025  | August 2026  |
-| 3.x.x         | Deprecated | October 2024 | October 2025 |
+| 3.x.x         | End-of-life | October 2024 | October 2025 |
 
 More information about our versioning and the Drop-in/Components lifecycle can be found [here](https://docs.adyen.com/online-payments/upgrade-your-integration/)
 
@@ -56,7 +56,7 @@ You can also import Adyen Web using a `<script>` tag, as shown in the [Web Compo
 **Requirements:**
 
 -   Node v22.18.0
--   Yarn
+-   Yarn (Using [Corepack](https://yarnpkg.com/corepack) - Run `corepack enable` after installing Node)
 
 **To run the environment:**
 

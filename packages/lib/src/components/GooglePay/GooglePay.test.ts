@@ -7,7 +7,7 @@ import PaymentMethods from '../../core/ProcessResponse/PaymentMethods';
 import { mock } from 'jest-mock-extended';
 import { ICore } from '../../types';
 
-const analyticsModule = Analytics({ analytics: {}, analyticsContext: '', locale: '', clientKey: '', bundleType: 'umd' });
+const analyticsModule = Analytics({ analytics: {}, analyticsContext: '', locale: '', clientKey: '' });
 
 jest.mock('./GooglePayService');
 
@@ -488,6 +488,41 @@ describe('GooglePay', () => {
     });
 
     describe('Process CA based configuration data', () => {
+        describe('brands', () => {
+            test('should parse "brands" from configuration if available', () => {
+                const gpay = new GooglePay(global.core, {
+                    configuration: {
+                        merchantId: 'adyen',
+                        gatewayMerchantId: 'adyen'
+                    },
+                    brands: ['mc', 'visa']
+                });
+                expect(gpay.props.allowedCardNetworks).toEqual(['MASTERCARD', 'VISA']);
+            });
+
+            test('should ignore "brands" from configuration if "allowedCardNetworks" is set', () => {
+                const gpay = new GooglePay(global.core, {
+                    configuration: {
+                        merchantId: 'adyen',
+                        gatewayMerchantId: 'adyen'
+                    },
+                    brands: ['mc', 'visa', 'discover', 'elo'],
+                    allowedCardNetworks: ['AMEX', 'MASTERCARD']
+                });
+                expect(gpay.props.allowedCardNetworks).toEqual(['AMEX', 'MASTERCARD']);
+            });
+
+            test('should set default "allowedCardNetworks" values if "brands" and "allowedCardNetworks" props are not set', () => {
+                const gpay = new GooglePay(global.core, {
+                    configuration: {
+                        merchantId: 'adyen',
+                        gatewayMerchantId: 'adyen'
+                    }
+                });
+                expect(gpay.props.allowedCardNetworks).toEqual(['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA']);
+            });
+        });
+
         test('Retrieves merchantId from configuration', () => {
             const gpay = new GooglePay(global.core, { configuration: { merchantId: 'abcdef', gatewayMerchantId: 'TestMerchant' } });
             expect(gpay.props.configuration.merchantId).toEqual('abcdef');
