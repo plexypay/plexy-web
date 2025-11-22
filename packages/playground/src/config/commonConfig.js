@@ -1,16 +1,16 @@
 import getCurrency from './getCurrency';
 import { getSearchParameters } from '../utils';
 
-const DEFAULT_LOCALE = 'en-US';
-const DEFAULT_COUNTRY = 'US';
+const DEFAULT_LOCALE = 'ru-RU';
+const DEFAULT_COUNTRY = 'KZ';
 
 const urlParams = getSearchParameters(window.location.search);
 const merchantAccount = urlParams.merchantAccount;
 export const shopperLocale = urlParams.shopperLocale || urlParams.shopperlocale || DEFAULT_LOCALE;
 export const countryCode = urlParams.countryCode || urlParams.countrycode || DEFAULT_COUNTRY;
-export const currency = getCurrency(countryCode);
-export const amountValue = urlParams.amount ?? 1999;
-export const shopperReference = 'newshoppert';
+export const currency = 'KZT'; // getCurrency(countryCode);
+export const amountValue = urlParams.amount ?? 10001;
+export const shopperReference = 'test_external_shopper_reference';
 export const amount = {
     currency,
     value: Number(amountValue)

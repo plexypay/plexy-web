@@ -3,7 +3,7 @@ import * as logger from '../../../utilities/logger';
 export const originCheckPassed = (event: MessageEvent, pLoadingContext: string, pShowWarnings: boolean): boolean => {
     const origin = event.origin; // || event.originalEvent.origin;
 
-    const isCheckoutUrl: number = pLoadingContext.indexOf('/checkoutshopper/');
+    const isCheckoutUrl: number = pLoadingContext.indexOf('/v2/checkoutshopper/');
     let adyenDomain: string = isCheckoutUrl > -1 ? pLoadingContext.substring(0, isCheckoutUrl) : pLoadingContext;
 
     // Strip trailing /
