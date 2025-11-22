@@ -1,5 +1,5 @@
 const API_ENVIRONMENTS = {
-    test: 'https://test-api.plexypay.com/v2/checkoutshopper/',
+    test: 'https://sandbox-api.plexypay.com/v2/checkoutshopper/',
     live: 'https://api.plexypay.com/v2/checkoutshopper/',
     'live-us': 'https://api.plexypay.com/v2/checkoutshopper/',
     'live-au': 'https://api.plexypay.com/v2/checkoutshopper/',
@@ -9,7 +9,7 @@ const API_ENVIRONMENTS = {
 };
 
 const CDN_ENVIRONMENTS = {
-    test: 'https://test-api.plexypay.com/v2/checkoutshopper/',
+    test: 'https://sandbox-api.plexypay.com/v2/checkoutshopper/',
     live: 'https://api.plexypay.com/v2/checkoutshopper/',
     'live-us': 'https://api.plexypay.com/v2/checkoutshopper/',
     'live-au': 'https://api.plexypay.com/v2/checkoutshopper/',
@@ -19,13 +19,12 @@ const CDN_ENVIRONMENTS = {
 };
 
 const ANALYTICS_ENVIRONMENTS = {
-    test: 'https://test-api.plexypay.com/v2/checkoutanalytics/',
+    test: 'https://sandbox-api.plexypay.com/v2/checkoutanalytics/',
     live: 'https://api.plexypay.com/v2/checkoutanalytics/',
     'live-us': 'https://api.plexypay.com/v2/checkoutanalytics/',
     'live-au': 'https://api.plexypay.com/v2/checkoutanalytics/',
     'live-apse': 'https://api.plexypay.com/v2/checkoutanalytics/',
     'live-in': 'https://api.plexypay.com/v2/checkoutanalytics/',
-    local: 'http://localhost:8080/v2/checkoutanalytics/',
     fallback: 'https://api.plexypay.com/v2/checkoutanalytics/'
 };
 
