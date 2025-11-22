@@ -13,19 +13,19 @@ export default function RadioGroup(props: RadioGroupProps) {
 
     return (
         <div
-            className={cx(['adyen-checkout__radio_group', `adyen-checkout__radio_group--${style}`])}
+            className={cx(['plexy-checkout__radio_group', `plexy-checkout__radio_group--${style}`])}
             role={'radiogroup'}
             {...(ariaLabel && { ['aria-label']: ariaLabel })}
         >
             {items.map(item => {
                 const uniqueId = getUniqueId(uniqueIdBase);
                 return (
-                    <div key={item.id} className="adyen-checkout__radio_group__input-wrapper">
+                    <div key={item.id} className="plexy-checkout__radio_group__input-wrapper">
                         <input
                             id={uniqueId}
                             type="radio"
                             checked={value === item.id}
-                            className="adyen-checkout__radio_group__input"
+                            className="plexy-checkout__radio_group__input"
                             name={name}
                             onChange={onChange}
                             onClick={onChange}
@@ -33,10 +33,10 @@ export default function RadioGroup(props: RadioGroupProps) {
                         />
                         <label
                             className={cx([
-                                'adyen-checkout__label__text',
-                                'adyen-checkout__radio_group__label',
+                                'plexy-checkout__label__text',
+                                'plexy-checkout__radio_group__label',
                                 props.className,
-                                { 'adyen-checkout__radio_group__label--invalid': isInvalid }
+                                { 'plexy-checkout__radio_group__label--invalid': isInvalid }
                             ])}
                             htmlFor={uniqueId}
                         >

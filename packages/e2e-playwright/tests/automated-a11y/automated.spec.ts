@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { Automated } from '../../models/automated';
 
 // Config
-// This is relative to playwright root: adyen-web/lib/e2e-playwright/
+// This is relative to playwright root: plexy-web/lib/e2e-playwright/
 const STORYBOOK_INDEX_PATH = '../lib/storybook-static/index.json';
 
 const EXCLUDED_STORIES: string[] = [

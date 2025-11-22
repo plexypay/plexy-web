@@ -70,8 +70,8 @@ export const MockedUnrecognizedFlowDropin: FastlaneStory = {
                                         fastlaneConfiguration: {
                                             showConsent: true,
                                             defaultToggleState: true,
-                                            termsAndConditionsLink: 'https://adyen.com',
-                                            privacyPolicyLink: 'https://adyen.com',
+                                            termsAndConditionsLink: 'https://plexy.com',
+                                            privacyPolicyLink: 'https://plexy.com',
                                             termsAndConditionsVersion: 'v1',
                                             fastlaneSessionId: 'ABC-123',
                                             telephoneNumber: '1234567890'
@@ -127,7 +127,7 @@ export const MockedRecognizedFlowDropin: FastlaneStory = {
                                         tokenId: 'xxx',
                                         lastFour: '1111',
                                         brand: 'visa',
-                                        email: 'email@adyen.com',
+                                        email: 'email@plexy.com',
                                         fastlaneSessionId: 'xxx'
                                     }
                                 }
@@ -171,7 +171,7 @@ export const MockedRecognizedFlowStandalone: FastlaneStory = {
                                 tokenId: 'xxx',
                                 lastFour: '1111',
                                 brand: 'visa',
-                                email: 'email@adyen.com',
+                                email: 'email@plexy.com',
                                 fastlaneSessionId: 'xxx'
                             })
                         }

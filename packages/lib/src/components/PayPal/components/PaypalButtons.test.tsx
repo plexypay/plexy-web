@@ -20,7 +20,7 @@ const paypalRefMock = {
 
 /**
  * Each of the elements we render the paypal buttons to have two classnames
- * e.g adyen-checkout__paypal__button adyen-checkout__paypal__button--venmo
+ * e.g plexy-checkout__paypal__button plexy-checkout__paypal__button--venmo
  *
  * This function accepts the call invocations to the button.render function and does the following,
  * - Picks the second classname

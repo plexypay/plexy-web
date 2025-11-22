@@ -135,7 +135,7 @@ function IssuerList({
     );
 
     return (
-        <div ref={containerRef} className="adyen-checkout__issuer-list">
+        <div ref={containerRef} className="plexy-checkout__issuer-list">
             {!!highlightedItems.length && (
                 <Fragment>
                     <IssuerButtonGroup
@@ -160,7 +160,7 @@ function IssuerList({
                     selectedValue={inputType === IssuerListInputTypes.Dropdown ? data['issuer'] : null}
                     placeholder={placeholder}
                     name={'issuer'}
-                    className={'adyen-checkout__issuer-list__dropdown'}
+                    className={'plexy-checkout__issuer-list__dropdown'}
                     onChange={handleInputChange(IssuerListInputTypes.Dropdown)}
                     onListToggle={handleListToggle}
                     onInput={handleSearch}
@@ -168,7 +168,7 @@ function IssuerList({
             </Field>
 
             {props.termsAndConditions && (
-                <div className="adyen-checkout__issuer-list__termsAndConditions">
+                <div className="plexy-checkout__issuer-list__termsAndConditions">
                     <DisclaimerMessage message={i18n.get(props.termsAndConditions.translationKey)} urls={props.termsAndConditions.urls} />
                 </div>
             )}

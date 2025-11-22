@@ -23,7 +23,7 @@ describe('Analytics', () => {
     const DEFAULT_ANALYTICS_PROPS: AnalyticsProps = {
         locale: 'en-US',
         clientKey: 'test_client_key',
-        analyticsContext: 'https://checkoutanalytics-test.adyen.com/checkoutanalytics/'
+        analyticsContext: 'https://checkoutanalytics-test.plexy.com/checkoutanalytics/'
     };
 
     function setupMocks({ rejectCollectIdPromise }: { rejectCollectIdPromise?: boolean } = {}) {
@@ -148,7 +148,7 @@ describe('Analytics', () => {
             await analytics.setUp();
 
             expect(mockedCollectId).toHaveBeenCalledWith({
-                analyticsContext: 'https://checkoutanalytics-test.adyen.com/checkoutanalytics/',
+                analyticsContext: 'https://checkoutanalytics-test.plexy.com/checkoutanalytics/',
                 analyticsPath: 'v3/analytics',
                 clientKey: 'test_client_key',
                 locale: 'en-US'

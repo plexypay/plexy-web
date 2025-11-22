@@ -46,9 +46,9 @@ function SegmentedControl<T>({ classNameModifiers = [], selectedValue, disabled 
     return (
         <div
             className={cx(
-                'adyen-checkout__segmented-control',
-                { 'adyen-checkout__segmented-control--disabled': disabled },
-                ...classNameModifiers.map(modifier => `adyen-checkout__segmented-control--${modifier}`)
+                'plexy-checkout__segmented-control',
+                { 'plexy-checkout__segmented-control--disabled': disabled },
+                ...classNameModifiers.map(modifier => `plexy-checkout__segmented-control--${modifier}`)
             )}
             role="group"
         >
@@ -57,8 +57,8 @@ function SegmentedControl<T>({ classNameModifiers = [], selectedValue, disabled 
                     disabled={disabled}
                     key={value}
                     onClick={(event: MouseEvent) => onChange(value, event)}
-                    className={cx('adyen-checkout__segmented-control-segment', {
-                        'adyen-checkout__segmented-control-segment--selected': selectedValue === value
+                    className={cx('plexy-checkout__segmented-control-segment', {
+                        'plexy-checkout__segmented-control-segment--selected': selectedValue === value
                     })}
                     aria-controls={controls}
                     aria-expanded={selectedValue === value}

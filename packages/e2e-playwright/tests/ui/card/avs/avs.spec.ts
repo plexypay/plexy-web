@@ -29,14 +29,14 @@ test.describe('Card with AVS', () => {
         //
         // // Fill billing address
         // await t
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__list').child(1))
-        //   .typeText('.adyen-checkout__input--street', mockAddress.street)
-        //   .typeText('.adyen-checkout__input--houseNumberOrName', mockAddress.houseNumberOrName)
-        //   .typeText('.adyen-checkout__input--city', mockAddress.city)
-        //   .typeText('.adyen-checkout__input--postalCode', mockAddress.postalCode)
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__list').child(1));
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__list').child(1))
+        //   .typeText('.plexy-checkout__input--street', mockAddress.street)
+        //   .typeText('.plexy-checkout__input--houseNumberOrName', mockAddress.houseNumberOrName)
+        //   .typeText('.plexy-checkout__input--city', mockAddress.city)
+        //   .typeText('.plexy-checkout__input--postalCode', mockAddress.postalCode)
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__list').child(1));
         //
         // // Expect card to now be valid
         // await t.expect(getIsValid()).eql(true);
@@ -54,13 +54,13 @@ test.describe('Card with AVS', () => {
         //
         // // Fill billing address
         // await t
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__list').child(1))
-        //   .typeText('.adyen-checkout__input--street', mockAddress.street)
-        //   .typeText('.adyen-checkout__input--city', mockAddress.city)
-        //   .typeText('.adyen-checkout__input--postalCode', mockAddress.postalCode)
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__list').child(1));
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__list').child(1))
+        //   .typeText('.plexy-checkout__input--street', mockAddress.street)
+        //   .typeText('.plexy-checkout__input--city', mockAddress.city)
+        //   .typeText('.plexy-checkout__input--postalCode', mockAddress.postalCode)
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__list').child(1));
         //
         // // Expect card to now be valid
         // await t.expect(getIsValid()).eql(true);
@@ -78,26 +78,26 @@ test.describe('Card with AVS', () => {
         //
         // // Fill billing address
         // await t
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__list').child(1))
-        //   .typeText('.adyen-checkout__input--street', mockAddress.street)
-        //   .typeText('.adyen-checkout__input--city', mockAddress.city)
-        //   .typeText('.adyen-checkout__input--postalCode', mockAddress.postalCode)
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--stateOrProvince .adyen-checkout__dropdown__list').child(0));
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__list').child(1))
+        //   .typeText('.plexy-checkout__input--street', mockAddress.street)
+        //   .typeText('.plexy-checkout__input--city', mockAddress.city)
+        //   .typeText('.plexy-checkout__input--postalCode', mockAddress.postalCode)
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--stateOrProvince .plexy-checkout__dropdown__list').child(0));
         //
         // // Expect card to now be valid
         // await t.expect(getIsValid()).eql(true);
         //
         // // Switch country to NL
         // await t
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__button'))
-        //   .click(Selector('.adyen-checkout__field--country .adyen-checkout__dropdown__list').child(0));
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__button'))
+        //   .click(Selector('.plexy-checkout__field--country .plexy-checkout__dropdown__list').child(0));
         //
         // // Expect card to now be invalid
         // await t.expect(getIsValid()).eql(false);
         //
         // // Expect to not have a State field
-        // await t.expect(Selector('.adyen-checkout__field--stateOrProvince').exists).notOk();
+        // await t.expect(Selector('.plexy-checkout__field--stateOrProvince').exists).notOk();
     });
 });

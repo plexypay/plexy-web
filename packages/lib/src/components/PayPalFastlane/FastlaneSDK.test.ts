@@ -74,7 +74,7 @@ describe('FastlaneSDK', () => {
         expect(fastlaneMock.setLocale).toHaveBeenCalledWith('en_us');
         expect(fastlaneMock.identity.getSession).toHaveBeenCalledTimes(1);
         expect(httpPostMock).toHaveBeenCalledWith({
-            loadingContext: 'https://checkoutshopper-test.adyen.com/checkoutshopper/',
+            loadingContext: 'https://checkoutshopper-test.plexy.com/checkoutshopper/',
             path: 'utility/v1/payPalFastlane/tokens?clientKey=test_xxx',
             errorLevel: 'fatal'
         });
@@ -96,7 +96,7 @@ describe('FastlaneSDK', () => {
             environment: 'test'
         });
 
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
 
         expect(authResult.authenticationState).toBe('not_found');
         expect(authResult.profileData).toBeUndefined();
@@ -120,9 +120,9 @@ describe('FastlaneSDK', () => {
             environment: 'test'
         });
 
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
 
-        expect(fastlaneMock.identity.lookupCustomerByEmail).toHaveBeenCalledWith('test@adyen.com');
+        expect(fastlaneMock.identity.lookupCustomerByEmail).toHaveBeenCalledWith('test@plexy.com');
         expect(fastlaneMock.identity.triggerAuthenticationFlow).toHaveBeenCalledWith(customerContextId);
         expect(authResult.authenticationState).toBe('succeeded');
         expect(authResult.profileData).toBeDefined();
@@ -152,7 +152,7 @@ describe('FastlaneSDK', () => {
             profileData: mockedFastlaneProfile
         });
 
-        await fastlane.authenticate('test@adyen.com');
+        await fastlane.authenticate('test@plexy.com');
         const addressSelectorResult = await fastlane.showShippingAddressSelector();
 
         expect(fastlaneMock.profile.showShippingAddressSelector).toHaveBeenCalledTimes(1);
@@ -204,14 +204,14 @@ describe('FastlaneSDK', () => {
             clientKey: 'test_xxx',
             environment: 'test'
         });
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
         const config = await fastlane.getComponentConfiguration(authResult);
 
         expect(config).toStrictEqual({
             paymentType: 'fastlane',
             configuration: {
                 brand: 'visa',
-                email: 'test@adyen.com',
+                email: 'test@plexy.com',
                 lastFour: '1111',
                 fastlaneSessionId: 'fastlane-session-id',
                 tokenId: 'xxxx'
@@ -247,7 +247,7 @@ describe('FastlaneSDK', () => {
             clientKey: 'test_xxx',
             environment: 'test'
         });
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
 
         const config = await fastlane.getComponentConfiguration(authResult);
 
@@ -293,7 +293,7 @@ describe('FastlaneSDK', () => {
             environment: 'test'
         });
 
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
         const config = await fastlane.getComponentConfiguration(authResult);
 
         expect(fastlaneMock.ConsentComponent).toHaveBeenCalledTimes(1);
@@ -339,7 +339,7 @@ describe('FastlaneSDK', () => {
             environment: 'test'
         });
 
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
         const config = await fastlane.getComponentConfiguration(authResult);
 
         expect(fastlaneMock.ConsentComponent).toHaveBeenCalledTimes(1);
@@ -379,7 +379,7 @@ describe('FastlaneSDK', () => {
             environment: 'test'
         });
 
-        const authResult = await fastlane.authenticate('test@adyen.com');
+        const authResult = await fastlane.authenticate('test@plexy.com');
 
         await expect(fastlane.getComponentConfiguration(authResult)).rejects.toThrow('fetchConsentDetails(): failed to fetch consent details');
     });
@@ -434,6 +434,6 @@ describe('FastlaneSDK', () => {
 
     test('should throw error if authentication is triggered without Fastlane being available', async () => {
         const fastlaneSdk = new FastlaneSDK({ environment: 'test', clientKey: 'test' });
-        await expect(fastlaneSdk.authenticate('test@adyen.com')).rejects.toThrowError('authenticate(): Fastlane SDK is not initialized');
+        await expect(fastlaneSdk.authenticate('test@plexy.com')).rejects.toThrowError('authenticate(): Fastlane SDK is not initialized');
     });
 });

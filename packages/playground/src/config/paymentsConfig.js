@@ -10,7 +10,7 @@ const paymentsConfig = {
     returnUrl,
     reference: `${identifier}-checkout-components-ref`,
     // additionalData: {
-    //     // Force response code. See https://docs.adyen.com/development-resources/test-cards/result-code-testing/adyen-response-codes
+    //     // Force response code. See https://docs.plexy.com/development-resources/test-cards/result-code-testing/plexy-response-codes
     //     // RequestedTestAcquirerResponseCode: 2,
     //     allow3DS2: true
     //     // To force threeds2InMDFlow:

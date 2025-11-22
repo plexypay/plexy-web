@@ -1,7 +1,7 @@
 @use 'styles/mixins';
 @import 'styles/variable-generator';
 
-.adyen-checkout-card-fastlane__modal {
+.plexy-checkout-card-fastlane__modal {
     max-width: 372px;
     margin-bottom: token(spacer-070);
 
@@ -34,7 +34,7 @@
             grid-area: text;
             color: token(color-background-inverse-primary);
 
-            @include mixins.adyen-checkout-text-body;
+            @include mixins.plexy-checkout-text-body;
         }
     }
 

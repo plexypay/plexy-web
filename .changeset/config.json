@@ -1,11 +1,11 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["./changelog-config.js", {"repo": "adyen/adyen-web"}],
+  "changelog": ["./changelog-config.js", {"repo": "plexy/plexy-web"}],
   "commit": false,
   "fixed": [],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@adyen/adyen-web-playwright","@adyen/adyen-web-playground","@adyen/adyen-web-server"]
+  "ignore": ["@plexy/plexy-web-playwright","@plexy/plexy-web-playground","@plexy/plexy-web-server"]
 }

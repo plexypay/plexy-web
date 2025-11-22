@@ -1,5 +1,5 @@
 import {
-    AdyenCheckout,
+    PlexyCheckout,
     BillDeskOnline,
     BillDeskWallet,
     PayuCashcard,
@@ -9,8 +9,8 @@ import {
     MolPayEBankingMY,
     PayByBank,
     Redirect
-} from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+} from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 
 import { createSession } from '../../services';
 import { shopperLocale, countryCode, returnUrl, environmentUrlsOverride } from '../../config/commonConfig';
@@ -28,7 +28,7 @@ import '../../style.scss';
         countryCode
     });
 
-    window.core = await AdyenCheckout({
+    window.core = await PlexyCheckout({
         session,
         clientKey: process.env.__CLIENT_KEY__,
         locale: shopperLocale,

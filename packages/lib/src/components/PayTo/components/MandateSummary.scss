@@ -1,12 +1,12 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__await--payto {
-  .adyen-checkout__details-table {
+.plexy-checkout__await--payto {
+  .plexy-checkout__details-table {
     margin-top: token(spacer-070);
     padding-top: token(spacer-060);
   }
 
-  .adyen-checkout__details-table__item:first-child {
+  .plexy-checkout__details-table__item:first-child {
     border-top: none;
   }
 }

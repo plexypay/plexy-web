@@ -166,7 +166,7 @@ const Component = () => {
 
                 onAdditionalDetails(state) {
                     store.setState({ paymentDetails: state });
-                    sessionStorage.setItem('adyen-paypal-review-page-data', JSON.stringify(store.getState()));
+                    sessionStorage.setItem('plexy-paypal-review-page-data', JSON.stringify(store.getState()));
 
                     window.parent.location.assign('/?path=/story/helpers-paypalreviewpage--paypal-review-page');
                 }

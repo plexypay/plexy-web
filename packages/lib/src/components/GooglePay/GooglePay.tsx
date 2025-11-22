@@ -3,9 +3,9 @@ import UIElement from '../internal/UIElement/UIElement';
 import GooglePayService from './GooglePayService';
 import GooglePayButton from './components/GooglePayButton';
 import defaultProps from './defaultProps';
-import { formatGooglePayContactToAdyenAddressFormat, getGooglePayLocale } from './utils';
+import { formatGooglePayContactToPlexyAddressFormat, getGooglePayLocale } from './utils';
 import collectBrowserInfo from '../../utils/browserInfo';
-import AdyenCheckoutError from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../core/Errors/PlexyCheckoutError';
 import { TxVariants } from '../tx-variants';
 import { sanitizeResponse, verifyPaymentDidNotFail } from '../internal/UIElement/utils';
 import {
@@ -20,7 +20,7 @@ import type { GooglePayConfiguration } from './types';
 import type { ICore } from '../../core/types';
 import { AnalyticsInfoEvent } from '../../core/Analytics/AnalyticsInfoEvent';
 import { AnalyticsEvent } from '../../core/Analytics/AnalyticsEvent';
-import { mapGooglePayBrands } from './utils/map-adyen-brands-to-googlepay-brands';
+import { mapGooglePayBrands } from './utils/map-plexy-brands-to-googlepay-brands';
 
 const DEFAULT_ALLOWED_CARD_NETWORKS: google.payments.api.CardNetwork[] = ['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA'];
 
@@ -39,14 +39,14 @@ class GooglePay extends UIElement<GooglePayConfiguration> {
         const { isExpress, paymentDataCallbacks } = this.props;
 
         if (isExpress === false && paymentDataCallbacks?.onPaymentDataChanged) {
-            throw new AdyenCheckoutError(
+            throw new PlexyCheckoutError(
                 'IMPLEMENTATION_ERROR',
                 'GooglePay - You must set "isExpress" flag to "true" in order to use "onPaymentDataChanged" callback'
             );
         }
 
         if (!this.props.configuration.merchantId) {
-            throw new AdyenCheckoutError(
+            throw new PlexyCheckoutError(
                 'IMPLEMENTATION_ERROR',
                 'GooglePay - Missing merchantId. Please ensure that it is correctly configured in your customer area.'
             );
@@ -162,7 +162,7 @@ class GooglePay extends UIElement<GooglePayConfiguration> {
     private showGooglePayPaymentSheet() {
         this.googlePay.initiatePayment(this.props, this.core.options.countryCode).catch((error: google.payments.api.PaymentsError) => {
             // eslint-disable-next-line @typescript-eslint/no-base-to-string
-            this.handleError(new AdyenCheckoutError(error.statusCode === 'CANCELED' ? 'CANCEL' : 'ERROR', error.toString(), { cause: error }));
+            this.handleError(new PlexyCheckoutError(error.statusCode === 'CANCELED' ? 'CANCEL' : 'ERROR', error.toString(), { cause: error }));
         });
     }
 
@@ -187,8 +187,8 @@ class GooglePay extends UIElement<GooglePayConfiguration> {
      * @see https://developers.google.com/pay/api/web/reference/client#onPaymentAuthorized
      **/
     private onPaymentAuthorized = async (paymentData: google.payments.api.PaymentData): Promise<google.payments.api.PaymentAuthorizationResult> => {
-        const billingAddress: AddressData = formatGooglePayContactToAdyenAddressFormat(paymentData.paymentMethodData.info.billingAddress);
-        const deliveryAddress: AddressData = formatGooglePayContactToAdyenAddressFormat(paymentData.shippingAddress, true);
+        const billingAddress: AddressData = formatGooglePayContactToPlexyAddressFormat(paymentData.paymentMethodData.info.billingAddress);
+        const deliveryAddress: AddressData = formatGooglePayContactToPlexyAddressFormat(paymentData.shippingAddress, true);
 
         this.setState({
             authorizedEvent: paymentData,
@@ -284,11 +284,11 @@ class GooglePay extends UIElement<GooglePayConfiguration> {
         return this.isReadyToPay()
             .then(response => {
                 if (!response.result) {
-                    throw new AdyenCheckoutError('ERROR', 'GooglePay is not available');
+                    throw new PlexyCheckoutError('ERROR', 'GooglePay is not available');
                 }
 
                 if (response.paymentMethodPresent === false) {
-                    throw new AdyenCheckoutError('ERROR', 'GooglePay - No paymentMethodPresent');
+                    throw new PlexyCheckoutError('ERROR', 'GooglePay - No paymentMethodPresent');
                 }
 
                 return Promise.resolve();

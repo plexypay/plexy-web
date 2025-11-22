@@ -1,5 +1,5 @@
-import { AdyenCheckout, CashAppPay, ClickToPay, AmazonPay, PayPal, GooglePay, ApplePay } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, CashAppPay, ClickToPay, AmazonPay, PayPal, GooglePay, ApplePay } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 
 import { getPaymentMethods, makePayment } from '../../services';
 import { handleSubmit, handleAdditionalDetails } from '../../handlers';
@@ -9,7 +9,7 @@ import '../../../config/polyfills';
 import '../../style.scss';
 
 getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         amount, // Optional. Used to display the amount in the Pay Button.
         countryCode,
         clientKey: process.env.__CLIENT_KEY__,
@@ -57,7 +57,7 @@ getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse =
 
     // CLICK TO PAY
     window.clickToPay = new ClickToPay(window.checkout, {
-        shopperEmail: 'gui.ctp@adyen.com',
+        shopperEmail: 'gui.ctp@plexy.com',
         onReady() {
             console.log('ClickToPay is ready');
         },

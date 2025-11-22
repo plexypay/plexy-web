@@ -155,8 +155,8 @@ export const WithMockedFastlane: CardStory = {
             fastlaneConfiguration: {
                 showConsent: true,
                 defaultToggleState: true,
-                termsAndConditionsLink: 'https://adyen.com',
-                privacyPolicyLink: 'https://adyen.com',
+                termsAndConditionsLink: 'https://plexy.com',
+                privacyPolicyLink: 'https://plexy.com',
                 termsAndConditionsVersion: 'v1',
                 fastlaneSessionId: 'ABC-123'
             }
@@ -169,8 +169,8 @@ export const WithClickToPay: CardStory = {
     args: {
         componentConfiguration: {
             clickToPayConfiguration: {
-                shopperEmail: 'gui.ctp@adyen.com',
-                merchantDisplayName: 'Adyen Merchant Name'
+                shopperEmail: 'gui.ctp@plexy.com',
+                merchantDisplayName: 'Plexy Merchant Name'
             }
         }
     }

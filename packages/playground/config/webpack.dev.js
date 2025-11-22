@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const checkoutDevServer = require('@adyen/adyen-web-server');
+const checkoutDevServer = require('@plexy/plexy-web-server');
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || '3020';
 const isHttps = process.env.IS_HTTPS === 'true';
@@ -41,12 +41,12 @@ const htmlPageGenerator = ({ id }, index) =>
         template: path.join(__dirname, `../src/pages/${id}/${id}.html`),
         templateParameters: () => ({ htmlWebpackPlugin: { htmlPages } }),
         inject: 'body',
-        chunks: [`AdyenDemo${id}`],
+        chunks: [`PlexyDemo${id}`],
         chunksSortMode: 'manual'
     });
 
 const entriesReducer = (acc, { id }) => {
-    acc[`AdyenDemo${id}`] = path.join(__dirname, `../src/pages/${id}/${id}.js`);
+    acc[`PlexyDemo${id}`] = path.join(__dirname, `../src/pages/${id}/${id}.js`);
     return acc;
 };
 
@@ -76,7 +76,7 @@ module.exports = {
     },
 
     watchOptions: {
-        ignored: ['/node_modules/', '/!(@adyen/adyen-web/dist)/'],
+        ignored: ['/node_modules/', '/!(@plexy/plexy-web/dist)/'],
         aggregateTimeout: 200,
         poll: 500
     },

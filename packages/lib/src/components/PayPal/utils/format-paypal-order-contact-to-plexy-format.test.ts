@@ -1,4 +1,4 @@
-import { formatPaypalOrderContactToAdyenFormat } from './format-paypal-order-contact-to-adyen-format';
+import { formatPaypalOrderContactToPlexyFormat } from './format-paypal-order-contact-to-plexy-format';
 
 const paypalAuthorizedEvent: any = {
     id: '74F37708H4524480V',
@@ -22,7 +22,7 @@ const paypalAuthorizedEvent: any = {
                 }
             },
             payee: {
-                email_address: 'sell1_1287491142_biz@adyen.com',
+                email_address: 'sell1_1287491142_biz@plexy.com',
                 merchant_id: 'M6TNAESZ5FGNN',
                 display_data: {
                     brand_name: 'TestMerchantCheckout'
@@ -62,7 +62,7 @@ const paypalAuthorizedEvent: any = {
             given_name: 'Test',
             surname: 'User'
         },
-        email_address: 'buy1_1287492020_per@adyen.com',
+        email_address: 'buy1_1287492020_per@plexy.com',
         payer_id: '8QNW9UFUKS9ZC',
         phone: {
             phone_type: 'HOME',
@@ -98,9 +98,9 @@ const paypalAuthorizedEvent: any = {
     ]
 };
 
-describe('formatPaypalOrderContactToAdyenFormat', () => {
+describe('formatPaypalOrderContactToPlexyFormat', () => {
     test('should format billing address', () => {
-        const billingAddress = formatPaypalOrderContactToAdyenFormat(paypalAuthorizedEvent.payer, false);
+        const billingAddress = formatPaypalOrderContactToPlexyFormat(paypalAuthorizedEvent.payer, false);
         expect(billingAddress).toStrictEqual({
             houseNumberOrName: 'ZZ',
             street: '1 Main St',
@@ -112,7 +112,7 @@ describe('formatPaypalOrderContactToAdyenFormat', () => {
     });
 
     test('should format delivery address', () => {
-        const deliveryAddress = formatPaypalOrderContactToAdyenFormat(paypalAuthorizedEvent.purchase_units?.[0].shipping, true);
+        const deliveryAddress = formatPaypalOrderContactToPlexyFormat(paypalAuthorizedEvent.purchase_units?.[0].shipping, true);
         expect(deliveryAddress).toStrictEqual({
             houseNumberOrName: 'ZZ',
             street: '274 Brannan St.',
@@ -125,7 +125,7 @@ describe('formatPaypalOrderContactToAdyenFormat', () => {
     });
 
     test('should return null if paypal object is not in the expected format', () => {
-        const data = formatPaypalOrderContactToAdyenFormat({});
+        const data = formatPaypalOrderContactToPlexyFormat({});
         expect(data).toBeNull();
     });
 });

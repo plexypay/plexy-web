@@ -23,19 +23,19 @@ describe('BacsInput', () => {
         const wrapper = getWrapper({});
 
         // Main holder
-        expect(wrapper.find('.adyen-checkout__bacs')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__bacs')).toHaveLength(1);
 
         // Name (active)
-        expect(wrapper.find('div.adyen-checkout__bacs--holder-name')).toHaveLength(1);
-        expect(wrapper.find('div.adyen-checkout__bacs--holder-name.adyen-checkout__field--inactive')).toHaveLength(0);
+        expect(wrapper.find('div.plexy-checkout__bacs--holder-name')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--holder-name.plexy-checkout__field--inactive')).toHaveLength(0);
 
         // Holder for account & location + account & location fields
-        expect(wrapper.find('.adyen-checkout__bacs .adyen-checkout__bacs__num-id')).toHaveLength(1);
-        expect(wrapper.find('div.adyen-checkout__bacs--bank-account-number')).toHaveLength(1);
-        expect(wrapper.find('div.adyen-checkout__bacs--bank-location-id')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__bacs .plexy-checkout__bacs__num-id')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--bank-account-number')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--bank-location-id')).toHaveLength(1);
 
         // Email
-        expect(wrapper.find('div.adyen-checkout__bacs--shopper-email')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--shopper-email')).toHaveLength(1);
 
         // Consent checkboxes
         expect(wrapper.find('ConsentCheckbox')).toHaveLength(2);
@@ -48,21 +48,21 @@ describe('BacsInput', () => {
         wrapper.update();
 
         // Main holder (with additional 'confim' class)
-        expect(wrapper.find('.adyen-checkout__bacs.adyen-checkout__bacs--confirm')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__bacs.plexy-checkout__bacs--confirm')).toHaveLength(1);
 
         // Edit button
-        expect(wrapper.find('.adyen-checkout__bacs .adyen-checkout__bacs--edit')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__bacs .plexy-checkout__bacs--edit')).toHaveLength(1);
 
         // Name (inactive)
-        expect(wrapper.find('div.adyen-checkout__bacs--holder-name.adyen-checkout__field--inactive')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--holder-name.plexy-checkout__field--inactive')).toHaveLength(1);
 
         // Holder for account & location + inactive account & location fields
-        expect(wrapper.find('.adyen-checkout__bacs .adyen-checkout__bacs__num-id')).toHaveLength(1);
-        expect(wrapper.find('div.adyen-checkout__bacs--bank-account-number.adyen-checkout__field--inactive')).toHaveLength(1);
-        expect(wrapper.find('div.adyen-checkout__bacs--bank-location-id.adyen-checkout__field--inactive')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__bacs .plexy-checkout__bacs__num-id')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--bank-account-number.plexy-checkout__field--inactive')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--bank-location-id.plexy-checkout__field--inactive')).toHaveLength(1);
 
         // Email (inactive)
-        expect(wrapper.find('div.adyen-checkout__bacs--shopper-email.adyen-checkout__field--inactive')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__bacs--shopper-email.plexy-checkout__field--inactive')).toHaveLength(1);
 
         // No consent checkboxes
         expect(wrapper.find('ConsentCheckbox')).toHaveLength(0);

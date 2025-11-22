@@ -1,8 +1,8 @@
 <script lang="ts">
 import { DEFAULT_AMOUNT } from '~/constants';
-import { AdyenCheckout, Dropin } from '@adyen/adyen-web/auto';
-import type { AdyenCheckoutError, CoreConfiguration, PaymentCompletedData, PaymentFailedData, UIElement } from '@adyen/adyen-web/auto'
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, Dropin } from '@plexy/plexy-web/auto';
+import type { PlexyCheckoutError, CoreConfiguration, PaymentCompletedData, PaymentFailedData, UIElement } from '@plexy/plexy-web/auto'
+import '@plexy/plexy-web/styles/plexy.css';
 
 export default {
     data() {
@@ -41,12 +41,12 @@ export default {
                 onPaymentFailed(data: PaymentFailedData, element?: UIElement) {
                     console.log('onPaymentFailed', data, element);
                 },
-                onError(error: AdyenCheckoutError) {
+                onError(error: PlexyCheckoutError) {
                     console.error('Something went wrong', error);
                 },
             };
 
-            const checkout = await AdyenCheckout(options);
+            const checkout = await PlexyCheckout(options);
 
             this.dropin = new Dropin(checkout, {
                 paymentMethodsConfiguration: {

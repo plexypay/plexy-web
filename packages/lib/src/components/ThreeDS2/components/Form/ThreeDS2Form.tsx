@@ -25,7 +25,7 @@ export default class ThreeDS2Form extends Component<ThreeDS2FormProps> {
                     this.formEl = ref;
                 }}
                 method="POST"
-                className={classNames(['adyen-checkout__threeds2__form', `adyen-checkout__threeds2__form--${name}`])}
+                className={classNames(['plexy-checkout__threeds2__form', `plexy-checkout__threeds2__form--${name}`])}
                 name={name}
                 action={action}
                 target={target}

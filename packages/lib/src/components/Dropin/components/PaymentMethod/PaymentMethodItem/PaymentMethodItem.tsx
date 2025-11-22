@@ -65,14 +65,14 @@ class PaymentMethodItem extends Component<PaymentMethodItemProps> {
         const isCard = paymentMethod.props.type === 'card' || paymentMethod.props.type === 'scheme';
 
         const paymentMethodClassnames = classNames({
-            'adyen-checkout__payment-method': true,
-            [`adyen-checkout__payment-method--${paymentMethod.props.type}`]: true,
-            ...(isCard && { [`adyen-checkout__payment-method--${paymentMethod.props.fundingSource ?? 'credit'}`]: true }),
-            'adyen-checkout__payment-method--selected': isSelected,
-            'adyen-checkout__payment-method--loading': isLoading,
-            'adyen-checkout__payment-method--disabling': isDisablingPaymentMethod,
-            'adyen-checkout__payment-method--confirming': this.state.showDisableStoredPaymentMethodConfirmation,
-            'adyen-checkout__payment-method--standalone': standalone,
+            'plexy-checkout__payment-method': true,
+            [`plexy-checkout__payment-method--${paymentMethod.props.type}`]: true,
+            ...(isCard && { [`plexy-checkout__payment-method--${paymentMethod.props.fundingSource ?? 'credit'}`]: true }),
+            'plexy-checkout__payment-method--selected': isSelected,
+            'plexy-checkout__payment-method--loading': isLoading,
+            'plexy-checkout__payment-method--disabling': isDisablingPaymentMethod,
+            'plexy-checkout__payment-method--confirming': this.state.showDisableStoredPaymentMethodConfirmation,
+            'plexy-checkout__payment-method--standalone': standalone,
             [paymentMethod._id]: true,
             [this.props.className]: true
         });
@@ -87,7 +87,7 @@ class PaymentMethodItem extends Component<PaymentMethodItemProps> {
         return (
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
             <div key={paymentMethod._id} className={paymentMethodClassnames} onClick={this.handleOnListItemClick}>
-                <div className="adyen-checkout__payment-method__header">
+                <div className="plexy-checkout__payment-method__header">
                     <ExpandButton
                         buttonId={buttonId}
                         showRadioButton={showRadioButton}
@@ -112,7 +112,7 @@ class PaymentMethodItem extends Component<PaymentMethodItemProps> {
                     {showRemovePaymentMethodButton && (
                         <button
                             type="button"
-                            className="adyen-checkout__button adyen-checkout__button--inline adyen-checkout__button--link"
+                            className="plexy-checkout__button plexy-checkout__button--inline plexy-checkout__button--link"
                             onClick={this.toggleDisableConfirmation}
                             aria-expanded={this.state.showDisableStoredPaymentMethodConfirmation}
                             aria-controls={disableConfirmationId}
@@ -132,8 +132,8 @@ class PaymentMethodItem extends Component<PaymentMethodItemProps> {
                     )}
                 </div>
 
-                <div className="adyen-checkout-pm-details-wrapper" aria-hidden={!isSelected}>
-                    <div className="adyen-checkout__payment-method__details" id={containerId}>
+                <div className="plexy-checkout-pm-details-wrapper" aria-hidden={!isSelected}>
+                    <div className="plexy-checkout__payment-method__details" id={containerId}>
                         {showRemovePaymentMethodButton && (
                             <DisableOneClickConfirmation
                                 id={disableConfirmationId}

@@ -1,6 +1,6 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__bankTransfer__introduction {
+.plexy-checkout__bankTransfer__introduction {
     font-size: token(text-body-font-size);
     color: token(color-label-primary);
     font-weight: token(text-body-font-weight);
@@ -8,6 +8,6 @@
     padding: 0;
 }
 
-.adyen-checkout__bankTransfer__emailField {
+.plexy-checkout__bankTransfer__emailField {
     margin: 0 0 token(spacer-070);
 }

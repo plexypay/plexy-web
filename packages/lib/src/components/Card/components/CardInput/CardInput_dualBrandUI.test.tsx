@@ -66,7 +66,7 @@ describe('CardNumber and the dual branding UI', () => {
         expect(wrapper.find('[data-cse="encryptedSecurityCode"]')).toHaveLength(1);
 
         // No dual branding UI
-        expect(wrapper.find('.adyen-checkout__fieldset--dual-brand-switcher')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__fieldset--dual-brand-switcher')).toHaveLength(0);
     });
 
     test('Renders a CardInput with dual branding UI radio button elements', async () => {
@@ -77,11 +77,11 @@ describe('CardNumber and the dual branding UI', () => {
         wrapper.update();
 
         //  Dual branding UI visible
-        const dualBrandEl = wrapper.find('.adyen-checkout__fieldset--dual-brand-switcher');
+        const dualBrandEl = wrapper.find('.plexy-checkout__fieldset--dual-brand-switcher');
         expect(dualBrandEl).toHaveLength(1);
 
         // title
-        expect(dualBrandEl.find('.adyen-checkout__fieldset__title')).toHaveLength(1);
+        expect(dualBrandEl.find('.plexy-checkout__fieldset__title')).toHaveLength(1);
 
         // subTitle
         expect(dualBrandEl.find('legend')).toHaveLength(1);
@@ -92,7 +92,7 @@ describe('CardNumber and the dual branding UI', () => {
         // buttons
         expect(dualBrandEl.find('[type="radio"]')).toHaveLength(2);
 
-        const els = dualBrandEl.find('.adyen-checkout__radio_group-extended__label-wrapper');
+        const els = dualBrandEl.find('.plexy-checkout__radio_group-extended__label-wrapper');
 
         // check images
         expect(els.at(0).find('img').at(0).prop('alt')).toEqual('VISA'); // the .at(0) is because a button contains a brand image and a checkmark image
@@ -110,18 +110,18 @@ describe('CardNumber and the dual branding UI', () => {
         wrapper.update();
 
         //  Dual branding UI visible
-        expect(wrapper.find('.adyen-checkout__fieldset--dual-brand-switcher')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__fieldset--dual-brand-switcher')).toHaveLength(1);
 
         // 3 error fields - all hidden
-        expect(wrapper.find('.adyen-checkout-contextual-text--error.adyen-checkout-contextual-text--hidden')).toHaveLength(3);
+        expect(wrapper.find('.plexy-checkout-contextual-text--error.plexy-checkout-contextual-text--hidden')).toHaveLength(3);
 
         cardInputRef.showValidation();
         wrapper.update();
 
         // 3 error fields all visible
-        expect(wrapper.find('.adyen-checkout-contextual-text--error.adyen-checkout-contextual-text--hidden')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout-contextual-text--error.plexy-checkout-contextual-text--hidden')).toHaveLength(0);
 
         //  Dual branding UI still visible
-        expect(wrapper.find('.adyen-checkout__fieldset--dual-brand-switcher')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__fieldset--dual-brand-switcher')).toHaveLength(1);
     });
 });

@@ -1,8 +1,8 @@
 {
-    "name": "@adyen/adyen-web",
+    "name": "@plexy/plexy-web",
     "version": "6.25.1",
     "license": "MIT",
-    "homepage": "https://docs.adyen.com/checkout",
+    "homepage": "https://docs.plexy.com/checkout",
     "type": "module",
     "sideEffects": [
         "*.css",
@@ -12,7 +12,7 @@
     "main": "dist/cjs/index.cjs",
     "module": "dist/es-legacy/index.js",
     "types": "dist/es/index.d.ts",
-    "style": "dist/es/adyen.css",
+    "style": "dist/es/plexy.css",
     "exports": {
         ".": {
             "import": {
@@ -34,19 +34,19 @@
                 "default": "./auto/auto.cjs"
             }
         },
-        "./styles/adyen.css": "./dist/es/adyen.css"
+        "./styles/plexy.css": "./dist/es/plexy.css"
     },
     "keywords": [
-        "adyen",
-        "adyen-web",
+        "plexy",
+        "plexy-web",
         "checkout",
         "payment",
         "payments",
         "components"
     ],
-    "repository": "github:Adyen/adyen-web",
+    "repository": "github:Plexy/plexy-web",
     "bugs": {
-        "url": "https://support.adyen.com/"
+        "url": "https://support.plexy.com/"
     },
     "files": [
         "auto/**",
@@ -76,12 +76,12 @@
         "styles:fix": "yarn run lint-styles --fix",
         "lint:fix": "yarn run lint --fix",
         "prettier:fix": "prettier \"src/**/*.{js,jsx,ts,tsx,html,md}\" \"package.json\" --write --loglevel silent",
-        "prepublishOnly": "yarn run build && rm -rf ./styles && mkdir ./styles && cp ./dist/es/adyen.css ./styles/adyen.css",
+        "prepublishOnly": "yarn run build && rm -rf ./styles && mkdir ./styles && cp ./dist/es/plexy.css ./styles/plexy.css",
         "size": "yarn run build && size-limit",
         "validate:fix": "lint-staged"
     },
     "devDependencies": {
-        "@adyen/bento-design-tokens": "1.10.0",
+        "@plexy/bento-design-tokens": "1.10.0",
         "@eslint/js": "9.35.0",
         "@preact/preset-vite": "2.10.2",
         "@rollup/plugin-commonjs": "28.0.6",

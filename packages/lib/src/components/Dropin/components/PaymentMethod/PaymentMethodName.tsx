@@ -3,11 +3,11 @@ import { h } from 'preact';
 import './PaymentMethodName.scss';
 
 const PaymentMethodName = ({ displayName, additionalInfo, isSelected }) => (
-    <span className={'adyen-checkout__payment-method__name_wrapper'}>
+    <span className={'plexy-checkout__payment-method__name_wrapper'}>
         <span
             className={classNames({
-                'adyen-checkout__payment-method__name': true,
-                'adyen-checkout__payment-method__name--selected': isSelected
+                'plexy-checkout__payment-method__name': true,
+                'plexy-checkout__payment-method__name--selected': isSelected
             })}
         >
             {displayName}
@@ -16,8 +16,8 @@ const PaymentMethodName = ({ displayName, additionalInfo, isSelected }) => (
         {additionalInfo && (
             <span
                 className={classNames({
-                    'adyen-checkout__payment-method__additional-info': true,
-                    'adyen-checkout__payment-method__additional-info--selected': isSelected
+                    'plexy-checkout__payment-method__additional-info': true,
+                    'plexy-checkout__payment-method__additional-info--selected': isSelected
                 })}
             >
                 {additionalInfo}

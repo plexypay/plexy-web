@@ -1,5 +1,5 @@
-import { AdyenCheckout, Donation, PersonalDetails, Address } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, Donation, PersonalDetails, Address } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import '../../../config/polyfills';
 import '../../style.scss';
 import { getPaymentMethods } from '../../services';
@@ -7,7 +7,7 @@ import { amount, shopperLocale, countryCode, environmentUrlsOverride } from '../
 import { searchFunctionExample } from '../../utils';
 
 getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         amount, // Optional. Used to display the amount in the Pay Button.
         countryCode,
         clientKey: process.env.__CLIENT_KEY__,
@@ -25,7 +25,7 @@ getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse =
         showPayButton: true
     });
 
-    // Adyen New Giving
+    // Plexy New Giving
     window.new_donation_fixed = new Donation(window.checkout, {
         onDonate: (state, component) => {
             console.log({ state, component });
@@ -33,7 +33,7 @@ getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse =
         },
         donation: { type: 'fixedAmounts', currency: 'EUR', values: [50, 199, 300, 500, 1000] },
         commercialTxAmount: 1000,
-        termsAndConditionsUrl: 'https://www.adyen.com',
+        termsAndConditionsUrl: 'https://www.plexy.com',
         bannerUrl: '/banner.png',
         logoUrl: '/logo.png',
         nonprofitDescription:
@@ -53,7 +53,7 @@ getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse =
         },
         donation: { type: 'roundup', currency: 'EUR', maxRoundupAmount: 100 },
         commercialTxAmount: 1000,
-        termsAndConditionsUrl: 'https://www.adyen.com',
+        termsAndConditionsUrl: 'https://www.plexy.com',
         bannerUrl: '/banner.png',
         logoUrl: '/logo.png',
         nonprofitDescription: 'Lorem ipsum...',

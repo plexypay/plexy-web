@@ -18,14 +18,14 @@ interface InternalDisclaimerMsgObject {
 /**
  *  props: {
  *    message: 'By continuing you agree with the %#terms and conditions%#',
- *    urls: ['https://www.adyen.com']
+ *    urls: ['https://www.plexy.com']
  *  }
  *  String inside the '%#' token pair will be rendered as an anchor element.
  */
 
 export default function DisclaimerMessage({ message, urls = [] }: InternalDisclaimerMsgObject) {
     return (
-        <span className="adyen-checkout-disclaimer__label">
+        <span className="plexy-checkout-disclaimer__label">
             <LabelOnlyDisclaimerMessage message={message} urls={urls} />
         </span>
     );

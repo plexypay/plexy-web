@@ -4,7 +4,7 @@ import PaypalButtons from './PaypalButtons';
 import Spinner from '../../internal/Spinner';
 import { getPaypalUrl } from '../utils/get-paypal-url';
 import Script from '../../../utils/Script';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import type { PayPalComponentProps } from './types';
 import useAnalytics from '../../../core/Analytics/useAnalytics';
 
@@ -26,7 +26,7 @@ export default function PaypalComponent({ onApprove, onCancel, onChange, onError
         setStatus('ready');
     };
 
-    const handlePaypalLoadFailure = (error: AdyenCheckoutError) => {
+    const handlePaypalLoadFailure = (error: PlexyCheckoutError) => {
         onScriptLoadFailure(error);
     };
 
@@ -53,8 +53,8 @@ export default function PaypalComponent({ onApprove, onCancel, onChange, onError
 
     if (status === 'pending') {
         return (
-            <div className="adyen-checkout__paypal" aria-live="polite" aria-busy="true">
-                <div className="adyen-checkout__paypal__status adyen-checkout__paypal__status--pending" data-testid={'paypal-loader'}>
+            <div className="plexy-checkout__paypal" aria-live="polite" aria-busy="true">
+                <div className="plexy-checkout__paypal__status plexy-checkout__paypal__status--pending" data-testid={'paypal-loader'}>
                     <Spinner />
                 </div>
             </div>
@@ -62,7 +62,7 @@ export default function PaypalComponent({ onApprove, onCancel, onChange, onError
     }
 
     return (
-        <div className="adyen-checkout__paypal">
+        <div className="plexy-checkout__paypal">
             <PaypalButtons
                 {...props}
                 onCancel={onCancel}

@@ -21,7 +21,7 @@ const QRDetails = () => {
             {instructions && <QRInstructions instructions={instructions} />}
 
             {copyBtn && (
-                <div className="adyen-checkout__qr-loader__actions">
+                <div className="plexy-checkout__qr-loader__actions">
                     <QRCodeCopyButton text={qrCodeData} handleCopy={handleCopy} />
                 </div>
             )}

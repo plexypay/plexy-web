@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 import checkPaymentStatus from '../../../core/Services/payment-status';
 import processResponse from '../../../core/ProcessResponse';
 import { QRLoaderProps } from './types';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import { useCoreContext } from '../../../core/Context/CoreProvider';
 import ContentSeparator from '../ContentSeparator';
 import { StatusObject } from '../Await/types';
@@ -40,7 +40,7 @@ function QRLoader(props: QRLoaderProps) {
 
     const onTimeUp = (): void => {
         setExpired(true);
-        props.onError(new AdyenCheckoutError('ERROR', 'Payment Expired'));
+        props.onError(new PlexyCheckoutError('ERROR', 'Payment Expired'));
     };
 
     const onComplete = (status: StatusObject): void => {
@@ -71,7 +71,7 @@ function QRLoader(props: QRLoaderProps) {
             props.onComplete(state);
         }
 
-        const error = new AdyenCheckoutError('ERROR', 'error result with no payload in response');
+        const error = new PlexyCheckoutError('ERROR', 'error result with no payload in response');
         props.onError(error);
     };
 
@@ -161,10 +161,10 @@ function QRLoader(props: QRLoaderProps) {
 
     if (loading) {
         return (
-            <div className="adyen-checkout__qr-loader">
+            <div className="plexy-checkout__qr-loader">
                 {brandLogo && (
-                    <div className="adyen-checkout__qr-loader__brand-logo-wrapper">
-                        <img alt={brandName} src={brandLogo} className="adyen-checkout__qr-loader__brand-logo" />
+                    <div className="plexy-checkout__qr-loader__brand-logo-wrapper">
+                        <img alt={brandName} src={brandLogo} className="plexy-checkout__qr-loader__brand-logo" />
                     </div>
                 )}
                 <Spinner />
@@ -172,30 +172,30 @@ function QRLoader(props: QRLoaderProps) {
         );
     }
 
-    const classnames = props.classNameModifiers.map(m => `adyen-checkout__qr-loader--${m}`);
+    const classnames = props.classNameModifiers.map(m => `plexy-checkout__qr-loader--${m}`);
 
     return (
-        <div className={`adyen-checkout__qr-loader adyen-checkout__qr-loader--${type} ${classnames.join(' ')}`}>
+        <div className={`plexy-checkout__qr-loader plexy-checkout__qr-loader--${type} ${classnames.join(' ')}`}>
             {brandLogo && (
-                <div className="adyen-checkout__qr-loader__brand-logo-wrapper">
-                    <img src={brandLogo} alt={brandName} className="adyen-checkout__qr-loader__brand-logo" />
+                <div className="plexy-checkout__qr-loader__brand-logo-wrapper">
+                    <img src={brandLogo} alt={brandName} className="plexy-checkout__qr-loader__brand-logo" />
                 </div>
             )}
 
             {showAmount && amount && amount.value !== null && !!amount.currency && (
-                <h1 className="adyen-checkout__qr-loader__payment_amount">{i18n.amount(amount.value, amount.currency)}</h1>
+                <h1 className="plexy-checkout__qr-loader__payment_amount">{i18n.amount(amount.value, amount.currency)}</h1>
             )}
 
             {url && (
-                <div className="adyen-checkout__qr-loader__app-link">
-                    {props.redirectIntroduction && <p className="adyen-checkout__qr-loader__subtitle">{i18n.get(props.redirectIntroduction)}</p>}
+                <div className="plexy-checkout__qr-loader__app-link">
+                    {props.redirectIntroduction && <p className="plexy-checkout__qr-loader__subtitle">{i18n.get(props.redirectIntroduction)}</p>}
                     <Button classNameModifiers={['qr-loader']} onClick={() => redirectToApp(url)} label={i18n.get(props.buttonLabel)} />
                     <ContentSeparator />
                 </div>
             )}
 
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-            <p ref={qrSubtitleRef} tabIndex={0} className="adyen-checkout__qr-loader__subtitle">
+            <p ref={qrSubtitleRef} tabIndex={0} className="plexy-checkout__qr-loader__subtitle">
                 {typeof props.introduction === 'string' ? i18n.get(props.introduction) : props.introduction?.()}
             </p>
 

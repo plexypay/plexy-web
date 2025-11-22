@@ -20,7 +20,7 @@ class CardWithKCP extends Card {
     }
 
     get taxNumberErrorLocator() {
-        return this.rootElement.locator('.adyen-checkout__field--kcp-taxNumber .adyen-checkout-contextual-text--error');
+        return this.rootElement.locator('.plexy-checkout__field--kcp-taxNumber .plexy-checkout-contextual-text--error');
     }
 
     get passwordInput() {
@@ -29,7 +29,7 @@ class CardWithKCP extends Card {
     }
 
     get passwordErrorLocator() {
-        return this.rootElement.locator('.adyen-checkout__field--koreanAuthentication-encryptedPassword .adyen-checkout-contextual-text--error');
+        return this.rootElement.locator('.plexy-checkout__field--koreanAuthentication-encryptedPassword .plexy-checkout-contextual-text--error');
     }
 
     async typeTaxNumber(taxNumber: string) {

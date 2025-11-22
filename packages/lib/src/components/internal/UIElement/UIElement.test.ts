@@ -1,11 +1,11 @@
 import { UIElement } from './UIElement';
 import { ICore } from '../../../core/types';
 import { any, mock, mockDeep } from 'jest-mock-extended';
-import { AdyenCheckout, ThreeDS2Challenge, ThreeDS2DeviceFingerprint } from '../../../index';
+import { PlexyCheckout, ThreeDS2Challenge, ThreeDS2DeviceFingerprint } from '../../../index';
 import { UIElementProps } from './types';
 import { Resources } from '../../../core/Context/Resources';
 import { AnalyticsModule, PaymentActionsType } from '../../../types/global-types';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import { ANALYTICS_ERROR_TYPE } from '../../../core/Analytics/constants';
 
 jest.mock('../../../core/Services/get-translations');
@@ -52,7 +52,7 @@ describe('UIElement', () => {
     describe('icon()', () => {
         test('should generate the icon URL by getting the tx variant from type() getter', () => {
             const resources = mock<Resources>();
-            resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+            resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
             const txVariant = 'klarna_b2b';
 
@@ -62,7 +62,7 @@ describe('UIElement', () => {
             const iconUrl = element.icon;
 
             expect(typeSpy).toHaveBeenCalledTimes(1);
-            expect(iconUrl).toBe(`https://checkout-adyen.com/${txVariant}`);
+            expect(iconUrl).toBe(`https://checkout-plexy.com/${txVariant}`);
         });
     });
 
@@ -148,7 +148,7 @@ describe('UIElement', () => {
                 type: 'threeDS2' as PaymentActionsType
             };
 
-            const checkout = await AdyenCheckout({
+            const checkout = await PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -176,7 +176,7 @@ describe('UIElement', () => {
                 type: 'threeDS2' as PaymentActionsType
             };
 
-            const checkout = await AdyenCheckout({
+            const checkout = await PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -565,7 +565,7 @@ describe('UIElement', () => {
             const errorCode = 'mockedErrorCode';
             const txVariant = 'scheme';
 
-            core.session.submitPayment.mockImplementation(() => Promise.reject(new AdyenCheckoutError('NETWORK_ERROR', '', { code: errorCode })));
+            core.session.submitPayment.mockImplementation(() => Promise.reject(new PlexyCheckoutError('NETWORK_ERROR', '', { code: errorCode })));
             const analytics = mock<AnalyticsModule>();
             const mockedSendAnalytics = analytics.sendAnalytics as jest.Mock;
             jest.spyOn(MyElement.prototype, 'isValid', 'get').mockReturnValue(true);
@@ -725,7 +725,7 @@ describe('UIElement', () => {
             const errorCode = 'mockedErrorCode';
             const txVariant = 'scheme';
 
-            core.session.submitDetails.mockImplementation(() => Promise.reject(new AdyenCheckoutError('NETWORK_ERROR', '', { code: errorCode })));
+            core.session.submitDetails.mockImplementation(() => Promise.reject(new PlexyCheckoutError('NETWORK_ERROR', '', { code: errorCode })));
 
             const mockedSendAnalytics = analytics.sendAnalytics as jest.Mock;
 

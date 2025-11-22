@@ -20,12 +20,12 @@ const AvailableBrands = ({ brands, activeBrand }: PaymentMethodBrandsProps) => {
     const isValidBrand = activeBrand !== 'card';
     return (
         <span
-            className={classNames('adyen-checkout__card__brands', {
-                'adyen-checkout__card__brands--hidden': isValidBrand
+            className={classNames('plexy-checkout__card__brands', {
+                'plexy-checkout__card__brands--hidden': isValidBrand
             })}
         >
             {brands.map(({ name, icon }) => (
-                <span key={name} className="adyen-checkout__card__brands__brand-wrapper">
+                <span key={name} className="plexy-checkout__card__brands__brand-wrapper">
                     <Img src={icon} alt={getFullBrandName(name)} />
                 </span>
             ))}

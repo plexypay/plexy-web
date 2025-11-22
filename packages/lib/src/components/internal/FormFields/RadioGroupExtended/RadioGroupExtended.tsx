@@ -17,19 +17,19 @@ export default function RadioGroupExtended(props: RadioGroupExtendedProps) {
 
     let invalidClassName = '';
     if (isInvalid) {
-        invalidClassName = showRadioIcon ? 'adyen-checkout__radio_group__label--invalid' : 'adyen-checkout__radio_group__label--no-radio--invalid';
+        invalidClassName = showRadioIcon ? 'plexy-checkout__radio_group__label--invalid' : 'plexy-checkout__radio_group__label--no-radio--invalid';
     }
 
     const fieldClassnames = cx([
-        'adyen-checkout__label__text',
-        showRadioIcon ? 'adyen-checkout__radio_group__label' : 'adyen-checkout__radio_group__label--no-radio',
+        'plexy-checkout__label__text',
+        showRadioIcon ? 'plexy-checkout__radio_group__label' : 'plexy-checkout__radio_group__label--no-radio',
         props.className,
         invalidClassName
     ]);
 
     return (
         <div
-            className={cx(['adyen-checkout__radio_group', `adyen-checkout__radio_group--${style}`])}
+            className={cx(['plexy-checkout__radio_group', `plexy-checkout__radio_group--${style}`])}
             role={'radiogroup'}
             {...(ariaLabel && { ['aria-label']: ariaLabel })}
         >
@@ -37,19 +37,19 @@ export default function RadioGroupExtended(props: RadioGroupExtendedProps) {
                 const uniqueId = getUniqueId(uniqueIdBase);
 
                 return (
-                    <div key={item.id} className="adyen-checkout__radio_group__input-wrapper adyen-checkout__field--50">
+                    <div key={item.id} className="plexy-checkout__radio_group__input-wrapper plexy-checkout__field--50">
                         <input
                             id={uniqueId}
                             type={'radio'}
                             checked={value === item.id}
-                            className="adyen-checkout__radio_group__input"
+                            className="plexy-checkout__radio_group__input"
                             name={name}
                             onChange={onChange}
                             value={item.id}
                         />
 
                         <label className={fieldClassnames} htmlFor={uniqueId}>
-                            <div className={'adyen-checkout__radio_group-extended__label-wrapper'}>
+                            <div className={'plexy-checkout__radio_group-extended__label-wrapper'}>
                                 <RadioButtonIcon
                                     key={item.id}
                                     imageURL={item.imageURL}
@@ -57,12 +57,12 @@ export default function RadioGroupExtended(props: RadioGroupExtendedProps) {
                                     dataValue={item.id}
                                     showRadioIcon={showRadioIcon}
                                 />
-                                <span className={'adyen-checkout__radio_group-extended__label'}>{i18n.get(item.name)}</span>
+                                <span className={'plexy-checkout__radio_group-extended__label'}>{i18n.get(item.name)}</span>
                                 {showSelectedTick && (
                                     <span
                                         className={cx({
-                                            'adyen-checkout-input__inline-validation': true,
-                                            'adyen-checkout-input__inline-validation--valid': value === item.id
+                                            'plexy-checkout-input__inline-validation': true,
+                                            'plexy-checkout-input__inline-validation--valid': value === item.id
                                         })}
                                     >
                                         <Icon type={`${PREFIX}checkmark`} alt={i18n?.get('field.valid')} />

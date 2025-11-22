@@ -1,9 +1,9 @@
 import { AddressData } from '../../../types/global-types';
 
 /**
- * This function formats PayPal contact format to Adyen address format
+ * This function formats PayPal contact format to Plexy address format
  */
-export const formatPaypalOrderContactToAdyenFormat = (paymentContact: any, isDeliveryAddress?: boolean): AddressData | null => {
+export const formatPaypalOrderContactToPlexyFormat = (paymentContact: any, isDeliveryAddress?: boolean): AddressData | null => {
     const getStreet = (addressPart1 = null, addressPart2 = null): string | null => {
         if (addressPart1 && addressPart2) return `${addressPart1}, ${addressPart2}`;
         if (addressPart1) return addressPart1;

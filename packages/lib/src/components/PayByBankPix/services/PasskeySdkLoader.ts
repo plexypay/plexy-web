@@ -1,18 +1,18 @@
-import { IAdyenPasskey } from './types';
+import { IPlexyPasskey } from './types';
 import { getUrlFromMap } from '../../../core/Environment/Environment';
 import type { CoreConfiguration } from '../../../core/types';
 import { CDN_ENVIRONMENTS } from '../../../core/Environment/constants';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import Script from '../../../utils/Script';
 import { AnalyticsModule } from '../../../types/global-types';
 
 export interface IPasskeySdkLoader {
-    load(environment: CoreConfiguration['environment'], analytics: AnalyticsModule): Promise<IAdyenPasskey>;
+    load(environment: CoreConfiguration['environment'], analytics: AnalyticsModule): Promise<IPlexyPasskey>;
 }
 
 class PasskeySdkLoader implements IPasskeySdkLoader {
-    private static readonly PASSKEY_SDK_URL = 'js/adyenpasskey/1.1.0/adyen-passkey.js';
-    private AdyenPasskey: IAdyenPasskey;
+    private static readonly PASSKEY_SDK_URL = 'js/plexypasskey/1.1.0/plexy-passkey.js';
+    private PlexyPasskey: IPlexyPasskey;
 
     private readonly analytics: AnalyticsModule;
     private readonly environment: string;
@@ -23,12 +23,12 @@ class PasskeySdkLoader implements IPasskeySdkLoader {
     }
 
     private isAvailable(): boolean {
-        return this.AdyenPasskey != null;
+        return this.PlexyPasskey != null;
     }
 
-    public async load(): Promise<IAdyenPasskey> {
+    public async load(): Promise<IPlexyPasskey> {
         if (this.isAvailable()) {
-            return this.AdyenPasskey;
+            return this.PlexyPasskey;
         }
 
         try {
@@ -42,10 +42,10 @@ class PasskeySdkLoader implements IPasskeySdkLoader {
             });
 
             await scriptElement.load();
-            this.AdyenPasskey = window.AdyenPasskey?.default;
-            return this.AdyenPasskey;
+            this.PlexyPasskey = window.PlexyPasskey?.default;
+            return this.PlexyPasskey;
         } catch (e: unknown) {
-            throw new AdyenCheckoutError(
+            throw new PlexyCheckoutError(
                 'SCRIPT_ERROR',
                 `Unable to load script. Message: ${e instanceof Error ? e.message : 'Unknown error loading Passkey sdk'}`
             );

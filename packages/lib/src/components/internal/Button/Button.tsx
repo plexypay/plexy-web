@@ -58,7 +58,7 @@ class Button extends Component<ButtonProps, ButtonState> {
         const buttonIcon =
             onClickCompletedIcon || icon ? (
                 <img
-                    className="adyen-checkout__button__icon"
+                    className="plexy-checkout__button__icon"
                     src={this.state.completed ? (onClickCompletedIcon ?? icon) : icon}
                     alt=""
                     aria-hidden="true"
@@ -75,25 +75,25 @@ class Button extends Component<ButtonProps, ButtonState> {
             ...(status === 'loading' || status === 'redirect' ? ['loading'] : [])
         ];
 
-        const buttonClasses = classNames(['adyen-checkout__button', ...modifiers.map(m => `adyen-checkout__button--${m}`)]);
+        const buttonClasses = classNames(['plexy-checkout__button', ...modifiers.map(m => `plexy-checkout__button--${m}`)]);
 
         const buttonStates = {
             loading: (
-                <span className="adyen-checkout__button__content">
+                <span className="plexy-checkout__button__content">
                     <Spinner size="medium" inline />
-                    <span className={'adyen-checkout__button__text--sr-only'}>{i18n.get('loading')}</span>
+                    <span className={'plexy-checkout__button__text--sr-only'}>{i18n.get('loading')}</span>
                 </span>
             ),
             redirect: (
-                <span className="adyen-checkout__button__content">
+                <span className="plexy-checkout__button__content">
                     <Spinner size="medium" inline />
                     {i18n.get('payButton.redirecting')}
                 </span>
             ),
             default: (
-                <span className="adyen-checkout__button__content">
+                <span className="plexy-checkout__button__content">
                     {buttonIcon}
-                    <span className="adyen-checkout__button__text">{this.state.completed ? (onClickCompletedLabel ?? label) : label}</span>
+                    <span className="plexy-checkout__button__text">{this.state.completed ? (onClickCompletedLabel ?? label) : label}</span>
                 </span>
             )
         };

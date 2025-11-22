@@ -22,7 +22,7 @@ function formatTotal(total: number) {
 
 function fetchTransactionDetails() {
     const { amountValue, paymentDetails, pspReference, deliveryAddress, paypalOrder } = JSON.parse(
-        sessionStorage.getItem('adyen-paypal-review-page-data')
+        sessionStorage.getItem('plexy-paypal-review-page-data')
     );
     return { amountValue, paymentDetails, pspReference, deliveryAddress, paypalOrder };
 }

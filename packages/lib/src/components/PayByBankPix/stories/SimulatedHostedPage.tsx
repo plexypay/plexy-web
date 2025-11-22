@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { h, Fragment } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { AdyenCheckout } from '../../..';
+import { PlexyCheckout } from '../../..';
 import { AdditionalDetailsData } from '../../../core/types';
 import PayByBankPix from '../PayByBankPix';
 import { PayByBankPixConfiguration } from '../types';
@@ -72,8 +72,8 @@ export const SimulatedHostedPage = ({ redirectResult, sessionId, componentConfig
             return;
         }
 
-        AdyenCheckout.register(PayByBankPix);
-        void AdyenCheckout({
+        PlexyCheckout.register(PayByBankPix);
+        void PlexyCheckout({
             clientKey: process.env.CLIENT_KEY,
             // @ts-ignore CLIENT_ENV has valid value
             environment: process.env.CLIENT_ENV,
@@ -84,7 +84,7 @@ export const SimulatedHostedPage = ({ redirectResult, sessionId, componentConfig
             afterAdditionalDetails: (actionElement: UIElement) => {
                 if (actionElement) {
                     // @ts-ignore simulate hosted checkout page locally
-                    actionElement.props._isAdyenHosted = true;
+                    actionElement.props._isPlexyHosted = true;
                     void actionElement.isAvailable().then(() => {
                         setUiElement(actionElement);
                     });

@@ -48,7 +48,7 @@ describe('Tooltip', () => {
         const anchorRef = createAnchorRef();
         render(<Tooltip id="tooltip-id" text="Tooltip with position" visible={true} anchorRef={anchorRef} />);
         const tooltip = screen.getByRole('tooltip');
-        expect(tooltip.className).toContain('adyen-checkout-tooltip--top');
+        expect(tooltip.className).toContain('plexy-checkout-tooltip--top');
     });
 
     it('applies bottom position class if not enough space above', () => {
@@ -73,7 +73,7 @@ describe('Tooltip', () => {
         });
         // Trigger reposition logic again
         window.dispatchEvent(new Event('resize'));
-        expect(tooltip.className).toContain('adyen-checkout-tooltip--bottom');
+        expect(tooltip.className).toContain('plexy-checkout-tooltip--bottom');
     });
 
     it('hides if anchor is not intersecting', async () => {
@@ -82,6 +82,6 @@ describe('Tooltip', () => {
         // Simulate anchor becoming not visible
         intersectionCallback([{ isIntersecting: false }]);
         const tooltip = screen.getByRole('tooltip');
-        await waitFor(() => expect(tooltip).toHaveClass('adyen-checkout-tooltip--hidden'));
+        await waitFor(() => expect(tooltip).toHaveClass('plexy-checkout-tooltip--hidden'));
     });
 });

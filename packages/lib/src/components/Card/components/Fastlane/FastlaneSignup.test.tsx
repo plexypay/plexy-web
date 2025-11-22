@@ -46,9 +46,9 @@ test('should send "consentShown:true" flag if the shopper saw the consent UI at 
     const fastlaneConfiguration: FastlaneSignupConfiguration = {
         showConsent: true,
         defaultToggleState: false,
-        termsAndConditionsLink: 'https://adyen.com',
+        termsAndConditionsLink: 'https://plexy.com',
         termsAndConditionsVersion: 'v1',
-        privacyPolicyLink: 'https://adyen.com',
+        privacyPolicyLink: 'https://plexy.com',
         fastlaneSessionId: 'xxx-bbb'
     };
 
@@ -82,9 +82,9 @@ test('should return phone number formatted (without spaces and without prefix)',
     const fastlaneConfiguration: FastlaneSignupConfiguration = {
         showConsent: true,
         defaultToggleState: true,
-        termsAndConditionsLink: 'https://adyen.com',
+        termsAndConditionsLink: 'https://plexy.com',
         termsAndConditionsVersion: 'v1',
-        privacyPolicyLink: 'https://adyen.com',
+        privacyPolicyLink: 'https://plexy.com',
         fastlaneSessionId: 'xxx-bbb'
     };
 

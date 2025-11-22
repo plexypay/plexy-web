@@ -8,7 +8,7 @@ const paymentMethodsConfig = {
         gender: 'MALE'
     },
     telephoneNumber: '0612345678',
-    shopperEmail: 'test@adyen.com',
+    shopperEmail: 'test@plexy.com',
     dateOfBirth: '1970-07-10'
     //    billingAddress: {
     //        city: 'Gravenhage',

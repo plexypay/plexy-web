@@ -14,13 +14,13 @@ interface ICheckout {
 }
 
 export const Checkout: React.FC<ICheckout> = ({ children, checkoutConfig, shopperDetails }) => {
-    const [adyenCheckout, setAdyenCheckout] = useState<ICore>();
+    const [plexyCheckout, setPlexyCheckout] = useState<ICore>();
     const [errorMessage, setErrorMessage] = useState<string>();
 
     useEffect(() => {
         createCheckout(checkoutConfig, shopperDetails)
             .then(checkout => {
-                setAdyenCheckout(checkout);
+                setPlexyCheckout(checkout);
             })
             .catch(e => {
                 console.error(e);
@@ -31,7 +31,7 @@ export const Checkout: React.FC<ICheckout> = ({ children, checkoutConfig, shoppe
     return (
         <Fragment>
             {errorMessage && <div>{errorMessage}</div>}
-            {adyenCheckout ? children(adyenCheckout) : <Spinner />}
+            {plexyCheckout ? children(plexyCheckout) : <Spinner />}
         </Fragment>
     );
 };

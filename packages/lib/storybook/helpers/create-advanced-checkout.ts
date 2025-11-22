@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { AdyenCheckout } from '../../src/core/AdyenCheckout';
+import { PlexyCheckout } from '../../src/core/PlexyCheckout';
 import { cancelOrder, checkBalance, createOrder, getPaymentMethods, makeDetailsCall, makePayment } from './checkout-api-calls';
 import { handleError, handleFinalState } from './checkout-handlers';
 import getCurrency from '../utils/get-currency';
@@ -7,10 +7,10 @@ import Checkout from '../../src/core/core';
 import { STORYBOOK_ENVIRONMENT_URLS } from '../config/commonConfig';
 
 import type { PaymentMethodsResponse } from '../../src/types';
-import type { AdyenCheckoutProps, ShopperDetails } from '../types';
+import type { PlexyCheckoutProps, ShopperDetails } from '../types';
 
 async function createAdvancedFlowCheckout(
-    checkoutProps: Omit<AdyenCheckoutProps, 'srConfig'> & {
+    checkoutProps: Omit<PlexyCheckoutProps, 'srConfig'> & {
         srConfig?: { showPanel: boolean; moveFocus: boolean };
     },
     shopperDetails?: ShopperDetails
@@ -49,7 +49,7 @@ async function createAdvancedFlowCheckout(
         paymentMethodsResponse.paymentMethods = paymentMethodsResponse.paymentMethods.filter(pm => allowedPaymentTypes.includes(pm.type));
     }
 
-    const checkout = await AdyenCheckout({
+    const checkout = await PlexyCheckout({
         clientKey: process.env.CLIENT_KEY,
         // @ts-ignore CLIENT_ENV has valid value
         environment: process.env.CLIENT_ENV,

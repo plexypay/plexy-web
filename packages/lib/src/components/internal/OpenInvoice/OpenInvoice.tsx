@@ -114,8 +114,8 @@ export default function OpenInvoice(props: OpenInvoiceProps) {
     return (
         <div
             className={classNames({
-                'adyen-checkout__open-invoice': true,
-                'adyen-checkout__open-invoice--loading': status === 'loading'
+                'plexy-checkout__open-invoice': true,
+                'plexy-checkout__open-invoice--loading': status === 'loading'
             })}
         >
             <FormInstruction />

@@ -7,13 +7,13 @@ const CtPLoader = (): h.JSX.Element => {
 
     return (
         <Fragment>
-            <div className="adyen-checkout-ctp__card-animation">
-                <div className="adyen-checkout-ctp__card-animation-layer"></div>
-                <div className="adyen-checkout-ctp__card-animation-layer"></div>
-                <div className="adyen-checkout-ctp__card-animation-layer"></div>
+            <div className="plexy-checkout-ctp__card-animation">
+                <div className="plexy-checkout-ctp__card-animation-layer"></div>
+                <div className="plexy-checkout-ctp__card-animation-layer"></div>
+                <div className="plexy-checkout-ctp__card-animation-layer"></div>
             </div>
 
-            <div className="adyen-checkout-ctp__loading-subtitle">{i18n.get('ctp.loading.intro')}</div>
+            <div className="plexy-checkout-ctp__loading-subtitle">{i18n.get('ctp.loading.intro')}</div>
         </Fragment>
     );
 };

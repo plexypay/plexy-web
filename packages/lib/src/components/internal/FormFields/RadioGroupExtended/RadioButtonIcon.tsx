@@ -16,9 +16,9 @@ const RadioButtonIcon = ({ dataValue, imageURL, altName, showRadioIcon }: RadioB
     };
 
     const fieldClassnames = classNames({
-        'adyen-checkout__input-icon': true,
-        'adyen-checkout__input-icon--hidden': !hasLoaded,
-        'adyen-checkout__input-icon--no-radio-icon': !showRadioIcon
+        'plexy-checkout__input-icon': true,
+        'plexy-checkout__input-icon--hidden': !hasLoaded,
+        'plexy-checkout__input-icon--no-radio-icon': !showRadioIcon
     });
 
     return <img className={fieldClassnames} onError={handleError} onLoad={handleLoad} alt={altName} src={imageURL} data-value={dataValue} />;

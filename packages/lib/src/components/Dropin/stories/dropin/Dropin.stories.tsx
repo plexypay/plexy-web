@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { AdyenCheckout, components } from '../../../..';
+import { PlexyCheckout, components } from '../../../..';
 import { MetaConfiguration, PaymentMethodStoryProps, StoryConfiguration } from '../../../../../storybook/types';
 import { ComponentContainer } from '../../../../../storybook/components/ComponentContainer';
 import { DropinConfiguration } from '../../types';
@@ -46,7 +46,7 @@ export const Auto: DropinStory = {
         // Register all Components
         const { Dropin, ...Components } = components;
         const Classes = Object.keys(Components).map(key => Components[key]);
-        AdyenCheckout.register(...Classes);
+        PlexyCheckout.register(...Classes);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>
@@ -61,7 +61,7 @@ export const StyleCustomization: DropinStory = {
         // Register all Components
         const { Dropin, ...Components } = components;
         const Classes = Object.keys(Components).map(key => Components[key]);
-        AdyenCheckout.register(...Classes);
+        PlexyCheckout.register(...Classes);
 
         return (
             <div className={'dropin-customization'}>
@@ -78,7 +78,7 @@ export const OnlySavedACH: DropinStory = {
         // Register all Components
         const { Dropin, ...Components } = components;
         const Classes = Object.keys(Components).map(key => Components[key]);
-        AdyenCheckout.register(...Classes);
+        PlexyCheckout.register(...Classes);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>

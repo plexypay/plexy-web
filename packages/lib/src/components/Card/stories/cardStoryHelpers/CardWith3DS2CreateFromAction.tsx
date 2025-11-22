@@ -4,7 +4,7 @@ import Card from '../../Card';
 import getCurrency from '../../../../../storybook/utils/get-currency';
 import { makeDetailsCall, makePayment } from '../../../../../storybook/helpers/checkout-api-calls';
 import { handleFinalState } from '../../../../../storybook/helpers/checkout-handlers';
-import { AdyenCheckout } from '../../../../core/AdyenCheckout';
+import { PlexyCheckout } from '../../../../core/PlexyCheckout';
 import { PaymentMethodStoryProps } from '../../../../../storybook/types';
 import { CardConfiguration } from '../../types';
 import './card3DS2CreateFromAction.scss';
@@ -19,7 +19,7 @@ export const CardWith3DS2CreateFromAction = (contextArgs: PaymentMethodStoryProp
     const [errorMessage, setErrorMessage] = useState(null);
 
     const createCheckout = async () => {
-        const checkout = await AdyenCheckout({
+        const checkout = await PlexyCheckout({
             clientKey: process.env.CLIENT_KEY,
             // @ts-ignore CLIENT_ENV has valid value
             environment: process.env.CLIENT_ENV,
@@ -151,7 +151,7 @@ export const CardWith3DS2CreateFromAction = (contextArgs: PaymentMethodStoryProp
                         </table>
                         <p>
                             <a
-                                href="https://docs.adyen.com/development-resources/testing/3d-secure-2-authentication/"
+                                href="https://docs.plexy.com/development-resources/testing/3d-secure-2-authentication/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

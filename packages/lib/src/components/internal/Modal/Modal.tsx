@@ -73,9 +73,9 @@ const Modal = ({
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
         <div
             className={cx(
-                'adyen-checkout__modal-wrapper',
-                classNameModifiers.map(m => `adyen-checkout__modal-wrapper--${m}`),
-                { 'adyen-checkout__modal-wrapper--open': isOpen }
+                'plexy-checkout__modal-wrapper',
+                classNameModifiers.map(m => `plexy-checkout__modal-wrapper--${m}`),
+                { 'plexy-checkout__modal-wrapper--open': isOpen }
             )}
             role="dialog"
             aria-labelledby={labelledBy}
@@ -85,7 +85,7 @@ const Modal = ({
             onClick={handleClickOutside}
             {...props}
         >
-            <div className="adyen-checkout__modal" ref={modalContainerRef}>
+            <div className="plexy-checkout__modal" ref={modalContainerRef}>
                 {children({ onCloseModal: closeModal })}
             </div>
         </div>

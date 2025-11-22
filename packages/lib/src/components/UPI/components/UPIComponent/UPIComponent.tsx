@@ -115,7 +115,7 @@ export default function UPIComponent({
 
     return (
         <Fragment>
-            {segmentedControlOptions.length > 0 && <p className="adyen-checkout_upi-mode-selection-text">{i18n.get('upi.modeSelection')}</p>}
+            {segmentedControlOptions.length > 0 && <p className="plexy-checkout_upi-mode-selection-text">{i18n.get('upi.modeSelection')}</p>}
             <SegmentedControl
                 onChange={onChangeUpiMode}
                 selectedValue={mode}
@@ -125,8 +125,8 @@ export default function UPIComponent({
             />
 
             {mode === 'intent' && (
-                <div id={A11Y.AreaId.INTENT} aria-labelledby={A11Y.ButtonId.INTENT} className="adyen-checkout-upi-area-intent" role="region">
-                    <span className="adyen-checkout-upi-instruction-label">{i18n.get('upi.intent.instruction')}</span>
+                <div id={A11Y.AreaId.INTENT} aria-labelledby={A11Y.ButtonId.INTENT} className="plexy-checkout-upi-area-intent" role="region">
+                    <span className="plexy-checkout-upi-instruction-label">{i18n.get('upi.intent.instruction')}</span>
                     {status === 'error' && <Alert icon={'cross'}>{i18n.get('upi.error.noAppSelected')}</Alert>}
                     <UPIIntentAppList disabled={status === 'loading'} apps={apps} selectedAppId={selectedApp?.id} onAppSelect={handleAppSelect} />
                     {mandateComponent}
@@ -138,8 +138,8 @@ export default function UPIComponent({
                 </div>
             )}
             {mode === 'vpa' && (
-                <div id={A11Y.AreaId.VPA} aria-labelledby={A11Y.ButtonId.VPA} className="adyen-checkout-upi-area-vpa" role="region">
-                    <span className="adyen-checkout-upi-instruction-label">{i18n.get('upi.collect.instruction')}</span>
+                <div id={A11Y.AreaId.VPA} aria-labelledby={A11Y.ButtonId.VPA} className="plexy-checkout-upi-area-vpa" role="region">
+                    <span className="plexy-checkout-upi-instruction-label">{i18n.get('upi.collect.instruction')}</span>
                     <VpaInput disabled={status === 'loading'} onChange={onChange} onSetInputHandlers={onSetVpaInputHandlers} />
                     {mandateComponent}
                     {showPayButton &&
@@ -150,8 +150,8 @@ export default function UPIComponent({
                 </div>
             )}
             {mode === 'qrCode' && (
-                <div id={A11Y.AreaId.QR} aria-labelledby={A11Y.ButtonId.QR} className="adyen-checkout-upi-area-qr-code" role="region">
-                    <span className="adyen-checkout-upi-instruction-label">{i18n.get('upi.qrCode.instruction')}</span>
+                <div id={A11Y.AreaId.QR} aria-labelledby={A11Y.ButtonId.QR} className="plexy-checkout-upi-area-qr-code" role="region">
+                    <span className="plexy-checkout-upi-instruction-label">{i18n.get('upi.qrCode.instruction')}</span>
                     {mandateComponent}
                     {showPayButton &&
                         payButton({

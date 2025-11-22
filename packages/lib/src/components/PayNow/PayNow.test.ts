@@ -42,7 +42,7 @@ describe('PayNow', () => {
 
         const srPanel = mock<SRPanel>();
         const resources = mock<Resources>();
-        resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+        resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
         // @ts-ignore mockResolvedValue not inferred
         checkPaymentStatus.mockResolvedValue({

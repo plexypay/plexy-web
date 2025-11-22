@@ -1,4 +1,4 @@
-# @adyen/adyen-web v6 + Nextjs 14
+# @plexy/plexy-web v6 + Nextjs 14
 
 ### Steps to run the project:
 

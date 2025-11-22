@@ -58,7 +58,7 @@ const CopyIconButton = (props: CopyIconButtonProps) => {
             onKeyDown={onKeyDown}
         >
             <svg
-                className="adyen-checkout__button--iconOnly__icon"
+                className="plexy-checkout__button--iconOnly__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"

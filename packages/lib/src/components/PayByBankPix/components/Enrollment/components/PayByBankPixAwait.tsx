@@ -8,10 +8,10 @@ export interface IPayByBankPixAwait extends Partial<AwaitComponentProps>, Partia
 
 function PayByBankPixAwait(props: IPayByBankPixAwait) {
     return (
-        <div className={'adyen-checkout-pay-by-bank-pix-await'}>
+        <div className={'plexy-checkout-pay-by-bank-pix-await'}>
             {props.logos?.length > 0 && <AwaitLogoContainer logos={props.logos}></AwaitLogoContainer>}
             <Await
-                // We want the countdown capability but the adyen-checkout__await__countdown-holder is visually hidden.
+                // We want the countdown capability but the plexy-checkout__await__countdown-holder is visually hidden.
                 showCountdownTimer={true}
                 type={props.type}
                 countdownTime={props.countdownTime}

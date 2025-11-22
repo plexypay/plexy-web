@@ -21,10 +21,10 @@ export const MealVoucherExpiryField = ({ i18n, sfpState, focusedElement, setFocu
         >
             <DataSfSpan
                 encryptedFieldType={'encryptedExpiryDate'}
-                className={classNames('adyen-checkout__input', 'adyen-checkout__input--small', 'adyen-checkout__card__exp-date__input', {
-                    'adyen-checkout__input--error': sfpState.errors.encryptedExpiryDate,
-                    'adyen-checkout__input--focus': focusedElement === 'encryptedExpiryDate',
-                    'adyen-checkout__input--valid': !!sfpState.valid.encryptedExpiryMonth && !!sfpState.valid.encryptedExpiryYear
+                className={classNames('plexy-checkout__input', 'plexy-checkout__input--small', 'plexy-checkout__card__exp-date__input', {
+                    'plexy-checkout__input--error': sfpState.errors.encryptedExpiryDate,
+                    'plexy-checkout__input--focus': focusedElement === 'encryptedExpiryDate',
+                    'plexy-checkout__input--valid': !!sfpState.valid.encryptedExpiryMonth && !!sfpState.valid.encryptedExpiryYear
                 })}
             />
         </Field>

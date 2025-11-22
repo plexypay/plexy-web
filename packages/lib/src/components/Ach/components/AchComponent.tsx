@@ -114,7 +114,7 @@ function AchComponent({
     );
 
     return (
-        <div className="adyen-checkout__ach">
+        <div className="plexy-checkout__ach">
             <FormInstruction />
 
             <Fieldset classNameModifiers={[]} label={i18n.get('ach.bankAccount.title')}>

@@ -17,7 +17,7 @@ const httpPromiseSuccessMock = jest.fn(() => Promise.resolve({ checkoutAttemptId
 const httpPromiseFailMock = jest.fn(() => Promise.reject('Error'));
 
 const BASE_CONFIGURATION: CollectIdProps = {
-    analyticsContext: 'https://checkoutanalytics-test.adyen.com/checkoutanalytics/',
+    analyticsContext: 'https://checkoutanalytics-test.plexy.com/checkoutanalytics/',
     locale: 'en-US',
     clientKey: 'xxxx-yyyy',
     analyticsPath: ANALYTICS_PATH
@@ -58,7 +58,7 @@ test('should send expected data to http service', async () => {
     expect(httpPost).toHaveBeenCalledWith(
         {
             errorLevel: 'fatal',
-            loadingContext: 'https://checkoutanalytics-test.adyen.com/checkoutanalytics/',
+            loadingContext: 'https://checkoutanalytics-test.plexy.com/checkoutanalytics/',
             path: `${ANALYTICS_PATH}?clientKey=xxxx-yyyy`,
             errorMessage: FAILURE_MSG
         },

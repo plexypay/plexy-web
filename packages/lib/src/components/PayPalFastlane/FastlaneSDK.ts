@@ -1,9 +1,9 @@
 import { resolveEnvironments } from '../../core/Environment';
 import type { FastlaneTokenData } from './services/request-fastlane-token';
 import requestFastlaneToken from './services/request-fastlane-token';
-import { convertAdyenLocaleToFastlaneLocale } from './utils/convert-locale';
+import { convertPlexyLocaleToFastlaneLocale } from './utils/convert-locale';
 import Script from '../../utils/Script';
-import AdyenCheckoutError from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../core/Errors/PlexyCheckoutError';
 import {
     FastlaneAuthenticatedCustomerResult,
     FastlaneConsentRenderState,
@@ -31,8 +31,8 @@ class FastlaneSDK {
     private fastlaneSessionId?: string;
 
     constructor(configuration: FastlaneSDKConfiguration) {
-        if (!configuration?.environment) throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', "FastlaneSDK: 'environment' property is required");
-        if (!configuration?.clientKey) throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', "FastlaneSDK: 'clientKey' property is required");
+        if (!configuration?.environment) throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', "FastlaneSDK: 'environment' property is required");
+        if (!configuration?.clientKey) throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', "FastlaneSDK: 'clientKey' property is required");
 
         if (configuration.forceConsentDetails && configuration.environment.includes('live'))
             console.warn("Fastlane SDK: 'forceConsentDetails' should not be used on 'live' environment");
@@ -42,7 +42,7 @@ class FastlaneSDK {
         this.checkoutShopperURL = apiUrl;
         this.clientKey = configuration.clientKey;
         this.forceConsentDetails = configuration.forceConsentDetails || false;
-        this.fastlaneLocale = convertAdyenLocaleToFastlaneLocale(configuration.locale || 'en-US');
+        this.fastlaneLocale = convertPlexyLocaleToFastlaneLocale(configuration.locale || 'en-US');
 
         this.analytics = Analytics({
             analytics: configuration.analytics,
@@ -82,7 +82,7 @@ class FastlaneSDK {
      */
     public async authenticate(email: string): Promise<FastlaneAuthenticatedCustomerResult> {
         if (!this.fastlaneSdk) {
-            throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'authenticate(): Fastlane SDK is not initialized');
+            throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', 'authenticate(): Fastlane SDK is not initialized');
         }
 
         this.trackEvent(InfoEventType.LookupStarted);
@@ -106,7 +106,7 @@ class FastlaneSDK {
                 profileData: undefined
             };
         } catch (error: unknown) {
-            throw new AdyenCheckoutError('ERROR', 'Fastlane SDK: An error occurred during the authentication flow.', { cause: error });
+            throw new PlexyCheckoutError('ERROR', 'Fastlane SDK: An error occurred during the authentication flow.', { cause: error });
         }
     }
 
@@ -120,7 +120,7 @@ class FastlaneSDK {
      */
     public async getComponentConfiguration(authResult: FastlaneAuthenticatedCustomerResult): Promise<FastlanePaymentMethodConfiguration> {
         if (!authResult) {
-            throw new AdyenCheckoutError(
+            throw new PlexyCheckoutError(
                 'IMPLEMENTATION_ERROR',
                 'FastlaneSDK: you must pass the authentication result to get the component configuration'
             );
@@ -144,7 +144,7 @@ class FastlaneSDK {
      */
     public async showShippingAddressSelector(): Promise<FastlaneShippingAddressSelectorResult> {
         if (!this.fastlaneSdk) {
-            throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'showShippingAddressSelector(): Fastlane SDK is not initialized');
+            throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', 'showShippingAddressSelector(): Fastlane SDK is not initialized');
         }
 
         this.trackEvent(InfoEventType.AddressSelectorClicked);
@@ -158,7 +158,7 @@ class FastlaneSDK {
 
             return addressSelectorResult;
         } catch (error: unknown) {
-            throw new AdyenCheckoutError('ERROR', 'Fastlane SDK: An error occurred when showing the shipping address selector', { cause: error });
+            throw new PlexyCheckoutError('ERROR', 'Fastlane SDK: An error occurred when showing the shipping address selector', { cause: error });
         }
     }
 
@@ -167,14 +167,14 @@ class FastlaneSDK {
      */
     public async mountWatermark(container: HTMLElement | string, options = { includeAdditionalInfo: true }): Promise<void> {
         if (!this.fastlaneSdk) {
-            throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'mountWatermark(): Fastlane SDK is not initialized');
+            throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', 'mountWatermark(): Fastlane SDK is not initialized');
         }
 
         try {
             const component = await this.fastlaneSdk.FastlaneWatermarkComponent(options);
             component.render(container);
         } catch (error: unknown) {
-            throw new AdyenCheckoutError('ERROR', 'Fastlane SDK: An error occurred when rendering the watermark', { cause: error });
+            throw new PlexyCheckoutError('ERROR', 'Fastlane SDK: An error occurred when rendering the watermark', { cause: error });
         }
     }
 
@@ -222,7 +222,7 @@ class FastlaneSDK {
             const consentComponent = await this.fastlaneSdk.ConsentComponent();
             return await consentComponent.getRenderState();
         } catch (error) {
-            throw new AdyenCheckoutError('ERROR', 'fetchConsentDetails(): failed to fetch consent details', { cause: error });
+            throw new PlexyCheckoutError('ERROR', 'fetchConsentDetails(): failed to fetch consent details', { cause: error });
         }
     }
 
@@ -240,7 +240,7 @@ class FastlaneSDK {
 
             void this.fetchSessionIdAsync();
         } catch (error) {
-            throw new AdyenCheckoutError('ERROR', 'Fastlane SDK: Failed to initialize fastlane using the window.paypal.Fastlane constructor', {
+            throw new PlexyCheckoutError('ERROR', 'Fastlane SDK: Failed to initialize fastlane using the window.paypal.Fastlane constructor', {
                 cause: error
             });
         }

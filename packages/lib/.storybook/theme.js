@@ -2,7 +2,7 @@ import { create } from '@storybook/theming';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Adyen Web Components',
+  brandTitle: 'Plexy Web Components',
   brandTarget: '_self',
 
   colorPrimary: '#ffffff',

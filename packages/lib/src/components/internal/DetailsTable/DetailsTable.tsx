@@ -18,16 +18,16 @@ export default function DetailsTable({ tableFields, shouldShowCopyButton }: Read
     // This was originally part of the voucher component and ported out
     // We can remove the voucher class names at point
     return (
-        <dl className="adyen-checkout__voucher-result__details adyen-checkout__details-table">
+        <dl className="plexy-checkout__voucher-result__details plexy-checkout__details-table">
             {tableFields
                 // first remove empty values
                 .filter(item => !!item)
                 // or objects without label and value
                 .filter(({ label, value }) => !!label && !!value)
                 .map(({ label, value }) => (
-                    <div key={`${label + value}`} className="adyen-checkout__voucher-result__details__item adyen-checkout__details-table__item">
-                        <dt className="adyen-checkout__voucher-result__details__label adyen-checkout__details-table__label">{label}</dt>
-                        <dd className="adyen-checkout__voucher-result__details__value adyen-checkout__details-table__value">
+                    <div key={`${label + value}`} className="plexy-checkout__voucher-result__details__item plexy-checkout__details-table__item">
+                        <dt className="plexy-checkout__voucher-result__details__label plexy-checkout__details-table__label">{label}</dt>
+                        <dd className="plexy-checkout__voucher-result__details__value plexy-checkout__details-table__value">
                             {value}
                             {shouldShowCopyButton && <CopyIconButton text={value}></CopyIconButton>}
                         </dd>

@@ -127,10 +127,10 @@ const FastlaneSignup = ({
     }
 
     return (
-        <div className="adyen-checkout-card__fastlane" data-testid="fastlane-signup-component">
+        <div className="plexy-checkout-card__fastlane" data-testid="fastlane-signup-component">
             <div
-                className={cx('adyen-checkout-card__fastlane-consent-toggle', {
-                    'adyen-checkout-card__fastlane-consent-toggle--active': isChecked
+                className={cx('plexy-checkout-card__fastlane-consent-toggle', {
+                    'plexy-checkout-card__fastlane-consent-toggle--active': isChecked
                 })}
             >
                 <Toggle
@@ -145,14 +145,14 @@ const FastlaneSignup = ({
             {isChecked && (
                 <Fragment>
                     <USOnlyPhoneInput initialValue={mobileNumberFormatter(telephoneNumberFromProps)} onChange={setTelephoneNumber} />
-                    <div className="adyen-checkout-card__fastlane-consent-text">
+                    <div className="plexy-checkout-card__fastlane-consent-text">
                         <LabelOnlyDisclaimerMessage
                             message={i18n.get('card.fastlane.consentText')}
                             urls={[termsAndConditionsLink, privacyPolicyLink]}
                         />
                     </div>
                     <Img
-                        className="adyen-checkout-card__fastlane-brand"
+                        className="plexy-checkout-card__fastlane-brand"
                         src={getImage({ imageFolder: 'components/' })(`paypal_fastlane_black`)}
                         alt={i18n.get('card.fastlane.a11y.logo')}
                     />

@@ -1,6 +1,6 @@
 import Session from './CheckoutSession';
 import PaymentMethods from './ProcessResponse/PaymentMethods';
-import AdyenCheckoutError from './Errors/AdyenCheckoutError';
+import PlexyCheckoutError from './Errors/PlexyCheckoutError';
 import UIElement from '../components/internal/UIElement';
 import type { CustomTranslations } from '../language/types';
 import type {
@@ -117,7 +117,7 @@ export interface CoreConfiguration {
         telephoneNumber?: string;
     };
     /**
-     * Use 'test'. When you're ready to accept live payments, change the value to one of our {@link https://docs.adyen.com/checkout/drop-in-web#testing-your-integration | live environments}.
+     * Use 'test'. When you're ready to accept live payments, change the value to one of our {@link https://docs.plexy.com/checkout/drop-in-web#testing-your-integration | live environments}.
      */
     environment?: 'test' | 'live' | 'live-us' | 'live-au' | 'live-apse' | 'live-in';
 
@@ -128,20 +128,20 @@ export interface CoreConfiguration {
     showPayButton?: boolean;
 
     /**
-     * A public key linked to your web service user, used for {@link https://docs.adyen.com/user-management/client-side-authentication | client-side authentication}.
+     * A public key linked to your web service user, used for {@link https://docs.plexy.com/user-management/client-side-authentication | client-side authentication}.
      */
     clientKey?: string;
 
     /**
      * The shopper's locale. This is used to set the language rendered in the UI.
-     * For a list of supported locales, see {@link https://docs.adyen.com/checkout/components-web/localization-components | Localization}.
-     * For adding a custom locale, see {@link https://docs.adyen.com/checkout/components-web/localization-components#create-localization | Create localization}.*
+     * For a list of supported locales, see {@link https://docs.plexy.com/checkout/components-web/localization-components | Localization}.
+     * For adding a custom locale, see {@link https://docs.plexy.com/checkout/components-web/localization-components#create-localization | Create localization}.*
      */
     locale?: string;
 
     /**
      * Custom translations and localizations
-     * See {@link https://docs.adyen.com/checkout/components-web/localization-components | Localizing Components}
+     * See {@link https://docs.plexy.com/checkout/components-web/localization-components | Localizing Components}
      */
     translations?: CustomTranslations;
 
@@ -187,7 +187,7 @@ export interface CoreConfiguration {
     order?: Order;
 
     /**
-     * Add @adyen/web metadata to the window object.
+     * Add @plexy/web metadata to the window object.
      * It helps to identify version number and bundle type in the merchant environment
      *
      * @default true
@@ -215,7 +215,7 @@ export interface CoreConfiguration {
     /**
      * Called when the shopper selects the Pay button (it only works on Sessions flow)
      *
-     * Allows you to add details which will be sent in the payment request to Adyen's servers.
+     * Allows you to add details which will be sent in the payment request to Plexy's servers.
      * For example, you can add shopper details like 'billingAddress', 'deliveryAddress', 'shopperEmail' or 'shopperName'
      *
      * @param state
@@ -297,7 +297,7 @@ export interface CoreConfiguration {
      * @param error
      * @param component
      */
-    onError?(error: AdyenCheckoutError, component?: UIElement): void;
+    onError?(error: PlexyCheckoutError, component?: UIElement): void;
 
     onBalanceCheck?: onBalanceCheckCallbackType;
 
@@ -328,7 +328,7 @@ export interface CoreConfiguration {
     /**
      * Called when the gift card balance is less than the transaction amount.
      * Returns an Order object that includes the remaining amount to be paid.
-     * https://docs.adyen.com/payment-methods/gift-cards/web-component?tab=config-sessions_1
+     * https://docs.plexy.com/payment-methods/gift-cards/web-component?tab=config-sessions_1
      */
     onOrderUpdated?(data: { order: Order }): void;
 

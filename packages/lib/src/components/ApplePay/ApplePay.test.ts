@@ -217,7 +217,7 @@ describe('ApplePay', () => {
         test('should use the current URL as default', () => {
             const originalHostname = window.location.hostname;
             Object.defineProperty(window.location, 'hostname', {
-                value: 'adyen.dev',
+                value: 'plexy.dev',
                 configurable: true
             });
 
@@ -234,7 +234,7 @@ describe('ApplePay', () => {
 
             expect(mockedHttpPost).toHaveBeenCalledWith(expect.anything(), {
                 displayName: 'TestMerchant',
-                domainName: 'adyen.dev',
+                domainName: 'plexy.dev',
                 initiative: 'web',
                 merchantIdentifier: 'test-merchant'
             });

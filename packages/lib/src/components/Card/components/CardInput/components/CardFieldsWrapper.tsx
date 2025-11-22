@@ -124,7 +124,7 @@ export const CardFieldsWrapper = ({
 
             {showDualBrandSelectElements && dualBrandSelectElements.length > 0 && dualBrandSelectElements && (
                 <Fieldset classNameModifiers={['dual-brand-switcher']} label={i18n.get('creditCard.dualBrand.title')}>
-                    <p className={'adyen-checkout-form-instruction'}>{i18n.get('creditCard.dualBrand.description')}</p>
+                    <p className={'plexy-checkout-form-instruction'}>{i18n.get('creditCard.dualBrand.description')}</p>
                     <RadioGroupExtended
                         name={'dualBrandSwitcher'}
                         value={selectedBrandValue} // Set which button is in a selected (checked) state
@@ -158,7 +158,7 @@ export const CardFieldsWrapper = ({
             )}
 
             {showBrazilianSSN && (
-                <div className="adyen-checkout__card__socialSecurityNumber">
+                <div className="plexy-checkout__card__socialSecurityNumber">
                     <SocialSecurityNumberBrazil
                         onBlur={handleChangeFor('socialSecurityNumber', 'blur')}
                         onInput={handleChangeFor('socialSecurityNumber', 'input')}

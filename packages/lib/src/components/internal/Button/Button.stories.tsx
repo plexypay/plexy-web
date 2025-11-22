@@ -63,7 +63,7 @@ export const Default: StoryObj<ButtonProps> = {
         inline: false,
         label: 'Dummy label',
         variant: 'primary',
-        icon: 'https://checkoutshopper-test.cdn.adyen.com/checkoutshopper/images/components/bento_lock.svg'
+        icon: 'https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/images/components/bento_lock.svg'
     }
 };
 
@@ -120,7 +120,7 @@ export const PaymentButton: StoryObj<PayButtonProps> = {
         disabled: false,
         inline: false,
         variant: 'primary',
-        icon: 'https://checkoutshopper-test.cdn.adyen.com/checkoutshopper/images/components/bento_lock.svg'
+        icon: 'https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/images/components/bento_lock.svg'
     }
 };
 

@@ -1,9 +1,9 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__fieldset + .adyen-checkout__eftpad-canada-info {
+.plexy-checkout__fieldset + .plexy-checkout__eftpad-canada-info {
     margin-top: token(spacer-070);
 }
 
-.adyen-checkout_eftpad-canada-store-details {
+.plexy-checkout_eftpad-canada-store-details {
     margin: token(spacer-070) 0;
 }

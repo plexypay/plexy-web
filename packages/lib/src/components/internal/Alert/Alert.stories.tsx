@@ -31,7 +31,7 @@ export const Default: StoryObj = {
                         translations: {}
                     })
                 }
-                resources={new Resources('https://checkoutshopper-test.cdn.adyen.com/checkoutshopper/')}
+                resources={new Resources('https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/')}
             >
                 <Alert {...args}>dummy alert message</Alert>
             </CoreProvider>

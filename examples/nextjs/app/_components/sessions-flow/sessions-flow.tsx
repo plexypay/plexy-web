@@ -3,22 +3,22 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-    AdyenCheckout,
+    PlexyCheckout,
     Dropin,
     Card,
     CashAppPay,
     GooglePay,
     PayPal,
     UIElement,
-    AdyenCheckoutError,
-} from "@adyen/adyen-web";
-import "@adyen/adyen-web/styles/adyen.css";
+    PlexyCheckoutError,
+} from "@plexy/plexy-web";
+import "@plexy/plexy-web/styles/plexy.css";
 import type {
     PaymentFailedData,
     PaymentCompletedData,
     CoreConfiguration,
     DropinConfiguration,
-} from "@adyen/adyen-web";
+} from "@plexy/plexy-web";
 import {
     DEFAULT_AMOUNT,
     DEFAULT_COUNTRY,
@@ -29,10 +29,10 @@ import { parseAmount } from "@/app/_utils/amount-utils";
 
 export default function SessionsFlow() {
     const dropinRef = useRef<HTMLDivElement>(null);
-    const isAdyenWebInitialized = useRef<boolean>(false);
+    const isPlexyWebInitialized = useRef<boolean>(false);
     const searchParams = useSearchParams();
 
-    const loadAdyen = useCallback(async () => {
+    const loadPlexy = useCallback(async () => {
         const countryCode = searchParams.get("countryCode") || DEFAULT_COUNTRY;
         const locale = searchParams.get("shopperLocale") || DEFAULT_LOCALE;
         const amount = parseAmount(
@@ -59,7 +59,7 @@ export default function SessionsFlow() {
             analytics: {
                 enabled: false,
             },
-            onError(error: AdyenCheckoutError) {
+            onError(error: PlexyCheckoutError) {
                 console.error("Something went wrong", error);
             },
             onPaymentCompleted(data: PaymentCompletedData, element: UIElement) {
@@ -70,7 +70,7 @@ export default function SessionsFlow() {
             },
         };
 
-        const checkout = await AdyenCheckout(options);
+        const checkout = await PlexyCheckout(options);
 
         const dropinConfiguration: DropinConfiguration = {
             paymentMethodsConfiguration: {
@@ -87,11 +87,11 @@ export default function SessionsFlow() {
     }, [searchParams]);
 
     useEffect(() => {
-        if (!isAdyenWebInitialized.current) {
-            isAdyenWebInitialized.current = true;
-            void loadAdyen();
+        if (!isPlexyWebInitialized.current) {
+            isPlexyWebInitialized.current = true;
+            void loadPlexy();
         }
-    }, [loadAdyen]);
+    }, [loadPlexy]);
 
     return <div ref={dropinRef} id="dropin"></div>;
 }

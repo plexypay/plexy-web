@@ -5,7 +5,7 @@ import { setupServer } from 'msw/node';
 import { http, HttpResponse } from 'msw';
 
 const server = setupServer(
-    http.get('https://checkoutshopper-live.adyen.com/checkoutshopper/datasets/countries/en-US.json', () => {
+    http.get('https://checkoutshopper-live.plexy.com/checkoutshopper/datasets/countries/en-US.json', () => {
         return HttpResponse.json([{ id: 'DE', name: 'Germany' }]);
     }) as any
 );
@@ -26,7 +26,7 @@ describe('RatePay Direct Debit', () => {
             i18n: global.i18n,
             onSubmit: onSubmitMock,
             onChange: onChangeMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         render(ratepay.render());
@@ -65,10 +65,10 @@ describe('RatePay Direct Debit', () => {
                 expect.anything()
             );
         });
-        await user.type(emailAddressInput, 'jose@adyen.com');
+        await user.type(emailAddressInput, 'jose@plexy.com');
         await waitFor(() => {
             expect(onChangeMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({ data: expect.objectContaining({ shopperEmail: 'jose@adyen.com' }) }),
+                expect.objectContaining({ data: expect.objectContaining({ shopperEmail: 'jose@plexy.com' }) }),
                 expect.anything()
             );
         });
@@ -144,7 +144,7 @@ describe('RatePay Direct Debit', () => {
                             street: 'Lichtenberger Str'
                         },
                         paymentMethod: { checkoutAttemptId: 'fetch-checkoutAttemptId-failed', type: 'ratepay_directdebit' },
-                        shopperEmail: 'jose@adyen.com',
+                        shopperEmail: 'jose@plexy.com',
                         shopperName: { firstName: 'Jose', gender: 'MALE', lastName: 'Fernandez' },
                         telephoneNumber: '612345678'
                     },
@@ -167,7 +167,7 @@ describe('RatePay Direct Debit', () => {
             i18n: global.i18n,
             onSubmit: onSubmitMock,
             onChange: onChangeMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         const { container } = render(ratepay.render());
@@ -207,10 +207,10 @@ describe('RatePay Direct Debit', () => {
                 expect.anything()
             );
         });
-        await user.type(emailAddressInput, 'jose@adyen.com');
+        await user.type(emailAddressInput, 'jose@plexy.com');
         await waitFor(() => {
             expect(onChangeMock).toHaveBeenLastCalledWith(
-                expect.objectContaining({ data: expect.objectContaining({ shopperEmail: 'jose@adyen.com' }) }),
+                expect.objectContaining({ data: expect.objectContaining({ shopperEmail: 'jose@plexy.com' }) }),
                 expect.anything()
             );
         });
@@ -276,7 +276,7 @@ describe('RatePay Direct Debit', () => {
         });
 
         // eslint-disable-next-line testing-library/no-node-access,testing-library/no-container
-        const [deliveryAddressSection] = container.querySelectorAll('.adyen-checkout__fieldset--deliveryAddress');
+        const [deliveryAddressSection] = container.querySelectorAll('.plexy-checkout__fieldset--deliveryAddress');
 
         const deliveryStreetInput = await within(<HTMLElement>deliveryAddressSection).findByLabelText('Street');
         const deliveryHouseNumberInput = await within(<HTMLElement>deliveryAddressSection).findByLabelText('House number');
@@ -333,7 +333,7 @@ describe('RatePay Direct Debit', () => {
                             street: 'Carmilgestraat'
                         },
                         paymentMethod: { checkoutAttemptId: 'fetch-checkoutAttemptId-failed', type: 'ratepay_directdebit' },
-                        shopperEmail: 'jose@adyen.com',
+                        shopperEmail: 'jose@plexy.com',
                         shopperName: { firstName: 'Jose', gender: 'MALE', lastName: 'Fernandez' },
                         telephoneNumber: '612345678'
                     },
@@ -354,7 +354,7 @@ describe('RatePay Direct Debit', () => {
             modules: { analytics: global.analytics, resources: global.resources, srPanel: global.srPanel },
             i18n: global.i18n,
             onSubmit: onSubmitMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         render(ratepay.render());

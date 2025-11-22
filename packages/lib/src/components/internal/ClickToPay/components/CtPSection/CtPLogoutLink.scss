@@ -1,10 +1,10 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__button--section-logout-button {
+.plexy-checkout__button--section-logout-button {
     margin-left: auto;
 }
 
-.adyen-checkout__button--section-logout-button--disabled {
+.plexy-checkout__button--section-logout-button--disabled {
     pointer-events: none;
     color: token(color-label-disabled);
 }

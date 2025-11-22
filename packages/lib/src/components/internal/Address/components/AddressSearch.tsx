@@ -115,7 +115,7 @@ export default function AddressSearch({
     const debounceInputHandler = useMemo(() => debounce(onTextInput, addressSearchDebounceMs), []);
 
     return (
-        <div className={'adyen-checkout__address-search adyen-checkout__field-group'}>
+        <div className={'plexy-checkout__address-search plexy-checkout__field-group'}>
             <Field
                 label={i18n.get('address')}
                 classNameModifiers={['address-search']}
@@ -126,7 +126,7 @@ export default function AddressSearch({
             >
                 <Select
                     name={'address-search'}
-                    className={'adyen-checkout__address-search__dropdown'}
+                    className={'plexy-checkout__address-search__dropdown'}
                     placeholder={placeholder}
                     onInput={debounceInputHandler}
                     items={formattedData}
@@ -136,10 +136,10 @@ export default function AddressSearch({
                 />
             </Field>
             {!hideManualButton && (
-                <span className="adyen-checkout__address-search__manual-add">
+                <span className="plexy-checkout__address-search__manual-add">
                     <button
                         type="button"
-                        className="adyen-checkout__button adyen-checkout__button--inline adyen-checkout__button--link adyen-checkout__address-search__manual-add__button"
+                        className="plexy-checkout__button plexy-checkout__button--inline plexy-checkout__button--link plexy-checkout__address-search__manual-add__button"
                         onClick={onManualAddress}
                     >
                         {'+ ' + i18n.get('address.enterManually')}

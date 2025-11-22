@@ -19,7 +19,7 @@ export default function KCPAuthentication(props: KCPProps) {
     }, [props.value]);
 
     return (
-        <div className="adyen-checkout__card__kcp-authentication">
+        <div className="plexy-checkout__card__kcp-authentication">
             <Field
                 label={taxNumberLabel}
                 filled={props.filled}
@@ -33,7 +33,7 @@ export default function KCPAuthentication(props: KCPProps) {
             >
                 <InputTelephone
                     name={'kcpTaxNumberOrDOB'}
-                    className="adyen-checkout__card__kcp-taxNumber__input adyen-checkout__input"
+                    className="plexy-checkout__card__kcp-taxNumber__input plexy-checkout__input"
                     maxLength={10}
                     minLength={6}
                     autoComplete={'false'}
@@ -62,11 +62,11 @@ export default function KCPAuthentication(props: KCPProps) {
                 <DataSfSpan
                     encryptedFieldType="encryptedPassword"
                     className={classNames({
-                        'adyen-checkout__input': true,
-                        'adyen-checkout__input--large': true,
-                        'adyen-checkout__input--error': props.encryptedPasswordState.errors,
-                        'adyen-checkout__input--valid': props.encryptedPasswordState.valid,
-                        'adyen-checkout__input--focus': props.focusedElement === 'encryptedPassword'
+                        'plexy-checkout__input': true,
+                        'plexy-checkout__input--large': true,
+                        'plexy-checkout__input--error': props.encryptedPasswordState.errors,
+                        'plexy-checkout__input--valid': props.encryptedPasswordState.valid,
+                        'plexy-checkout__input--focus': props.focusedElement === 'encryptedPassword'
                     })}
                 />
             </Field>

@@ -1,4 +1,4 @@
-import { mapBrands } from './map-adyen-brands-to-applepay-brands';
+import { mapBrands } from './map-plexy-brands-to-applepay-brands';
 
 describe('mapBrands()', () => {
     test('should rename certain brands based on the Apple Pay SDK brands support', () => {

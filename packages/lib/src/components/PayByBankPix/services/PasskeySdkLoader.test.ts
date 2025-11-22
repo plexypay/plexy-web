@@ -17,7 +17,7 @@ jest.mock('../../../utils/Script', () => {
 describe('PasskeySdkLoader', () => {
     const mockEnvironment = 'test';
     const mockCdnUrl = 'https://cdn.example.com/';
-    const mockAdyenPasskey = { default: { someMethod: jest.fn() } };
+    const mockPlexyPasskey = { default: { someMethod: jest.fn() } };
     const mockAnalytics = mock<AnalyticsModule>();
 
     let loader: PasskeySdkLoader;
@@ -25,36 +25,36 @@ describe('PasskeySdkLoader', () => {
     beforeEach(() => {
         loader = new PasskeySdkLoader({ environment: mockEnvironment, analytics: mockAnalytics });
         (getUrlFromMap as jest.Mock).mockReturnValue(mockCdnUrl);
-        (window as any).AdyenPasskey = mockAdyenPasskey;
+        (window as any).PlexyPasskey = mockPlexyPasskey;
     });
 
     afterEach(() => {
         jest.clearAllMocks();
-        delete (window as any).AdyenPasskey;
+        delete (window as any).PlexyPasskey;
     });
 
-    it('should load script and set AdyenPasskey', async () => {
+    it('should load script and set PlexyPasskey', async () => {
         const result = await loader.load();
 
         expect(getUrlFromMap).toHaveBeenCalledWith(mockEnvironment, expect.anything());
         expect(Script).toHaveBeenCalledWith({
             component: 'paybybank_pix',
-            src: `${mockCdnUrl}js/adyenpasskey/1.1.0/adyen-passkey.js`,
+            src: `${mockCdnUrl}js/plexypasskey/1.1.0/plexy-passkey.js`,
             analytics: mockAnalytics
         });
 
-        expect(result).toBe(mockAdyenPasskey.default);
+        expect(result).toBe(mockPlexyPasskey.default);
     });
 
-    it('should return early if AdyenPasskey is already loaded', async () => {
+    it('should return early if PlexyPasskey is already loaded', async () => {
         await loader.load(); // First time
         const result = await loader.load(); // Second time
 
         expect(Script).toHaveBeenCalledTimes(1);
-        expect(result).toBe(mockAdyenPasskey.default);
+        expect(result).toBe(mockPlexyPasskey.default);
     });
 
-    it('should throw AdyenCheckoutError if script fails to load', async () => {
+    it('should throw PlexyCheckoutError if script fails to load', async () => {
         (Script as unknown as jest.Mock).mockImplementationOnce(() => ({
             load: jest.fn().mockRejectedValue(new Error('Script load failed'))
         }));

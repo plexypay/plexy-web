@@ -10,19 +10,19 @@ const DisableOneClickConfirmation = ({ id, open, onDisable, onCancel }) => {
             id={id}
             aria-hidden={!open}
             className={classNames({
-                'adyen-checkout__payment-method__disable-confirmation': true,
-                'adyen-checkout__payment-method__disable-confirmation--open': open
+                'plexy-checkout__payment-method__disable-confirmation': true,
+                'plexy-checkout__payment-method__disable-confirmation--open': open
             })}
         >
-            <div className="adyen-checkout__payment-method__disable-confirmation__content">
+            <div className="plexy-checkout__payment-method__disable-confirmation__content">
                 {i18n.get('storedPaymentMethod.disable.confirmation')}
-                <div className="adyen-checkout__payment-method__disable-confirmation__buttons">
+                <div className="plexy-checkout__payment-method__disable-confirmation__buttons">
                     <button
                         type="button"
                         className={classNames(
-                            'adyen-checkout__button',
-                            'adyen-checkout__payment-method__disable-confirmation__button',
-                            'adyen-checkout__payment-method__disable-confirmation__button--remove'
+                            'plexy-checkout__button',
+                            'plexy-checkout__payment-method__disable-confirmation__button',
+                            'plexy-checkout__payment-method__disable-confirmation__button--remove'
                         )}
                         disabled={!open}
                         onClick={onDisable}
@@ -32,9 +32,9 @@ const DisableOneClickConfirmation = ({ id, open, onDisable, onCancel }) => {
                     <button
                         type="button"
                         className={classNames(
-                            'adyen-checkout__button',
-                            'adyen-checkout__payment-method__disable-confirmation__button',
-                            'adyen-checkout__payment-method__disable-confirmation__button--cancel'
+                            'plexy-checkout__button',
+                            'plexy-checkout__payment-method__disable-confirmation__button',
+                            'plexy-checkout__payment-method__disable-confirmation__button--cancel'
                         )}
                         disabled={!open}
                         onClick={onCancel}

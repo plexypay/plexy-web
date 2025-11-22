@@ -1,5 +1,5 @@
-import { AdyenCheckout, CustomCard } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, CustomCard } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 
 import { makePayment, makeDetailsCall } from '../../services';
 import { styles, setFocus, onBrand, onConfigSuccess, onBinLookup, onChange, setCCErrors } from './customCards.config';
@@ -77,7 +77,7 @@ const configObj = {
 };
 
 const initCheckout = async () => {
-    window.checkout = await AdyenCheckout(configObj);
+    window.checkout = await PlexyCheckout(configObj);
 
     // SECURED FIELDS
     window.customCard = new CustomCard(window.checkout, {
@@ -158,7 +158,7 @@ configObj.translations = {
 };
 
 const initCheckout2 = async () => {
-    window.checkout = await AdyenCheckout(configObj);
+    window.checkout = await PlexyCheckout(configObj);
 
     window.materialDesignCustomCard =
         showOtherExamples &&
@@ -253,7 +253,7 @@ function createPayButton(parent, component, attribute) {
 
     payBtn.textContent = 'Pay';
     payBtn.name = 'pay';
-    payBtn.classList.add('adyen-checkout__button', 'js-components-button--one-click', `js-${attribute}`);
+    payBtn.classList.add('plexy-checkout__button', 'js-components-button--one-click', `js-${attribute}`);
 
     payBtn.addEventListener('click', e => {
         e.preventDefault();

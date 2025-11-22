@@ -2,8 +2,8 @@
 // Uses the GitHub REST API and supports a dry run mode.
 // 
 // To get your API token go to Your profile, and create a Fine-grained PAT:
-// Resource owner: Adyen
-// Repository access: adyen-web
+// Resource owner: Plexy
+// Repository access: plexy-web
 // Give permission for: Contents R/W
 //
 // Then you can export the token temporarily in your console (before runnning):
@@ -18,8 +18,8 @@ const fetch = require('node-fetch');
 // Load these from environment variables for security.
 // DO NOT hardcode your token here.
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO_OWNER = 'adyen';
-const REPO_NAME = 'adyen-web';
+const REPO_OWNER = 'plexy';
+const REPO_NAME = 'plexy-web';
 // Dry run set to true by default, set DRY_RUN=false to run for real
 const DRY_RUN = process.env.DRY_RUN !== 'false';
 // Major version filter - only releases starting with this version will be deprecated

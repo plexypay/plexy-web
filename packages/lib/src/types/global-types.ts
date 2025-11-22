@@ -8,7 +8,7 @@ import { AnalyticsEvent } from '../core/Analytics/AnalyticsEvent';
 export type PaymentActionsType = keyof typeof actionTypes;
 
 /**
- * {@link https://docs.adyen.com/api-explorer/#/PaymentSetupAndVerificationService/v51/payments__resParam_action API Explorer /payments action}
+ * {@link https://docs.plexy.com/api-explorer/#/PaymentSetupAndVerificationService/v51/payments__resParam_action API Explorer /payments action}
  */
 export interface PaymentAction {
     /**
@@ -130,7 +130,7 @@ export interface PaymentMethod {
 
 /**
  * List of the available payment methods
- * {@link https://docs.adyen.com/api-explorer/Checkout/70/post/paymentMethods API Explorer /paymentMethods}.
+ * {@link https://docs.plexy.com/api-explorer/Checkout/70/post/paymentMethods API Explorer /paymentMethods}.
  */
 export interface PaymentMethodsResponse {
     /**
@@ -195,7 +195,7 @@ export interface ProcessedResponse {
 }
 
 /**
- * {@link https://docs.adyen.com/api-explorer/#/PaymentSetupAndVerificationService/v52/payments__reqParam_amount API Explorer /payments amount}
+ * {@link https://docs.plexy.com/api-explorer/#/PaymentSetupAndVerificationService/v52/payments__reqParam_amount API Explorer /payments amount}
  */
 export interface PaymentAmount {
     value: number;
@@ -258,7 +258,7 @@ export interface OrderStatus {
 }
 
 /**
- * {@link https://docs.adyen.com/api-explorer/#/PaymentSetupAndVerificationService/v52/post/payments__reqParam_browserInfo API Explorer /payments browserInfo}
+ * {@link https://docs.plexy.com/api-explorer/#/PaymentSetupAndVerificationService/v52/post/payments__reqParam_browserInfo API Explorer /payments browserInfo}
  */
 export interface BrowserInfo {
     acceptHeader: string;

@@ -1,4 +1,4 @@
-# @adyen/adyen-web v6 + Nuxt3
+# @plexy/plexy-web v6 + Nuxt3
 
 ### Steps to run the project:
 

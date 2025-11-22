@@ -22,8 +22,8 @@ export const StandaloneComponent: ClickToPayStory = {
     ),
     args: {
         componentConfiguration: {
-            shopperEmail: new URLSearchParams(document.location.search).get('shopperEmail') || 'gui.ctp@adyen.com',
-            merchantDisplayName: 'Adyen Merchant Name',
+            shopperEmail: new URLSearchParams(document.location.search).get('shopperEmail') || 'gui.ctp@plexy.com',
+            merchantDisplayName: 'Plexy Merchant Name',
             configuration: {
                 visaSrciDpaId: '8e6e347c-254e-863f-0e6a-196bf2d9df02',
                 visaSrcInitiatorId: 'B9SECVKIQX2SOBQ6J9X721dVBBKHhJJl1nxxVbemHGn5oB6S8',

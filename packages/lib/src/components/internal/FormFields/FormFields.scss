@@ -2,16 +2,16 @@
 @import 'styles/variable-generator';
 
 // Workaround to remove autofill background and text color, works on most browsers except for Chrome mobile
-.adyen-checkout__filter-input:-webkit-autofill,
-.adyen-checkout__filter-input:-webkit-autofill:active,
-.adyen-checkout__filter-input:-webkit-autofill:hover,
-.adyen-checkout__filter-input:-webkit-autofill:focus,
-.adyen-checkout__filter-input:autofill,
-.adyen-checkout__input:-webkit-autofill,
-.adyen-checkout__input:-webkit-autofill:active,
-.adyen-checkout__input:-webkit-autofill:hover,
-.adyen-checkout__input:-webkit-autofill:focus,
-.adyen-checkout__input:autofill {
+.plexy-checkout__filter-input:-webkit-autofill,
+.plexy-checkout__filter-input:-webkit-autofill:active,
+.plexy-checkout__filter-input:-webkit-autofill:hover,
+.plexy-checkout__filter-input:-webkit-autofill:focus,
+.plexy-checkout__filter-input:autofill,
+.plexy-checkout__input:-webkit-autofill,
+.plexy-checkout__input:-webkit-autofill:active,
+.plexy-checkout__input:-webkit-autofill:hover,
+.plexy-checkout__input:-webkit-autofill:focus,
+.plexy-checkout__input:autofill {
     color: token(color-label-primary) !important;
     -webkit-text-fill-color: token(color-label-primary) !important;
     box-shadow: 0 0 0 1000px token(color-background-primary) inset !important;
@@ -21,18 +21,18 @@
 }
 
 // Additional workaround for Chrome mobile to remove autofill background and text color
-.adyen-checkout__input,
-.adyen-checkout__filter-input {
+.plexy-checkout__input,
+.plexy-checkout__filter-input {
     color: token(color-label-primary) !important;
     background-clip: text !important;
 }
 
-.adyen-checkout__field-wrapper {
+.plexy-checkout__field-wrapper {
     display: flex;
     width: 100%;
 }
 
-.adyen-checkout__field-wrapper > .adyen-checkout__field:first-child {
+.plexy-checkout__field-wrapper > .plexy-checkout__field:first-child {
     margin-right: token(spacer-040);
 
     [dir='rtl'] & {
@@ -41,7 +41,7 @@
     }
 }
 
-.adyen-checkout__field-wrapper > .adyen-checkout__field:nth-child(2) {
+.plexy-checkout__field-wrapper > .plexy-checkout__field:nth-child(2) {
     margin-left: token(spacer-040);
 
     [dir='rtl'] & {
@@ -50,11 +50,11 @@
     }
 }
 
-.adyen-checkout__field-wrapper:last-of-type > .adyen-checkout__field {
+.plexy-checkout__field-wrapper:last-of-type > .plexy-checkout__field {
     margin-bottom: 0;
 }
 
-.adyen-checkout__input {
+.plexy-checkout__input {
     width: 100%;
     color: token(color-label-primary);
     font-size: token(text-subtitle-font-size);
@@ -79,11 +79,11 @@
     }
 }
 
-span.adyen-checkout__input {
+span.plexy-checkout__input {
     overflow: hidden;
 }
 
-.adyen-checkout-input__inline-validation {
+.plexy-checkout-input__inline-validation {
     width: token(spacer-070);
     height: token(spacer-070);
     margin-right: token(spacer-060);
@@ -92,19 +92,19 @@ span.adyen-checkout__input {
         margin-left: token(spacer-060);
     }
 
-    > .adyen-checkout__icon {
+    > .plexy-checkout__icon {
         display: block;
     }
 }
 
-.adyen-checkout-input__inline-validation--valid {
+.plexy-checkout-input__inline-validation--valid {
     color: token(color-label-success);
 }
 
-.adyen-checkout-input__inline-validation--invalid {
+.plexy-checkout-input__inline-validation--invalid {
     color: token(color-label-critical);
 }
 
-.adyen-checkout__input--date {
+.plexy-checkout__input--date {
     padding: 0.5em;
 }

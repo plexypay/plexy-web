@@ -11,7 +11,7 @@ export const ERROR = 'ERROR';
 export const SCRIPT_ERROR = 'SCRIPT_ERROR';
 export const SDK_ERROR = 'SDK_ERROR';
 
-class AdyenCheckoutError extends Error {
+class PlexyCheckoutError extends Error {
     protected static errorTypes = {
         /** Network error. */
         NETWORK_ERROR,
@@ -38,13 +38,13 @@ class AdyenCheckoutError extends Error {
     public cause: unknown;
     public options: CheckoutErrorOptions;
 
-    constructor(type: keyof typeof AdyenCheckoutError.errorTypes, message?: string, options?: CheckoutErrorOptions) {
+    constructor(type: keyof typeof PlexyCheckoutError.errorTypes, message?: string, options?: CheckoutErrorOptions) {
         super(message);
 
-        this.name = AdyenCheckoutError.errorTypes[type];
+        this.name = PlexyCheckoutError.errorTypes[type];
         this.options = options || {};
         this.cause = this.options.cause;
     }
 }
 
-export default AdyenCheckoutError;
+export default PlexyCheckoutError;

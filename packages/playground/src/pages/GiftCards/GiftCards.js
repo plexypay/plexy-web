@@ -1,5 +1,5 @@
-import { AdyenCheckout, Giftcard, MealVoucherFR, Card, fr_FR } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, Giftcard, MealVoucherFR, Card, fr_FR } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import { handleChange, handleOnPaymentCompleted, handleOnPaymentFailed, handleSubmit } from '../../handlers';
 import { amount, shopperLocale, countryCode, returnUrl, shopperReference, environmentUrlsOverride } from '../../config/commonConfig';
 import { checkBalance, createOrder, createSession } from '../../services';
@@ -8,7 +8,7 @@ import '../../utils';
 import '../../style.scss';
 
 (async () => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         clientKey: process.env.__CLIENT_KEY__,
         locale: shopperLocale,
         countryCode,
@@ -57,7 +57,7 @@ import '../../style.scss';
         countryCode
     });
 
-    const sessionCheckout = await AdyenCheckout({
+    const sessionCheckout = await PlexyCheckout({
         environment: process.env.__CLIENT_ENV__,
         clientKey: process.env.__CLIENT_KEY__,
         session,

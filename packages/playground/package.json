@@ -1,9 +1,9 @@
 {
-    "name": "@adyen/adyen-web-playground",
+    "name": "@plexy/plexy-web-playground",
     "private": true,
     "keywords": [
-        "adyen",
-        "adyen-web",
+        "plexy",
+        "plexy-web",
         "checkout",
         "payment",
         "payments",
@@ -11,17 +11,17 @@
     ],
     "version": "1.0.0",
     "license": "MIT",
-    "homepage": "https://docs.adyen.com/checkout",
-    "repository": "github:Adyen/adyen-web",
+    "homepage": "https://docs.plexy.com/checkout",
+    "repository": "github:Plexy/plexy-web",
     "bugs": {
-        "url": "https://support.adyen.com/"
+        "url": "https://support.plexy.com/"
     },
     "scripts": {
         "start": "npm run dev-server",
         "dev-server": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js"
     },
     "devDependencies": {
-        "@adyen/adyen-web-server": "1.0.0",
+        "@plexy/plexy-web-server": "1.0.0",
         "autoprefixer": "^10.4.9",
         "core-js-pure": "^3.25.3",
         "css-loader": "^6.0.0",
@@ -40,6 +40,6 @@
         "whatwg-fetch": "^3.6.2"
     },
     "dependencies": {
-        "@adyen/adyen-web": "6.25.1"
+        "@plexy/plexy-web": "6.25.1"
     }
 }

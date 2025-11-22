@@ -1,21 +1,21 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__fieldset--phone-input {
+.plexy-checkout__fieldset--phone-input {
     direction: ltr;
 
-    .adyen-checkout__fieldset__fields {
+    .plexy-checkout__fieldset__fields {
         gap: token(spacer-070);
 
-        > .adyen-checkout__field {
+        > .plexy-checkout__field {
             margin-bottom: 0;
         }
     }
 }
 
-.adyen-checkout-field--phone-prefix {
+.plexy-checkout-field--phone-prefix {
     width: 144px;
 }
 
-.adyen-checkout-field--phone-number {
+.plexy-checkout-field--phone-number {
     flex: 1;
 }

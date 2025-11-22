@@ -59,17 +59,17 @@ class Card extends Base {
         public readonly rootElementSelector?: Locator | string
     ) {
         super(page);
-        const selector = rootElementSelector ?? '.adyen-checkout__card-input';
+        const selector = rootElementSelector ?? '.plexy-checkout__card-input';
         this.rootElement = typeof selector === 'string' ? this.page.locator(selector) : selector;
 
         /**
          * Card Number elements, in Checkout
          */
-        this.cardNumberField = this.rootElement.locator('.adyen-checkout__field--cardNumber'); // Holder
-        this.cardNumberLabelElement = this.cardNumberField.locator('.adyen-checkout__label');
-        this.cardNumberErrorElement = this.cardNumberField.locator('.adyen-checkout-contextual-text--error');
+        this.cardNumberField = this.rootElement.locator('.plexy-checkout__field--cardNumber'); // Holder
+        this.cardNumberLabelElement = this.cardNumberField.locator('.plexy-checkout__label');
+        this.cardNumberErrorElement = this.cardNumberField.locator('.plexy-checkout-contextual-text--error');
 
-        this.brandingIcon = this.rootElement.locator('.adyen-checkout__card__cardNumber__brandIcon');
+        this.brandingIcon = this.rootElement.locator('.plexy-checkout__card__cardNumber__brandIcon');
         /**
          * Card Number elements, in iframe
          */
@@ -79,11 +79,11 @@ class Card extends Base {
         /**
          * Expiry Date elements, in Checkout
          */
-        this.expiryDateField = this.rootElement.locator('.adyen-checkout__field--expiryDate'); // Holder
-        this.expiryDateLabelElement = this.expiryDateField.locator('.adyen-checkout__label');
-        this.expiryDateLabelText = this.expiryDateField.locator('.adyen-checkout__label__text');
-        this.expiryDateContextualElement = this.expiryDateField.locator('.adyen-checkout-contextual-text'); // Related contextual element
-        this.expiryDateErrorElement = this.expiryDateField.locator('.adyen-checkout-contextual-text--error'); // Related error element
+        this.expiryDateField = this.rootElement.locator('.plexy-checkout__field--expiryDate'); // Holder
+        this.expiryDateLabelElement = this.expiryDateField.locator('.plexy-checkout__label');
+        this.expiryDateLabelText = this.expiryDateField.locator('.plexy-checkout__label__text');
+        this.expiryDateContextualElement = this.expiryDateField.locator('.plexy-checkout-contextual-text'); // Related contextual element
+        this.expiryDateErrorElement = this.expiryDateField.locator('.plexy-checkout-contextual-text--error'); // Related error element
 
         /**
          * Expiry Date elements, in iframe
@@ -95,11 +95,11 @@ class Card extends Base {
         /**
          * Security code elements, in Checkout
          */
-        this.cvcField = this.rootElement.locator('.adyen-checkout__field--securityCode'); // Holder
-        this.cvcLabelElement = this.cvcField.locator('.adyen-checkout__label');
-        this.cvcLabelText = this.cvcField.locator('.adyen-checkout__label__text');
-        this.cvcContextualElement = this.cvcField.locator('.adyen-checkout-contextual-text'); // Related contextual element
-        this.cvcErrorElement = this.cvcField.locator('.adyen-checkout-contextual-text--error'); // Related error element
+        this.cvcField = this.rootElement.locator('.plexy-checkout__field--securityCode'); // Holder
+        this.cvcLabelElement = this.cvcField.locator('.plexy-checkout__label');
+        this.cvcLabelText = this.cvcField.locator('.plexy-checkout__label__text');
+        this.cvcContextualElement = this.cvcField.locator('.plexy-checkout-contextual-text'); // Related contextual element
+        this.cvcErrorElement = this.cvcField.locator('.plexy-checkout-contextual-text--error'); // Related error element
 
         /**
          * Security code elements, in iframe
@@ -111,7 +111,7 @@ class Card extends Base {
         /**
          * HolderName elements, in Checkout
          */
-        this.holderNameField = this.rootElement.locator('.adyen-checkout__card__holderName'); // Holder
+        this.holderNameField = this.rootElement.locator('.plexy-checkout__card__holderName'); // Holder
         this.holderNameInput = this.holderNameField.getByRole('textbox', { name: /name on card/i });
 
         /**
@@ -119,7 +119,7 @@ class Card extends Base {
          */
         this.installmentsPaymentLabel = this.rootElement.getByText(INSTALLMENTS_PAYMENTS);
         this.revolvingPaymentLabel = this.rootElement.getByText(REVOLVING_PAYMENT);
-        this.installmentsDropdown = this.rootElement.locator('.adyen-checkout__dropdown__button');
+        this.installmentsDropdown = this.rootElement.locator('.plexy-checkout__dropdown__button');
         this.selectorList = this.rootElement.getByRole('listbox');
 
         this.threeDs2Challenge = new ThreeDs2Challenge(page);
@@ -130,7 +130,7 @@ class Card extends Base {
 
     // The list of card brands as displayed under the CardNumber field
     get availableBrands() {
-        return this.rootElement.locator('.adyen-checkout__card__brands').getByRole('img').all();
+        return this.rootElement.locator('.plexy-checkout__card__brands').getByRole('img').all();
     }
 
     /**
@@ -138,20 +138,20 @@ class Card extends Base {
      */
     // The holder for the icons in the CardNumber field (when dual branding occurs)
     get dualBrandingIconsHolder() {
-        return this.rootElement.locator('.adyen-checkout__card__dual-branding__icons');
+        return this.rootElement.locator('.plexy-checkout__card__dual-branding__icons');
     }
 
     // The brands as displayed directly in the CardNumber field (when dual branding occurs)
     async waitForVisibleDualBrandIcons(expectedNumber = 2) {
         return await this.page.waitForFunction(
-            expectedLength => [...document.querySelectorAll('.adyen-checkout__card__cardNumber__brandIcon')].length === expectedLength,
+            expectedLength => [...document.querySelectorAll('.plexy-checkout__card__cardNumber__brandIcon')].length === expectedLength,
             expectedNumber
         );
     }
 
     // Retrieve dual brands
     get dualBrandIcons() {
-        return this.cardNumberField.locator('.adyen-checkout__card__cardNumber__brandIcon').all();
+        return this.cardNumberField.locator('.plexy-checkout__card__cardNumber__brandIcon').all();
     }
 
     // Select one of the inline brand icons
@@ -170,20 +170,20 @@ class Card extends Base {
      * Dual branding UI
      */
     get dualBrandingButtonsHolder() {
-        return this.rootElement.locator('.adyen-checkout__fieldset--dual-brand-switcher');
+        return this.rootElement.locator('.plexy-checkout__fieldset--dual-brand-switcher');
     }
 
     get dualBrandingButtonElements() {
-        return this.dualBrandingButtonsHolder.locator('.adyen-checkout__radio_group__input-wrapper').all();
+        return this.dualBrandingButtonsHolder.locator('.plexy-checkout__radio_group__input-wrapper').all();
     }
 
     getDualBrandButtonCheckmark(brandEl) {
-        return brandEl.locator('.adyen-checkout-input__inline-validation');
+        return brandEl.locator('.plexy-checkout-input__inline-validation');
     }
 
     // Identify a dual branding button by its label
     selectDualBrandUIItem(text: string | RegExp, exact = true) {
-        return this.dualBrandingButtonsHolder.locator('.adyen-checkout__radio_group__input-wrapper').getByText(text, { exact });
+        return this.dualBrandingButtonsHolder.locator('.plexy-checkout__radio_group__input-wrapper').getByText(text, { exact });
     }
 
     /** end */
@@ -264,7 +264,7 @@ class Card extends Base {
     }
 
     async selectCVCIcon() {
-        await this.cvcField.locator('.adyen-checkout__card__cvc__hint__wrapper').click();
+        await this.cvcField.locator('.plexy-checkout__card__cvc__hint__wrapper').click();
     }
 }
 

@@ -16,27 +16,27 @@ export default function Voucher({ voucherDetails = [], className = '', ...props 
     props.onActionHandled?.({ componentType: props.paymentMethodType, actionDescription: 'voucher-presented' });
 
     return (
-        <div className={classNames('adyen-checkout__voucher-result', `adyen-checkout__voucher-result--${props.paymentMethodType}`, className)}>
-            <div className="adyen-checkout__voucher-result__top">
-                <div className="adyen-checkout__voucher-result__image">
+        <div className={classNames('plexy-checkout__voucher-result', `plexy-checkout__voucher-result--${props.paymentMethodType}`, className)}>
+            <div className="plexy-checkout__voucher-result__top">
+                <div className="plexy-checkout__voucher-result__image">
                     {!!props.imageUrl && (
-                        <span className="adyen-checkout__voucher-result__image__wrapper">
-                            <img alt={props.paymentMethodType} className="adyen-checkout__voucher-result__image__brand" src={props.imageUrl} />
+                        <span className="plexy-checkout__voucher-result__image__wrapper">
+                            <img alt={props.paymentMethodType} className="plexy-checkout__voucher-result__image__brand" src={props.imageUrl} />
                         </span>
                     )}
 
                     {!!props.issuerImageUrl && (
-                        <span className="adyen-checkout__voucher-result__image__wrapper">
-                            <img alt={props.paymentMethodType} className="adyen-checkout__voucher-result__image__issuer" src={props.issuerImageUrl} />
+                        <span className="plexy-checkout__voucher-result__image__wrapper">
+                            <img alt={props.paymentMethodType} className="plexy-checkout__voucher-result__image__issuer" src={props.issuerImageUrl} />
                         </span>
                     )}
                 </div>
 
-                <div className="adyen-checkout__voucher-result__introduction">
+                <div className="plexy-checkout__voucher-result__introduction">
                     {props.introduction}{' '}
                     {props.instructionsUrl && (
                         <a
-                            className="adyen-checkout-link adyen-checkout-link--voucher-result-instructions"
+                            className="plexy-checkout-link plexy-checkout-link--voucher-result-instructions"
                             href={props.instructionsUrl}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -47,11 +47,11 @@ export default function Voucher({ voucherDetails = [], className = '', ...props 
                 </div>
 
                 {props.amount && (
-                    <div className="adyen-checkout__voucher-result__amount">
+                    <div className="plexy-checkout__voucher-result__amount">
                         {props.amount}
 
                         {props.surcharge && (
-                            <span className="adyen-checkout__voucher-result__surcharge">
+                            <span className="plexy-checkout__voucher-result__surcharge">
                                 ({i18n.get('voucher.surcharge').replace('%@', props.surcharge)})
                             </span>
                         )}
@@ -60,21 +60,21 @@ export default function Voucher({ voucherDetails = [], className = '', ...props 
             </div>
 
             {props.reference && (
-                <div className="adyen-checkout__voucher-result__separator">
-                    <div className="adyen-checkout__voucher-result__separator__inner" />
-                    <div className="adyen-checkout__voucher-result__code__label">
-                        <span className="adyen-checkout__voucher-result__code__label__text">{i18n.get('voucher.paymentReferenceLabel')}</span>
+                <div className="plexy-checkout__voucher-result__separator">
+                    <div className="plexy-checkout__voucher-result__separator__inner" />
+                    <div className="plexy-checkout__voucher-result__code__label">
+                        <span className="plexy-checkout__voucher-result__code__label__text">{i18n.get('voucher.paymentReferenceLabel')}</span>
                     </div>
                 </div>
             )}
 
-            <div className="adyen-checkout__voucher-result__bottom">
+            <div className="plexy-checkout__voucher-result__bottom">
                 {props.reference && (
-                    <div className="adyen-checkout__voucher-result__code">
+                    <div className="plexy-checkout__voucher-result__code">
                         {props.barcode && (
                             <img
                                 alt={i18n.get('voucher.paymentReferenceLabel')}
-                                className="adyen-checkout__voucher-result__code__barcode"
+                                className="plexy-checkout__voucher-result__code__barcode"
                                 src={props.barcode}
                             />
                         )}
@@ -83,15 +83,15 @@ export default function Voucher({ voucherDetails = [], className = '', ...props 
                 )}
 
                 {(!!props.downloadUrl || !!props.copyBtn) && (
-                    <ul className="adyen-checkout__voucher-result__actions">
+                    <ul className="plexy-checkout__voucher-result__actions">
                         {!!props.copyBtn && (
-                            <li className="adyen-checkout__voucher-result__actions__item">
+                            <li className="plexy-checkout__voucher-result__actions__item">
                                 <CopyButton inline text={props.reference} />
                             </li>
                         )}
 
                         {!!props.downloadUrl && (
-                            <li className="adyen-checkout__voucher-result__actions__item">
+                            <li className="plexy-checkout__voucher-result__actions__item">
                                 <Button
                                     inline
                                     variant="action"

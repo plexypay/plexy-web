@@ -1,5 +1,5 @@
 import Script from './Script';
-import AdyenCheckoutError from '../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../core/Errors/PlexyCheckoutError';
 import { mock } from 'jest-mock-extended';
 import { AnalyticsModule } from '../types/global-types';
 
@@ -139,7 +139,7 @@ describe('Script', () => {
         // Trigger the 'error' event on the third loading attempt
         thirdAttemptScript.dispatchEvent(errorEvent);
 
-        await expect(loadPromise).rejects.toBeInstanceOf(AdyenCheckoutError);
+        await expect(loadPromise).rejects.toBeInstanceOf(PlexyCheckoutError);
         expect(document.body.querySelector(`script[src="${SCRIPT_SRC}"]`)).toBeNull();
 
         jest.useRealTimers();
@@ -188,7 +188,7 @@ describe('Script', () => {
         script.remove();
 
         // A promise deve ser rejeitada com o erro de cancelamento
-        await expect(loadPromise).rejects.toThrow(new AdyenCheckoutError('CANCEL', 'Script loading cancelled.'));
+        await expect(loadPromise).rejects.toThrow(new PlexyCheckoutError('CANCEL', 'Script loading cancelled.'));
         expect(document.body.querySelector(`script[src="${SCRIPT_SRC}"]`)).toBeNull();
     });
 });

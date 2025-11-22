@@ -51,36 +51,36 @@ export default function DonationComponent(props: DonationComponentProps) {
 
     if (status === 'error') {
         return (
-            <div className="adyen-checkout__adyen-giving">
+            <div className="plexy-checkout__plexy-giving">
                 <Img
-                    className="adyen-checkout__status__icon adyen-checkout__status__icon--error"
+                    className="plexy-checkout__status__icon plexy-checkout__status__icon--error"
                     src={getImage({ imageFolder: 'components/' })('error')}
                     alt={i18n.get('error.message.unknown')}
                 />
-                <div className="adyen-checkout__status__text">{i18n.get('error.message.unknown')}</div>
+                <div className="plexy-checkout__status__text">{i18n.get('error.message.unknown')}</div>
             </div>
         );
     }
 
     if (status === 'success') {
         return (
-            <div className="adyen-checkout__adyen-giving">
+            <div className="plexy-checkout__plexy-giving">
                 <Img
-                    className="adyen-checkout__status__icon adyen-checkout__status__icon--success"
+                    className="plexy-checkout__status__icon plexy-checkout__status__icon--success"
                     src={getImage({ imageFolder: 'components/' })('heart')}
                     alt={i18n.get('thanksForYourSupport')}
                 />
 
-                <div className="adyen-checkout__status__text">{i18n.get('thanksForYourSupport')}</div>
+                <div className="plexy-checkout__status__text">{i18n.get('thanksForYourSupport')}</div>
             </div>
         );
     }
 
     return (
-        <div className="adyen-checkout__adyen-giving">
+        <div className="plexy-checkout__plexy-giving">
             <CampaignContent {...props} />
 
-            <div className="adyen-checkout__adyen-giving-actions">
+            <div className="plexy-checkout__plexy-giving-actions">
                 {termsAndConditionsUrl && <DisclaimerMessage message={i18n.get('donationTermsCondition')} urls={[termsAndConditionsUrl]} />}
                 {isRoundupDonation ? (
                     <Roundup

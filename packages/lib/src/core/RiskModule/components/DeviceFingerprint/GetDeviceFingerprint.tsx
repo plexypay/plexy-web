@@ -47,7 +47,7 @@ class GetDeviceFingerprint extends Component<GetDeviceFingerprintProps> {
 
     render({ dfpURL }) {
         return (
-            <div className="adyen-checkout-risk__device-fingerprint">
+            <div className="plexy-checkout-risk__device-fingerprint">
                 <Iframe name={iframeName} src={dfpURL} allow={allowProperties} title="devicefingerprinting iframe" />
             </div>
         );

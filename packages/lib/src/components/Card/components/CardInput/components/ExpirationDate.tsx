@@ -32,9 +32,9 @@ export default function ExpirationDate(props: ExpirationDateProps) {
     const getImage = useImage();
 
     const fieldClassnames = classNames(className, {
-        'adyen-checkout__field__exp-date': true,
-        'adyen-checkout__card__exp-date__input--hidden': expiryDatePolicy === DATE_POLICY_HIDDEN,
-        'adyen-checkout__field__exp-date--optional': expiryDatePolicy === DATE_POLICY_OPTIONAL
+        'plexy-checkout__field__exp-date': true,
+        'plexy-checkout__card__exp-date__input--hidden': expiryDatePolicy === DATE_POLICY_HIDDEN,
+        'plexy-checkout__field__exp-date--optional': expiryDatePolicy === DATE_POLICY_OPTIONAL
     });
 
     const fieldLabel = expiryDatePolicy !== DATE_POLICY_OPTIONAL ? label : `${label} ${i18n.get('field.title.optional')}`;
@@ -66,21 +66,21 @@ export default function ExpirationDate(props: ExpirationDateProps) {
         >
             <DataSfSpan
                 encryptedFieldType={ENCRYPTED_EXPIRY_DATE}
-                className={classNames('adyen-checkout__input', 'adyen-checkout__input--small', 'adyen-checkout__card__exp-date__input', {
-                    'adyen-checkout__input--error': error,
-                    'adyen-checkout__input--focus': focused,
-                    'adyen-checkout__input--valid': isValid
+                className={classNames('plexy-checkout__input', 'plexy-checkout__input--small', 'plexy-checkout__card__exp-date__input', {
+                    'plexy-checkout__input--error': error,
+                    'plexy-checkout__input--focus': focused,
+                    'plexy-checkout__input--valid': isValid
                 })}
             />
             <span
-                className={classNames('adyen-checkout__field__exp-date_hint_wrapper', {
-                    'adyen-checkout__field__exp-date_hint_wrapper--hidden': error || isValid
+                className={classNames('plexy-checkout__field__exp-date_hint_wrapper', {
+                    'plexy-checkout__field__exp-date_hint_wrapper--hidden': error || isValid
                 })}
             >
                 {/*eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions*/}
                 <img
                     src={getImage({ imageFolder: 'components/' })('expiry_date_hint')}
-                    className="adyen-checkout__field__exp-date_hint"
+                    className="plexy-checkout__field__exp-date_hint"
                     alt={imageDescription}
                     onClick={handleIconClick}
                 />

@@ -18,25 +18,25 @@ interface InfoModalProps {
 const FASTLANE_BENEFITS = [
     {
         headerKey: 'card.fastlane.modal.benefit1.header',
-        labelById: `adyen-fastlane-modal-label-${uuid()}`,
+        labelById: `plexy-fastlane-modal-label-${uuid()}`,
         descriptionTextKey: 'card.fastlane.modal.benefit1.text',
-        describedById: `adyen-fastlane-modal-describedBy-${uuid()}`,
+        describedById: `plexy-fastlane-modal-describedBy-${uuid()}`,
         image: 'fastlane_autofill',
         altImage: ''
     },
     {
         headerKey: 'card.fastlane.modal.benefit2.header',
-        labelById: `adyen-fastlane-modal-label-${uuid()}`,
+        labelById: `plexy-fastlane-modal-label-${uuid()}`,
         descriptionTextKey: 'card.fastlane.modal.benefit2.text',
-        describedById: `adyen-fastlane-modal-describedBy-${uuid()}`,
+        describedById: `plexy-fastlane-modal-describedBy-${uuid()}`,
         image: 'fastlane_protection',
         altImage: ''
     },
     {
         headerKey: 'card.fastlane.modal.benefit3.header',
-        labelById: `adyen-fastlane-modal-label-${uuid()}`,
+        labelById: `plexy-fastlane-modal-label-${uuid()}`,
         descriptionTextKey: 'card.fastlane.modal.benefit3.text',
-        describedById: `adyen-fastlane-modal-describedBy-${uuid()}`,
+        describedById: `plexy-fastlane-modal-describedBy-${uuid()}`,
         image: 'fastlane_ubiquity',
         altImage: ''
     }
@@ -60,8 +60,8 @@ const InfoModal = ({ isOpen, onClose, focusAfterClose }: InfoModalProps) => {
             focusAfterClose={focusAfterClose}
         >
             {({ onCloseModal }) => (
-                <div className="adyen-checkout-card-fastlane__modal">
-                    <div className="adyen-checkout-card-fastlane__modal-button-container">
+                <div className="plexy-checkout-card-fastlane__modal">
+                    <div className="plexy-checkout-card-fastlane__modal-button-container">
                         <Button
                             onClick={onCloseModal}
                             inline
@@ -74,23 +74,23 @@ const InfoModal = ({ isOpen, onClose, focusAfterClose }: InfoModalProps) => {
                     </div>
 
                     {FASTLANE_BENEFITS.map(benefit => (
-                        <div key={benefit.labelById} className="adyen-checkout-card-fastlane__modal-section">
+                        <div key={benefit.labelById} className="plexy-checkout-card-fastlane__modal-section">
                             <Img
-                                className="adyen-checkout-card-fastlane__modal-section-image"
+                                className="plexy-checkout-card-fastlane__modal-section-image"
                                 src={getImage({ imageFolder: 'components/' })(benefit.image)}
                                 alt={benefit.altImage}
                             />
-                            <h1 id={benefit.labelById} className="adyen-checkout-card-fastlane__modal-section-header">
+                            <h1 id={benefit.labelById} className="plexy-checkout-card-fastlane__modal-section-header">
                                 {i18n.get(benefit.headerKey)}
                             </h1>
-                            <div id={benefit.describedById} className="adyen-checkout-card-fastlane__modal-section-text">
+                            <div id={benefit.describedById} className="plexy-checkout-card-fastlane__modal-section-text">
                                 {i18n.get(benefit.descriptionTextKey)}
                             </div>
                         </div>
                     ))}
 
                     <Img
-                        className="adyen-checkout-card-fastlane__modal-brand"
+                        className="plexy-checkout-card-fastlane__modal-brand"
                         src={getImage({ imageFolder: 'components/' })(`paypal_fastlane_black`)}
                         alt={i18n.get('card.fastlane.a11y.logo')}
                     />

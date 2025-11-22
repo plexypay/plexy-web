@@ -21,7 +21,7 @@ import type { ICore } from '../../core/types';
 import { ANALYTICS_FOCUS_STR, ANALYTICS_CONFIGURED_STR, ANALYTICS_UNFOCUS_STR, ANALYTICS_RENDERED_STR } from '../../core/Analytics/constants';
 import { ALL_SECURED_FIELDS } from '../internal/SecuredFields/lib/constants';
 import { hasOwnProperty } from '../../utils/hasOwnProperty';
-import AdyenCheckoutError, { IMPLEMENTATION_ERROR } from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError, { IMPLEMENTATION_ERROR } from '../../core/Errors/PlexyCheckoutError';
 import CardInputDefaultProps from './components/CardInput/defaultProps';
 import { getCardConfigData } from './components/CardInput/utils';
 import { AnalyticsEvent } from '../../core/Analytics/AnalyticsEvent';
@@ -87,7 +87,7 @@ export class CardElement extends UIElement<CardConfiguration> {
         // If we have a storedPM but it doesn't support Ecommerce - we can't make a storedCard component from it
         if (storedCardID && !isEcommerceStoredCard) {
             // TODO - Decide if an error is too severe? Would a console.warning suffice?
-            throw new AdyenCheckoutError(
+            throw new PlexyCheckoutError(
                 IMPLEMENTATION_ERROR,
                 'You are trying to create a storedCard from a stored PM that does not support Ecommerce interactions'
             );

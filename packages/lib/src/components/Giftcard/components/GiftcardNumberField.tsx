@@ -23,11 +23,11 @@ export const GiftcardNumberField = ({ i18n, classNameModifiers, sfpState, getCar
                 encryptedFieldType="encryptedCardNumber"
                 data-info='{"length":"15-32", "maskInterval":4}'
                 className={classNames({
-                    'adyen-checkout__input': true,
-                    'adyen-checkout__input--large': true,
-                    'adyen-checkout__card__cardNumber__input': true,
-                    'adyen-checkout__input--error': getCardErrorMessage(sfpState),
-                    'adyen-checkout__input--focus': focusedElement === 'encryptedCardNumber'
+                    'plexy-checkout__input': true,
+                    'plexy-checkout__input--large': true,
+                    'plexy-checkout__card__cardNumber__input': true,
+                    'plexy-checkout__input--error': getCardErrorMessage(sfpState),
+                    'plexy-checkout__input--focus': focusedElement === 'encryptedCardNumber'
                 })}
             />
         </Field>

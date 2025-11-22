@@ -124,7 +124,7 @@ export function KlarnaWidget({ sdkData, paymentMethodType, widgetInitializationT
 
     if (status !== 'error' && status !== 'success') {
         return (
-            <div className="adyen-checkout__klarna-widget">
+            <div className="plexy-checkout__klarna-widget">
                 <div ref={klarnaWidgetRef} />
                 {payButton({
                     status,

@@ -1,5 +1,5 @@
 import { RequestMock, RequestLogger } from 'testcafe';
-import { BASE_URL } from '@adyen/adyen-web-e2e/tests/pages';
+import { BASE_URL } from '@plexy/plexy-web-e2e/tests/pages';
 
 const path = require('path');
 require('dotenv').config({ path: path.resolve('../../', '.env') });
@@ -8,10 +8,10 @@ const MOCK_SESSION_ID = 'CS616D08FC28573F9C';
 const MOCK_SESSION_DATA = 'Ab02b4c0!BQABAgChW9EQ6U';
 
 const sessionsUrl = 'http://localhost:3024/sessions';
-const setupUrl = `https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/setup?clientKey=${process.env.CLIENT_KEY}`;
-const balanceUrl = `https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/paymentMethodBalance?clientKey=${process.env.CLIENT_KEY}`;
-const ordersUrl = `https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/orders?clientKey=${process.env.CLIENT_KEY}`;
-const paymentsUrl = `https://checkoutshopper-test.adyen.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/payments?clientKey=${process.env.CLIENT_KEY}`;
+const setupUrl = `https://checkoutshopper-test.plexy.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/setup?clientKey=${process.env.CLIENT_KEY}`;
+const balanceUrl = `https://checkoutshopper-test.plexy.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/paymentMethodBalance?clientKey=${process.env.CLIENT_KEY}`;
+const ordersUrl = `https://checkoutshopper-test.plexy.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/orders?clientKey=${process.env.CLIENT_KEY}`;
+const paymentsUrl = `https://checkoutshopper-test.plexy.com/checkoutshopper/v1/sessions/${MOCK_SESSION_ID}/payments?clientKey=${process.env.CLIENT_KEY}`;
 
 const sessionsResponse = {
     amount: {

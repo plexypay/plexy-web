@@ -1,15 +1,15 @@
 <script lang="ts">
 import { DEFAULT_COUNTRY } from '~/constants';
-import { AdyenCheckout } from '@adyen/adyen-web/auto';
+import { PlexyCheckout } from '@plexy/plexy-web/auto';
 import type {
     AdditionalDetailsActions,
     AdditionalDetailsData,
-    AdyenCheckoutError,
+    PlexyCheckoutError,
     PaymentCompletedData,
     PaymentFailedData,
     UIElement
-} from '@adyen/adyen-web/auto';
-import '@adyen/adyen-web/styles/adyen.css';
+} from '@plexy/plexy-web/auto';
+import '@plexy/plexy-web/styles/plexy.css';
 
 
 export default {
@@ -38,7 +38,7 @@ export default {
 
             const isSessionsFlow = !!sessionId;
 
-            const checkout = await AdyenCheckout({
+            const checkout = await PlexyCheckout({
                 analytics: {
                     enabled: false
                 },
@@ -85,7 +85,7 @@ export default {
                 onPaymentFailed: (data?: PaymentFailedData, component?: UIElement) => {
                     this.response = 'Payment failed';
                 },
-                onError: (error: AdyenCheckoutError) => {
+                onError: (error: PlexyCheckoutError) => {
                     this.response = 'Something went wrong';
                     console.error(error);
                 }
@@ -100,7 +100,7 @@ export default {
 <template>
 
     <Head>
-        <Title>@adyen/adyen-web + Nuxt3</Title>
+        <Title>@plexy/plexy-web + Nuxt3</Title>
     </Head>
     <div class="redirect-result-page">
         <h1>Redirect response</h1>

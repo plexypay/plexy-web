@@ -19,7 +19,7 @@ export default function SendCopyToEmail(props) {
     };
 
     return (
-        <div className={cx('adyen-checkout__fieldset', 'adyen-checkout__fieldset--sendCopyToEmail', props.classNames)}>
+        <div className={cx('plexy-checkout__fieldset', 'plexy-checkout__fieldset--sendCopyToEmail', props.classNames)}>
             <Field
                 classNameModifiers={['sendCopyToEmail', 'consentCheckbox']}
                 name={'sendCopyToEmail'}

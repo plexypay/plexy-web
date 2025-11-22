@@ -18,8 +18,8 @@ interface SpinnerProps {
  * @param props -
  */
 const Spinner = ({ inline = false, size = 'large' }: SpinnerProps) => (
-    <div data-testid="spinner" className={`adyen-checkout__spinner__wrapper ${inline ? 'adyen-checkout__spinner__wrapper--inline' : ''}`}>
-        <div className={`adyen-checkout__spinner adyen-checkout__spinner--${size}`} />
+    <div data-testid="spinner" className={`plexy-checkout__spinner__wrapper ${inline ? 'plexy-checkout__spinner__wrapper--inline' : ''}`}>
+        <div className={`plexy-checkout__spinner plexy-checkout__spinner--${size}`} />
     </div>
 );
 

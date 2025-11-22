@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@adyen/adyen-web": "^6.2.0",
+    "@plexy/plexy-web": "^6.2.0",
     "nuxt": "^3.19.0",
     "vue": "latest"
   },

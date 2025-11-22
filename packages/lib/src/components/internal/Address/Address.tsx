@@ -177,7 +177,7 @@ export default function Address(props: AddressProps) {
     };
 
     const getWrapper = group => (
-        <div className="adyen-checkout__field-group">
+        <div className="plexy-checkout__field-group">
             {group.map(([field, size]) => getComponent(field, { classNameModifiers: [`col-${size}`] }))}
         </div>
     );

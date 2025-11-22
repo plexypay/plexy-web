@@ -8,8 +8,8 @@ export function BrazilPersonalDetail(props) {
     const { i18n, data, handleChangeFor, errors, valid } = props;
     const getErrorMessage = error => (error && error.errorMessage ? i18n.get(error.errorMessage) : !!error);
     return (
-        <div className={'adyen-checkout__fieldset adyen-checkout__fieldset--address adyen-checkout__fieldset--personalDetails'}>
-            <div className="adyen-checkout__fieldset__title">{i18n.get('personalDetails')}</div>
+        <div className={'plexy-checkout__fieldset plexy-checkout__fieldset--address plexy-checkout__fieldset--personalDetails'}>
+            <div className="plexy-checkout__fieldset__title">{i18n.get('personalDetails')}</div>
 
             <Fieldset>
                 <Field

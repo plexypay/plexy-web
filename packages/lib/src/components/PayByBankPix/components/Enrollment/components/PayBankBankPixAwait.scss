@@ -1,32 +1,32 @@
 @use 'styles/index';
 @import 'styles/variable-generator';
 
-.adyen-checkout-pay-by-bank-pix-await {
+.plexy-checkout-pay-by-bank-pix-await {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .adyen-checkout__await__subtitle,
-    .adyen-checkout__await__countdown-holder {
+    .plexy-checkout__await__subtitle,
+    .plexy-checkout__await__countdown-holder {
         display: none;
     }
 
-    .adyen-checkout__await,
-    .adyen-checkout__await--paybybank_pix {
+    .plexy-checkout__await,
+    .plexy-checkout__await--paybybank_pix {
         padding: 0;
         border: none;
     }
 
-    .adyen-checkout__await__indicator-holder {
+    .plexy-checkout__await__indicator-holder {
         margin-top: token(spacer-090);
     }
 
-    .adyen-checkout__await__countdown {
+    .plexy-checkout__await__countdown {
         color: token(color-label-primary);
     }
 
-    .adyen-checkout__await__end-slot {
-        @include index.adyen-checkout-text-caption;
+    .plexy-checkout__await__end-slot {
+        @include index.plexy-checkout-text-caption;
 
         margin-top: token(spacer-090);
         color: token(color-label-tertiary);

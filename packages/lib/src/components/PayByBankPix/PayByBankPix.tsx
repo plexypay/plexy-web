@@ -5,7 +5,7 @@ import { TxVariants } from '../tx-variants';
 import UIElement from '../internal/UIElement';
 import SRPanelProvider from '../../core/Errors/SRPanelProvider';
 import RedirectButton from '../internal/RedirectButton';
-import AdyenCheckoutError, { ERROR } from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError, { ERROR } from '../../core/Errors/PlexyCheckoutError';
 import { PasskeyService } from './services/PasskeyService';
 import { authorizeEnrollment } from './services/authorizeEnrollment';
 import { authorizePayment } from './services/authorizePayment';
@@ -14,10 +14,10 @@ import Enrollment from './components/Enrollment';
 import { PaymentAction } from '../../types/global-types';
 import type { ICore } from '../../core/types';
 
-const isAdyenHosted = () => {
+const isPlexyHosted = () => {
     try {
         const currentUrl = new URL(window.location.href);
-        return currentUrl.hostname.endsWith('.adyen.com');
+        return currentUrl.hostname.endsWith('.plexy.com');
     } catch (e) {
         // SSR, or it fails to parse the full url
         return false;
@@ -30,7 +30,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
 
     public static readonly defaultProps: PayByBankPixConfiguration = {
         showPayButton: true,
-        _isAdyenHosted: isAdyenHosted(),
+        _isPlexyHosted: isPlexyHosted(),
         countdownTime: PayByBankPixElement.TIMEOUT_MINUTES
     };
 
@@ -46,14 +46,14 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
             this.analytics
         );
 
-        if (this.props._isAdyenHosted) {
+        if (this.props._isPlexyHosted) {
             void this.passkeyService.initialize();
         }
     }
 
     get isValid(): boolean {
         // Always true for non-hosted page or stored payment
-        if (!this.props._isAdyenHosted || this.props.storedPaymentMethodId) {
+        if (!this.props._isPlexyHosted || this.props.storedPaymentMethodId) {
             return true;
         }
         return !!this.state?.isValid;
@@ -83,9 +83,9 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
     public override async isAvailable(): Promise<void> {
         const unsupportedReason = await this.passkeyService.getWebAuthnUnsupportedReason();
         if (unsupportedReason) {
-            return Promise.reject(new AdyenCheckoutError(ERROR, unsupportedReason));
+            return Promise.reject(new PlexyCheckoutError(ERROR, unsupportedReason));
         }
-        if (!this.props._isAdyenHosted) {
+        if (!this.props._isPlexyHosted) {
             return Promise.resolve();
         }
 
@@ -98,7 +98,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
                 const shouldShowStoredPaymentMethod = await this.passkeyService.canUseStoredCredential();
                 return shouldShowStoredPaymentMethod
                     ? Promise.resolve()
-                    : Promise.reject(new AdyenCheckoutError('ERROR', 'The stored payment method is not available on this device'));
+                    : Promise.reject(new PlexyCheckoutError('ERROR', 'The stored payment method is not available on this device'));
             }
 
             return Promise.resolve();
@@ -128,7 +128,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
     }
 
     formatData(): PayByBankPixData {
-        if (!this.props._isAdyenHosted) {
+        if (!this.props._isPlexyHosted) {
             return {
                 paymentMethod: { type: TxVariants.paybybank_pix }
             };
@@ -159,7 +159,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
             this.setState({ ...payload, data: { ...data, riskSignals, deviceId } });
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error in the onIssuerSelected';
-            this.handleError(error instanceof AdyenCheckoutError ? error : new AdyenCheckoutError(ERROR, errorMsg));
+            this.handleError(error instanceof PlexyCheckoutError ? error : new PlexyCheckoutError(ERROR, errorMsg));
         }
     };
 
@@ -176,7 +176,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
             this.handleAdditionalDetails({ data: { details: { redirectResult } } });
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error in the authorizeEnrollment';
-            this.handleError(error instanceof AdyenCheckoutError ? error : new AdyenCheckoutError(ERROR, errorMsg));
+            this.handleError(error instanceof PlexyCheckoutError ? error : new PlexyCheckoutError(ERROR, errorMsg));
         }
     };
 
@@ -193,7 +193,7 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
             super.submit();
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error in the payWithStoredPayment';
-            this.handleError(error instanceof AdyenCheckoutError ? error : new AdyenCheckoutError(ERROR, errorMsg));
+            this.handleError(error instanceof PlexyCheckoutError ? error : new PlexyCheckoutError(ERROR, errorMsg));
         }
     };
 
@@ -213,13 +213,13 @@ class PayByBankPixElement extends UIElement<PayByBankPixConfiguration> {
             this.handleAdditionalDetails({ data: { details: { redirectResult } } });
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : 'Unknown error in the authorizePayment';
-            this.handleError(error instanceof AdyenCheckoutError ? error : new AdyenCheckoutError(ERROR, errorMsg));
+            this.handleError(error instanceof PlexyCheckoutError ? error : new PlexyCheckoutError(ERROR, errorMsg));
         }
     };
 
     render() {
         // Always render the redirect button on the merchant's page
-        if (!this.props._isAdyenHosted) {
+        if (!this.props._isPlexyHosted) {
             return (
                 <CoreProvider i18n={this.props.i18n} loadingContext={this.props.loadingContext} resources={this.resources}>
                     <SRPanelProvider srPanel={this.props.modules.srPanel}>

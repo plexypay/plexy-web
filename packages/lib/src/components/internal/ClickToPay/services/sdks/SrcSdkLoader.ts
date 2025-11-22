@@ -2,7 +2,7 @@ import { ISrcInitiator } from './AbstractSrcInitiator';
 import VisaSdk from './VisaSdk';
 import MastercardSdk from './MastercardSdk';
 import { CustomSdkConfiguration } from './types';
-import AdyenCheckoutError from '../../../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../../../core/Errors/PlexyCheckoutError';
 import { isFulfilled, isRejected } from '../../../../../utils/promise-util';
 import { AnalyticsModule } from '../../../../../types/global-types';
 
@@ -39,7 +39,7 @@ class SrcSdkLoader implements ISrcSdkLoader {
 
     public async load(environment: string, analytics: AnalyticsModule): Promise<ISrcInitiator[]> {
         if (!this.schemes || this.schemes.length === 0) {
-            throw new AdyenCheckoutError('ERROR', 'ClickToPay -> SrcSdkLoader: There are no schemes set to be loaded');
+            throw new PlexyCheckoutError('ERROR', 'ClickToPay -> SrcSdkLoader: There are no schemes set to be loaded');
         }
 
         return new Promise((resolve, reject) => {
@@ -49,7 +49,7 @@ class SrcSdkLoader implements ISrcSdkLoader {
             void Promise.allSettled(loadScriptPromises).then(loadScriptResponses => {
                 if (loadScriptResponses.every(isRejected)) {
                     reject(
-                        new AdyenCheckoutError('ERROR', `ClickToPay -> SrcSdkLoader # Unable to load network schemes: ${this.schemes.toString()}`)
+                        new PlexyCheckoutError('ERROR', `ClickToPay -> SrcSdkLoader # Unable to load network schemes: ${this.schemes.toString()}`)
                     );
                 }
 

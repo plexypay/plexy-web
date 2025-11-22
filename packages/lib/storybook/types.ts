@@ -15,7 +15,7 @@ export type ShopperDetails = {
     billingAddress: AddressData;
 };
 
-export type GlobalStoryProps = AdyenCheckoutProps &
+export type GlobalStoryProps = PlexyCheckoutProps &
     Omit<CoreConfiguration, 'amount'> & {
         useSessions: boolean;
         redirectResult?: string;
@@ -36,7 +36,7 @@ export type CustomCardStoryConfiguration<Q> = StoryObj<CardPaymentMethodStoryPro
 
 export type MetaConfiguration<T> = Meta<PaymentMethodStoryProps<T>>;
 
-export type AdyenCheckoutProps = {
+export type PlexyCheckoutProps = {
     showPayButton: boolean;
     countryCode: string;
     shopperLocale: string;

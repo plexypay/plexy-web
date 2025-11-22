@@ -127,7 +127,7 @@ describe('Click to Pay: ENTER keypress should perform an action only within the 
         createClickToPayService.mockImplementation(() => mockCtpService);
 
         const resources = mock<Resources>();
-        resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+        resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
         const onSubmitMock = jest.fn();
 
@@ -166,7 +166,7 @@ describe('Click to Pay: ENTER keypress should perform an action only within the 
         createClickToPayService.mockImplementation(() => mockCtpService);
 
         const resources = mock<Resources>();
-        resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+        resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
         const onSubmitMock = jest.fn();
 
@@ -231,7 +231,7 @@ describe('Click to Pay: ENTER keypress should perform an action only within the 
         createClickToPayService.mockImplementation(() => mockCtpService);
 
         const resources = mock<Resources>();
-        resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+        resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
         const onSubmitMock = jest.fn();
 

@@ -83,7 +83,7 @@ function PreAuthorizedDebitCanadaComponent({
     }, [onChange, data, valid, errors, isValid, storePaymentMethod]);
 
     return (
-        <div className="adyen-checkout__eftpad-canada">
+        <div className="plexy-checkout__eftpad-canada">
             <FormInstruction />
 
             <Fieldset>
@@ -169,7 +169,7 @@ function PreAuthorizedDebitCanadaComponent({
             </Fieldset>
 
             {enableStoreDetails && (
-                <StoreDetails className={'adyen-checkout_eftpad-canada-store-details'} disabled={isFormDisabled} onChange={setStorePaymentMethod} />
+                <StoreDetails className={'plexy-checkout_eftpad-canada-store-details'} disabled={isFormDisabled} onChange={setStorePaymentMethod} />
             )}
 
             <SettlementInfo />

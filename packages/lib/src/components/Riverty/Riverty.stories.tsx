@@ -18,7 +18,7 @@ const shopperDetails: ShopperDetails = {
         lastName: 'Doe'
     },
     telephoneNumber: '0612345678',
-    shopperEmail: 'test@adyen.com',
+    shopperEmail: 'test@plexy.com',
     dateOfBirth: '1990-08-10',
     shopperIP: '0.0.0.0',
     billingAddress: {

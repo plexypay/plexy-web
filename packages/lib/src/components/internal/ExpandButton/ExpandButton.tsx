@@ -24,7 +24,7 @@ function ExpandButton({
     // If we only have a single payment method we should use a div instead of toggable button
     if (standalone) {
         return (
-            <div className={classNames('adyen-checkout__payment-method__header__title', 'adyen-checkout__payment-method__header__title--standalone')}>
+            <div className={classNames('plexy-checkout__payment-method__header__title', 'plexy-checkout__payment-method__header__title--standalone')}>
                 {children}
             </div>
         );
@@ -36,8 +36,8 @@ function ExpandButton({
         // mainly from merchants running automated systems
         <button
             className={classNames(
-                'adyen-checkout__payment-method__header__title',
-                ...classNameModifiers.map(modifier => `adyen-checkout-expand-button--${modifier}`)
+                'plexy-checkout__payment-method__header__title',
+                ...classNameModifiers.map(modifier => `plexy-checkout-expand-button--${modifier}`)
             )}
             id={buttonId}
             role={'radio'}
@@ -49,8 +49,8 @@ function ExpandButton({
             {showRadioButton && (
                 <span
                     className={classNames({
-                        'adyen-checkout__payment-method__radio': true,
-                        'adyen-checkout__payment-method__radio--selected': isSelected
+                        'plexy-checkout__payment-method__radio': true,
+                        'plexy-checkout__payment-method__radio--selected': isSelected
                     })}
                     aria-hidden="true"
                 />

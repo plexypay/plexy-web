@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import MealVoucherFR from './MealVoucherFR';
-import AdyenCheckoutError from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../core/Errors/PlexyCheckoutError';
 
 const flushPromises = () => new Promise(process.nextTick);
 
@@ -126,7 +126,7 @@ describe('MealVoucherFR Error Handling', () => {
 
             // Manually trigger handleError (simulating what happens in the broken flow)
             // @ts-ignore - accessing protected method for testing
-            mealVoucher.handleError(new AdyenCheckoutError('ERROR', 'Test error'));
+            mealVoucher.handleError(new PlexyCheckoutError('ERROR', 'Test error'));
             await flushPromises();
 
             // Error message should still be visible after handleError

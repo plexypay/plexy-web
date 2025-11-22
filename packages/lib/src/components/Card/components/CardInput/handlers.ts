@@ -80,7 +80,7 @@ const setFocusOnNonSF = (field, sfp) => {
 
     if (nameVal === 'country' || nameVal === 'stateOrProvince') {
         // Set focus on dropdown
-        const field: HTMLElement = selectOne(sfp.current.rootNode, `.adyen-checkout__field--${nameVal} .adyen-checkout__filter-input`);
+        const field: HTMLElement = selectOne(sfp.current.rootNode, `.plexy-checkout__field--${nameVal} .plexy-checkout__filter-input`);
         field?.focus();
     } else {
         // Set focus on input

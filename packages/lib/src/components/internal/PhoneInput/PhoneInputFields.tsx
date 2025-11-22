@@ -43,7 +43,7 @@ export default function PhoneInputFields({ getError, showNumber, showPrefix, for
         <Fragment>
             {showPrefix && (
                 <Field
-                    className={'adyen-checkout-field--phone-prefix'}
+                    className={'plexy-checkout-field--phone-prefix'}
                     label={i18n.get('telephonePrefix')}
                     errorMessage={getError('phonePrefix')}
                     showValidIcon={false}
@@ -54,7 +54,7 @@ export default function PhoneInputFields({ getError, showNumber, showPrefix, for
                 >
                     <Select
                         readonly={!canSelectPrefix}
-                        className={'adyen-checkout-dropdown adyen-checkout-dropdown--countrycode-selector'}
+                        className={'plexy-checkout-dropdown plexy-checkout-dropdown--countrycode-selector'}
                         name={'phonePrefix'}
                         items={props.items}
                         onChange={handleChangeFor('phonePrefix')}
@@ -66,7 +66,7 @@ export default function PhoneInputFields({ getError, showNumber, showPrefix, for
 
             {showNumber && (
                 <Field
-                    className={'adyen-checkout-field--phone-number'}
+                    className={'plexy-checkout-field--phone-number'}
                     label={props.phoneNumberKey ? i18n.get(props.phoneNumberKey) : i18n.get('telephoneNumber')}
                     errorMessage={getError('phoneNumber')}
                     isValid={valid.phoneNumber}
@@ -76,7 +76,7 @@ export default function PhoneInputFields({ getError, showNumber, showPrefix, for
                     name={'phoneNumber'}
                 >
                     <InputText
-                        className="adyen-checkout__input adyen-checkout-input adyen-checkout-input--phone-number"
+                        className="plexy-checkout__input plexy-checkout-input plexy-checkout-input--phone-number"
                         type="tel"
                         name="phoneNumber"
                         value={data.phoneNumber}

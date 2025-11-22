@@ -35,8 +35,8 @@ export default function StoredCardFields({
     };
 
     return (
-        <div className="adyen-checkout__card__form adyen-checkout__card__form--oneClick" aria-label={ariaLabel}>
-            <Fieldset classNamesFields={['adyen-checkout__card__exp-cvc']}>
+        <div className="plexy-checkout__card__form plexy-checkout__card__form--oneClick" aria-label={ariaLabel}>
+            <Fieldset classNamesFields={['plexy-checkout__card__exp-cvc']}>
                 {expiryMonth && expiryYear && (
                     <Field
                         label={i18n.get('creditCard.expiryDate.label')}
@@ -46,7 +46,7 @@ export default function StoredCardFields({
                     >
                         <InputText
                             name={'expiryDateField'}
-                            className={'adyen-checkout__input adyen-checkout__input--disabled adyen-checkout__card__exp-date__input--oneclick'}
+                            className={'plexy-checkout__input plexy-checkout__input--disabled plexy-checkout__card__exp-date__input--oneclick'}
                             value={`${expiryMonth} / ${expiryYear}`}
                             disabled={true}
                             dir={'ltr'}

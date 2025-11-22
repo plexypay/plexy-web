@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { AdyenCheckout } from '../../src';
+import { PlexyCheckout } from '../../src';
 import { AdditionalDetailsData } from '../../src/core/types';
 import { makeDetailsCall } from '../helpers/checkout-api-calls';
 import { handleError, handleFinalState } from '../helpers/checkout-handlers';
@@ -15,7 +15,7 @@ export const RedirectResultContainer = ({ redirectResult, sessionId, countryCode
             return;
         }
 
-        void AdyenCheckout({
+        void PlexyCheckout({
             clientKey: process.env.CLIENT_KEY,
             // @ts-ignore CLIENT_ENV has valid value
             environment: process.env.CLIENT_ENV,

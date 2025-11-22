@@ -1,8 +1,8 @@
 import { PasskeyService } from './PasskeyService';
 import { PasskeySdkLoader } from './PasskeySdkLoader';
-import AdyenCheckoutError, { SDK_ERROR } from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError, { SDK_ERROR } from '../../../core/Errors/PlexyCheckoutError';
 import { mock, mockDeep } from 'jest-mock-extended';
-import { IAdyenPasskey, PasskeyErrorTypes } from './types';
+import { IPlexyPasskey, PasskeyErrorTypes } from './types';
 import base64 from '../../../utils/base64';
 import { AnalyticsModule } from '../../../types/global-types';
 
@@ -15,7 +15,7 @@ beforeAll(() => {
 });
 
 describe('PasskeyService', () => {
-    const mockPasskeySdk = mockDeep<IAdyenPasskey>();
+    const mockPasskeySdk = mockDeep<IPlexyPasskey>();
     const mockPasskeyServiceConfig = { environment: 'test', deviceId: 'test-device-id' };
     const mockAnalytics = mock<AnalyticsModule>();
 
@@ -35,8 +35,8 @@ describe('PasskeyService', () => {
 
     it('should reject if initialize fails', async () => {
         const mockLoader = PasskeySdkLoader as jest.MockedClass<typeof PasskeySdkLoader>;
-        mockLoader.prototype.load.mockRejectedValue(new AdyenCheckoutError(SDK_ERROR, 'SDK load failed'));
-        await expect(passkeyService.initialize()).rejects.toThrow(AdyenCheckoutError);
+        mockLoader.prototype.load.mockRejectedValue(new PlexyCheckoutError(SDK_ERROR, 'SDK load failed'));
+        await expect(passkeyService.initialize()).rejects.toThrow(PlexyCheckoutError);
     });
 
     it('should return empty string when WebAuthn is supported', async () => {
@@ -73,7 +73,7 @@ describe('PasskeyService', () => {
             const mockError = { type: PasskeyErrorTypes.RISK_SIGNALS_ERROR, message: 'Risk signal error' };
             mockPasskeySdk.captureRiskSignalsEnrollment.mockResolvedValue(mockError);
 
-            await expect(passkeyService.captureRiskSignalsEnrollment()).rejects.toThrow(new AdyenCheckoutError(SDK_ERROR, 'Risk signal error'));
+            await expect(passkeyService.captureRiskSignalsEnrollment()).rejects.toThrow(new PlexyCheckoutError(SDK_ERROR, 'Risk signal error'));
         });
 
         it('should return authentication risk signal when successful', async () => {
@@ -92,7 +92,7 @@ describe('PasskeyService', () => {
             mockPasskeySdk.captureRiskSignalsAuthentication.mockResolvedValue(mockError);
 
             await expect(passkeyService.captureRiskSignalsAuthentication()).rejects.toThrow(
-                new AdyenCheckoutError(SDK_ERROR, 'Authentication error')
+                new PlexyCheckoutError(SDK_ERROR, 'Authentication error')
             );
         });
 
@@ -117,7 +117,7 @@ describe('PasskeyService', () => {
             const encodedOptions = base64.encode(JSON.stringify({ options: 'someOptions' }));
 
             await expect(passkeyService.createCredentialForEnrollment(encodedOptions)).rejects.toThrow(
-                new AdyenCheckoutError(SDK_ERROR, 'Failed to create credential')
+                new PlexyCheckoutError(SDK_ERROR, 'Failed to create credential')
             );
         });
 
@@ -142,7 +142,7 @@ describe('PasskeyService', () => {
             const encodedOptions = base64.encode(JSON.stringify({ options: 'authOptions' }));
 
             await expect(passkeyService.authenticateWithCredential(encodedOptions)).rejects.toThrow(
-                new AdyenCheckoutError(SDK_ERROR, 'Failed to authenticate')
+                new PlexyCheckoutError(SDK_ERROR, 'Failed to authenticate')
             );
         });
     });

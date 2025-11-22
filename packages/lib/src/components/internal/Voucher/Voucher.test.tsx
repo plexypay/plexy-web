@@ -9,7 +9,7 @@ const onActionHandled = jest.fn();
 const baseProps: Omit<VoucherProps, 'paymentMethodType'> = {
     introduction: 'Introduction Text',
     amount: '€100.00',
-    instructionsUrl: 'https://www.adyen.com',
+    instructionsUrl: 'https://www.plexy.com',
     reference: '123456',
     onActionHandled
 };

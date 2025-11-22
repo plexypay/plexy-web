@@ -1,7 +1,7 @@
 /**
  * FALLBACK_CONTEXT
  */
-export const FALLBACK_CONTEXT = 'https://checkoutshopper-live.adyen.com/checkoutshopper/';
+export const FALLBACK_CONTEXT = 'https://checkoutshopper-live.plexy.com/checkoutshopper/';
 
 export const LIBRARY_VERSION = process.env.VERSION;
 export const LIBRARY_BUNDLE_TYPE = process.env.BUNDLE_TYPE;

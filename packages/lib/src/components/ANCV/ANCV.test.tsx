@@ -1,7 +1,7 @@
 import { render } from '@testing-library/preact';
 import { mockDeep } from 'jest-mock-extended';
 import { AnalyticsModule } from '../../types/global-types';
-import AdyenCheckoutError from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../core/Errors/PlexyCheckoutError';
 import { ANALYTICS_ERROR_TYPE } from '../../core/Analytics/constants';
 import ANCV from './ANCV';
 
@@ -33,7 +33,7 @@ describe('ANCV', () => {
                 // @ts-ignore test only
                 session: {
                     createOrder: () => {
-                        return Promise.reject(new AdyenCheckoutError('NETWORK_ERROR', '', { code }));
+                        return Promise.reject(new PlexyCheckoutError('NETWORK_ERROR', '', { code }));
                     }
                 }
             });

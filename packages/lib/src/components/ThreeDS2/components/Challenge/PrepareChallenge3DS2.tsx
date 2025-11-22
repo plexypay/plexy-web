@@ -8,7 +8,7 @@ import Img from '../../../internal/Img';
 import './challenge.scss';
 import { hasOwnProperty } from '../../../../utils/hasOwnProperty';
 import useImage from '../../../../core/Context/useImage';
-import AdyenCheckoutError, { ERROR } from '../../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError, { ERROR } from '../../../../core/Errors/PlexyCheckoutError';
 import { THREEDS2_CHALLENGE, THREEDS2_CHALLENGE_ERROR, THREEDS2_FULL, THREEDS2_NUM, MISSING_TOKEN_IN_ACTION_MSG } from '../../constants';
 import { isValidHttpUrl } from '../../../../utils/isValidURL';
 import { ANALYTICS_ERROR_TYPE, Analytics3DS2Errors, Analytics3DS2Events } from '../../../../core/Analytics/constants';
@@ -248,7 +248,7 @@ class PrepareChallenge3DS2 extends Component<PrepareChallenge3DS2Props, PrepareC
 
         // Decide whether to call this.props.onError
         if (isFatal) {
-            this.props.onError(new AdyenCheckoutError(ERROR, errorInfoObj.errorInfo, { cause: errorInfoObj.errorObj }));
+            this.props.onError(new PlexyCheckoutError(ERROR, errorInfoObj.errorInfo, { cause: errorInfoObj.errorObj }));
         }
     }
 
@@ -277,7 +277,7 @@ class PrepareChallenge3DS2 extends Component<PrepareChallenge3DS2Props, PrepareC
                              */
                             if (this.props.isMDFlow) {
                                 this.props.onError(
-                                    new AdyenCheckoutError(
+                                    new PlexyCheckoutError(
                                         ERROR,
                                         `${THREEDS2_CHALLENGE_ERROR}: ${
                                             challenge.result.errorDescription
@@ -335,7 +335,7 @@ class PrepareChallenge3DS2 extends Component<PrepareChallenge3DS2Props, PrepareC
                             // see comment in onCompleteChallenge code block
                             if (this.props.isMDFlow) {
                                 this.props.onError(
-                                    new AdyenCheckoutError(ERROR, `${THREEDS2_CHALLENGE_ERROR}: '3DS2 challenge timed out'`, {
+                                    new PlexyCheckoutError(ERROR, `${THREEDS2_CHALLENGE_ERROR}: '3DS2 challenge timed out'`, {
                                         cause: challenge.errorCode
                                     })
                                 );
@@ -354,15 +354,15 @@ class PrepareChallenge3DS2 extends Component<PrepareChallenge3DS2Props, PrepareC
 
         if (this.state.status === 'error') {
             return (
-                <div className="adyen-checkout__threeds2-challenge-error">
+                <div className="plexy-checkout__threeds2-challenge-error">
                     <Img
-                        className="adyen-checkout__status__icon adyen-checkout__status__icon--error"
+                        className="plexy-checkout__status__icon plexy-checkout__status__icon--error"
                         src={getImage({
                             imageFolder: 'components/'
                         })('error')}
                         alt={''}
                     />
-                    <div className="adyen-checkout__status__text">
+                    <div className="plexy-checkout__status__text">
                         {this.state.errorInfo ? this.state.errorInfo : this.props.i18n.get('error.message.unknown')}
                     </div>
                 </div>

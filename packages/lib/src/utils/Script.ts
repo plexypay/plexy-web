@@ -1,4 +1,4 @@
-import AdyenCheckoutError from '../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../core/Errors/PlexyCheckoutError';
 import { AnalyticsInfoEvent, InfoEventType } from '../core/Analytics/AnalyticsInfoEvent';
 import { AnalyticsModule } from '../types/global-types';
 
@@ -93,7 +93,7 @@ class Script implements IScript {
     };
 
     public remove = () => {
-        this.rejectLoadPromise?.(new AdyenCheckoutError('CANCEL', 'Script loading cancelled.'));
+        this.rejectLoadPromise?.(new PlexyCheckoutError('CANCEL', 'Script loading cancelled.'));
         this.removeScript();
         this.loadPromise = null;
     };
@@ -108,7 +108,7 @@ class Script implements IScript {
             const scriptContainer = document.querySelector(this.node);
 
             if (!scriptContainer) {
-                reject(new AdyenCheckoutError('SCRIPT_ERROR', `Unable to find script container node: ${this.node}`));
+                reject(new PlexyCheckoutError('SCRIPT_ERROR', `Unable to find script container node: ${this.node}`));
                 return;
             }
 
@@ -127,7 +127,7 @@ class Script implements IScript {
             const handleOnError = (errorEvent: ErrorEvent) => {
                 cleanupListeners();
                 reject(
-                    new AdyenCheckoutError(
+                    new PlexyCheckoutError(
                         'SCRIPT_ERROR',
                         `Unable to load script ${this.src}.${errorEvent?.message && `Message: ${errorEvent.message}`}`,
                         {

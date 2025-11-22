@@ -1,5 +1,5 @@
 import {
-    AdyenCheckout,
+    PlexyCheckout,
     ApplePay,
     Dropin,
     Card,
@@ -22,8 +22,8 @@ import {
     BcmcMobile,
     Blik,
     UPI
-} from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+} from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import { getPaymentMethods, makePayment, checkBalance, createOrder, cancelOrder, makeDetailsCall } from '../../services';
 import { amount, shopperLocale, countryCode, environmentUrlsOverride } from '../../config/commonConfig';
 import { getSearchParameters } from '../../utils';
@@ -32,7 +32,7 @@ import { handleOnPaymentCompleted, handleOnPaymentFailed } from '../../handlers'
 export async function initManual() {
     const paymentMethodsResponse = await getPaymentMethods({ amount, shopperLocale });
 
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         amount,
         countryCode,
         clientKey: process.env.__CLIENT_KEY__,

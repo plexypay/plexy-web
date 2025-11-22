@@ -1,6 +1,6 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout-await-logo-container {
+.plexy-checkout-await-logo-container {
     display: flex;
     gap: token(spacer-070);
     flex-direction: column;
@@ -12,6 +12,6 @@
 }
 
 /* When there's only one child inside, remove the background */
-.adyen-checkout-await-logo-container:has(> *:only-child) {
+.plexy-checkout-await-logo-container:has(> *:only-child) {
     background: none;
 }

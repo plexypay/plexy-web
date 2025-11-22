@@ -76,7 +76,7 @@ export interface ApplePayConfiguration extends UIElementProps {
 
     /**
      * Used to override the domain name for the Apple Pay button. Useful when using ApplePay within cross-domain iframe
-     * For more context: https://github.com/Adyen/adyen-web/pull/3340
+     * For more context: https://github.com/Plexy/plexy-web/pull/3340
      */
     domainName?: string;
 

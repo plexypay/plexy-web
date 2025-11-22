@@ -492,8 +492,8 @@ describe('GooglePay', () => {
             test('should parse "brands" from configuration if available', () => {
                 const gpay = new GooglePay(global.core, {
                     configuration: {
-                        merchantId: 'adyen',
-                        gatewayMerchantId: 'adyen'
+                        merchantId: 'plexy',
+                        gatewayMerchantId: 'plexy'
                     },
                     brands: ['mc', 'visa']
                 });
@@ -503,8 +503,8 @@ describe('GooglePay', () => {
             test('should ignore "brands" from configuration if "allowedCardNetworks" is set', () => {
                 const gpay = new GooglePay(global.core, {
                     configuration: {
-                        merchantId: 'adyen',
-                        gatewayMerchantId: 'adyen'
+                        merchantId: 'plexy',
+                        gatewayMerchantId: 'plexy'
                     },
                     brands: ['mc', 'visa', 'discover', 'elo'],
                     allowedCardNetworks: ['AMEX', 'MASTERCARD']
@@ -515,8 +515,8 @@ describe('GooglePay', () => {
             test('should set default "allowedCardNetworks" values if "brands" and "allowedCardNetworks" props are not set', () => {
                 const gpay = new GooglePay(global.core, {
                     configuration: {
-                        merchantId: 'adyen',
-                        gatewayMerchantId: 'adyen'
+                        merchantId: 'plexy',
+                        gatewayMerchantId: 'plexy'
                     }
                 });
                 expect(gpay.props.allowedCardNetworks).toEqual(['AMEX', 'DISCOVER', 'JCB', 'MASTERCARD', 'VISA']);

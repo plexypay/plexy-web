@@ -5,10 +5,10 @@ import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 
 const server = setupServer(
-    http.get('https://checkoutshopper-live.adyen.com/checkoutshopper/datasets/countries/en-US.json', () => {
+    http.get('https://checkoutshopper-live.plexy.com/checkoutshopper/datasets/countries/en-US.json', () => {
         return HttpResponse.json([{ id: 'BR', name: 'Brazil' }]);
     }) as any,
-    http.get('https://checkoutshopper-live.adyen.com/checkoutshopper/datasets/states/BR/en-US.json', () => {
+    http.get('https://checkoutshopper-live.plexy.com/checkoutshopper/datasets/states/BR/en-US.json', () => {
         return HttpResponse.json([
             { id: 'MG', name: 'Minas Gerais' },
             { id: 'SP', name: 'Sao Paulo' }
@@ -32,7 +32,7 @@ describe('Boleto', () => {
             i18n: global.i18n,
             onChange: onChangeMock,
             onSubmit: onSubmitMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         render(boleto.render());
@@ -104,7 +104,7 @@ describe('Boleto', () => {
             modules: { analytics: global.analytics, resources: global.resources },
             i18n: global.i18n,
             onSubmit: onSubmitMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         render(boleto.render());
@@ -135,7 +135,7 @@ describe('Boleto', () => {
             i18n: global.i18n,
             onChange: onChangeMock,
             onSubmit: onSubmitMock,
-            loadingContext: 'https://checkoutshopper-live.adyen.com/checkoutshopper/'
+            loadingContext: 'https://checkoutshopper-live.plexy.com/checkoutshopper/'
         });
 
         render(boleto.render());
@@ -164,7 +164,7 @@ describe('Boleto', () => {
         await user.click(emailCheckbox);
 
         const email = await screen.findByLabelText('Email address');
-        await user.type(email, 'jose@adyen.com');
+        await user.type(email, 'jose@plexy.com');
 
         await waitFor(() => {
             expect(onChangeMock).toHaveBeenLastCalledWith(expect.objectContaining({ isValid: true }), expect.anything());
@@ -193,7 +193,7 @@ describe('Boleto', () => {
                         firstName: 'Jose',
                         lastName: 'Fernandez'
                     },
-                    shopperEmail: 'jose@adyen.com',
+                    shopperEmail: 'jose@plexy.com',
                     socialSecurityNumber: '36497798382',
                     clientStateDataIndicator: true
                 }

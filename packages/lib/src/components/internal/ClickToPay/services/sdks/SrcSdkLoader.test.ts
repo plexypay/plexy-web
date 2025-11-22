@@ -2,7 +2,7 @@ import SrcSdkLoader from './SrcSdkLoader';
 
 import VisaSdk from './VisaSdk';
 import MastercardSdk from './MastercardSdk';
-import AdyenCheckoutError from '../../../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../../../core/Errors/PlexyCheckoutError';
 import { mock } from 'jest-mock-extended';
 import { AnalyticsModule } from '../../../../../types/global-types';
 
@@ -33,7 +33,7 @@ describe('load()', () => {
         expect.assertions(2);
 
         await loader.load('test', mockAnalytics).catch(error => {
-            expect(error).toBeInstanceOf(AdyenCheckoutError);
+            expect(error).toBeInstanceOf(PlexyCheckoutError);
             expect(error.message).toContain('ClickToPay -> SrcSdkLoader # Unable to load network schemes');
         });
     });
@@ -55,7 +55,7 @@ describe('load()', () => {
         expect.assertions(2);
 
         await loader.load('test', mockAnalytics).catch(error => {
-            expect(error).toBeInstanceOf(AdyenCheckoutError);
+            expect(error).toBeInstanceOf(PlexyCheckoutError);
             expect(error.message).toContain('ClickToPay -> SrcSdkLoader: There are no schemes set to be loaded');
         });
     });

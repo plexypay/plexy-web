@@ -5,7 +5,7 @@ import { PasskeyService } from './services/PasskeyService';
 import { TxVariants } from '../tx-variants';
 import { httpGet, httpPost } from '../../core/Services/http';
 import { SRPanel } from '../../core/Errors/SRPanel';
-import AdyenCheckoutError from '../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../core/Errors/PlexyCheckoutError';
 
 jest.mock('./services/PasskeyService');
 jest.mock('../../core/Services/http');
@@ -62,7 +62,7 @@ describe('PayByBankPix', () => {
     test("should render a redirect button on the merchant's page", async () => {
         const payByBankPixElement = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: false
+            _isPlexyHosted: false
         });
 
         render(payByBankPixElement.render());
@@ -72,7 +72,7 @@ describe('PayByBankPix', () => {
     test("should always be valid on the merchant's page", () => {
         const payByBankPixElement = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: false
+            _isPlexyHosted: false
         });
 
         expect(payByBankPixElement.isValid).toBe(true);
@@ -81,7 +81,7 @@ describe('PayByBankPix', () => {
     test("should format the correct data on the merchant's page", () => {
         const payByBankPixElement = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: false
+            _isPlexyHosted: false
         });
 
         expect(payByBankPixElement.formatData()).toEqual({ paymentMethod: { type: TxVariants.paybybank_pix } });
@@ -91,7 +91,7 @@ describe('PayByBankPix', () => {
         getWebAuthnUnsupportedReasonMock.mockResolvedValue('unsupported');
         const payByBankPixElement = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: false
+            _isPlexyHosted: false
         });
         await expect(payByBankPixElement.isAvailable()).rejects.toThrow('unsupported');
         getWebAuthnUnsupportedReasonMock.mockReset();
@@ -100,7 +100,7 @@ describe('PayByBankPix', () => {
     test('isAvailable should reject if initialize fails', async () => {
         const element = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: true
+            _isPlexyHosted: true
         });
         const error = new Error('Init fail');
         mockInitialize.mockRejectedValueOnce(error);
@@ -110,7 +110,7 @@ describe('PayByBankPix', () => {
     test('isAvailable should resolve if there is no WebAuthnUnsupported reasons', async () => {
         const payByBankPixElement = new PayByBankPix(global.core, {
             ...coreProps,
-            _isAdyenHosted: false
+            _isPlexyHosted: false
         });
         await expect(payByBankPixElement.isAvailable()).resolves.toBe(undefined);
     });
@@ -124,7 +124,7 @@ describe('PayByBankPix', () => {
             payByBankPixElement = new PayByBankPix(global.core, {
                 ...coreProps,
                 onChange: onChangeMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 issuers: [{ name: 'Iniciador Mock Bank', id: '123' }]
             });
         });
@@ -180,7 +180,7 @@ describe('PayByBankPix', () => {
             payByBankPixElement = new PayByBankPix(global.core, {
                 ...coreProps,
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 type: 'await'
             });
             render(payByBankPixElement.render());
@@ -191,7 +191,7 @@ describe('PayByBankPix', () => {
             payByBankPixElement = new PayByBankPix(global.core, {
                 ...coreProps,
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 type: 'await',
                 paymentMethodData: { enrollmentId: 'mock-enrollment-id' },
                 clientKey: 'mock-client-key'
@@ -219,7 +219,7 @@ describe('PayByBankPix', () => {
             payByBankPixElement = new PayByBankPix(global.core, {
                 ...coreProps,
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 type: 'await',
                 paymentMethodData: { enrollmentId: 'mock-enrollment-id' },
                 clientKey: 'mock-client-key'
@@ -257,7 +257,7 @@ describe('PayByBankPix', () => {
                 ...coreProps,
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
                 onAdditionalDetails: onAdditionalDetailsMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 type: 'await',
                 paymentMethodData: { enrollmentId: 'mock-enrollment-id' },
                 clientKey: 'mock-client-key'
@@ -289,7 +289,7 @@ describe('PayByBankPix', () => {
                 ...coreProps,
                 onChange: onChangeMock,
                 onSubmit: onSubmitMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 storedPaymentMethodId: 'mock-stored-payment-method-id',
                 payByBankPixDetails: {
                     receiver: 'mock-receiver',
@@ -308,7 +308,7 @@ describe('PayByBankPix', () => {
         test('isAvailable should reject if canUseStoredCredential returns false', async () => {
             canUseStoredCredentialMock.mockResolvedValueOnce(false);
             await expect(payByBankPixElement.isAvailable()).rejects.toThrow(
-                new AdyenCheckoutError('ERROR', 'The stored payment method is not available on this device')
+                new PlexyCheckoutError('ERROR', 'The stored payment method is not available on this device')
             );
         });
 
@@ -345,7 +345,7 @@ describe('PayByBankPix', () => {
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
                 onChange: onChangeMock,
                 onSubmit: onSubmitMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 storedPaymentMethodId: 'mock-stored-payment-method-id',
                 amount: { value: 100, currency: 'BRL' },
                 type: 'await'
@@ -360,7 +360,7 @@ describe('PayByBankPix', () => {
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
                 onChange: onChangeMock,
                 onSubmit: onSubmitMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 storedPaymentMethodId: 'mock-stored-payment-method-id',
                 paymentMethodData: { enrollmentId: 'mock-enrollment-id', initiationId: 'mock-initiationId-id' },
                 clientKey: 'mock-client-key',
@@ -391,7 +391,7 @@ describe('PayByBankPix', () => {
                 modules: { ...coreProps.modules, srPanel: new SRPanel(global.core) },
                 onChange: onChangeMock,
                 onSubmit: onSubmitMock,
-                _isAdyenHosted: true,
+                _isPlexyHosted: true,
                 storedPaymentMethodId: 'mock-stored-payment-method-id',
                 paymentMethodData: { enrollmentId: 'mock-enrollment-id', initiationId: 'mock-initiationId-id' },
                 clientKey: 'mock-client-key',

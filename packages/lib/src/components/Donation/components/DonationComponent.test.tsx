@@ -66,7 +66,7 @@ describe('DonationComponent', () => {
     });
 
     test('Should render the disclaimer if termsAndConditionsUrl is present', () => {
-        const termsAndConditionsUrl = 'https://www.adyen.com';
+        const termsAndConditionsUrl = 'https://www.plexy.com';
         renderComponent({ termsAndConditionsUrl });
         expect(screen.getByText('By donating you agree to the', { exact: false }).textContent).toEqual(
             'By donating you agree to the terms and conditions'

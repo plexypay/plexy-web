@@ -40,7 +40,7 @@ describe('Fastlane', () => {
             tokenId: 'xxx',
             lastFour: '1111',
             brand: 'visa',
-            email: 'shopper@adyen.com'
+            email: 'shopper@plexy.com'
         });
         await expect(fastlane.isAvailable()).resolves.toBeUndefined();
 
@@ -48,7 +48,7 @@ describe('Fastlane', () => {
             tokenId: 'xxx',
             lastFour: '1111',
             brand: 'visa',
-            email: 'shopper@adyen.com',
+            email: 'shopper@plexy.com',
             fastlaneSessionId: '1111'
         });
         await expect(fastlane.isAvailable()).resolves.toBeUndefined();
@@ -64,7 +64,7 @@ describe('Fastlane', () => {
             tokenId: 'token-id',
             lastFour: '1111',
             brand: 'visa',
-            email: 'shopper@adyen.com',
+            email: 'shopper@plexy.com',
             fastlaneSessionId: 'session-id'
         });
 
@@ -83,7 +83,7 @@ describe('Fastlane', () => {
 
     test('should display last four, card brand and fastlane logo', async () => {
         const resources = mock<Resources>();
-        resources.getImage.mockReturnValue((icon: string) => `https://checkout-adyen.com/${icon}`);
+        resources.getImage.mockReturnValue((icon: string) => `https://checkout-plexy.com/${icon}`);
 
         const fastlane = new Fastlane(global.core, {
             modules: { resources },
@@ -91,7 +91,7 @@ describe('Fastlane', () => {
             tokenId: 'token-id',
             lastFour: '1111',
             brand: 'visa',
-            email: 'shopper@adyen.com',
+            email: 'shopper@plexy.com',
             fastlaneSessionId: 'session-id'
         });
 
@@ -100,8 +100,8 @@ describe('Fastlane', () => {
         const fastlaneImage = await screen.findByAltText('Fastlane logo');
         const cardBrandImage = await screen.findByAltText('VISA');
 
-        expect(fastlaneImage).toHaveAttribute('src', 'https://checkout-adyen.com/paypal_fastlane_gray');
-        expect(cardBrandImage).toHaveAttribute('src', 'https://checkout-adyen.com/visa');
+        expect(fastlaneImage).toHaveAttribute('src', 'https://checkout-plexy.com/paypal_fastlane_gray');
+        expect(cardBrandImage).toHaveAttribute('src', 'https://checkout-plexy.com/visa');
         expect(screen.queryByText('•••• 1111')).toBeVisible();
     });
 });

@@ -5,12 +5,12 @@ const mockRegistractionOptions = {
     challenge: 'ZC-rnlucudt1dczpMvyrq82gZEAfg4Hkyb9DDgAYIU0',
     rp: {
         id: window.location.host,
-        name: 'Adyen'
+        name: 'Plexy'
     },
     user: {
         id: '8793f81a-822c-4abb-b22a-b2ab99aa14aa',
-        name: 'Adyen Passkey Test',
-        displayName: 'Adyen Passkey Test'
+        name: 'Plexy Passkey Test',
+        displayName: 'Plexy Passkey Test'
     },
     pubKeyCredParams: [
         {

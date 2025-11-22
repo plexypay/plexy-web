@@ -31,7 +31,7 @@ module.exports = [
      */
     {
         name: 'UMD',
-        path: 'dist/umd/adyen.js',
+        path: 'dist/umd/plexy.js',
         limit: '120 KB',
         running: false
     },
@@ -41,7 +41,7 @@ module.exports = [
     {
         name: 'Auto',
         path: 'auto/auto.js',
-        import: '{ AdyenCheckout, Dropin }',
+        import: '{ PlexyCheckout, Dropin }',
         limit: '125 KB',
         running: false
     },
@@ -51,21 +51,21 @@ module.exports = [
     {
         name: 'ESM - Core',
         path: 'dist/es/index.js',
-        import: '{ AdyenCheckout }',
+        import: '{ PlexyCheckout }',
         limit: '26 KB',
         running: false
     },
     {
         name: 'ESM - Core + Card',
         path: 'dist/es/index.js',
-        import: '{ AdyenCheckout, Card }',
+        import: '{ PlexyCheckout, Card }',
         limit: '67 KB',
         running: false
     },
     {
         name: 'ESM - Core + Dropin with Card',
         path: 'dist/es/index.js',
-        import: '{ AdyenCheckout, Dropin, Card }',
+        import: '{ PlexyCheckout, Dropin, Card }',
         limit: '72 KB',
         running: false
     }

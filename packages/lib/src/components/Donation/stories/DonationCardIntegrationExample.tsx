@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { h } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { AdyenCheckout } from '../../../core/AdyenCheckout';
+import { PlexyCheckout } from '../../../core/PlexyCheckout';
 import Card from '../../Card/Card';
 import Donation from '../Donation';
 import { DonationConfiguration } from '../types';
@@ -28,7 +28,7 @@ export const DonationCardIntegrationExample = ({ countryCode, amount, redirectRe
     }, [countryCode, amount, redirectResult]);
 
     const createCheckout = async () => {
-        checkout.current = await AdyenCheckout({
+        checkout.current = await PlexyCheckout({
             clientKey: process.env.CLIENT_KEY,
             // @ts-ignore CLIENT_ENV has valid value
             environment: process.env.CLIENT_ENV,
@@ -92,7 +92,7 @@ export const DonationCardIntegrationExample = ({ countryCode, amount, redirectRe
             return;
         }
 
-        checkout.current = await AdyenCheckout({
+        checkout.current = await PlexyCheckout({
             clientKey: process.env.CLIENT_KEY,
             // @ts-ignore CLIENT_ENV has valid value
             environment: process.env.CLIENT_ENV,

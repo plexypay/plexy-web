@@ -21,7 +21,7 @@ export class Giftcard extends Base {
 
     constructor(
         public readonly page: Page,
-        rootElementSelector = '.adyen-checkout__giftcard'
+        rootElementSelector = '.plexy-checkout__giftcard'
     ) {
         super(page);
         this.rootElement = this.page.locator(rootElementSelector);

@@ -1,5 +1,5 @@
-import { AdyenCheckout, Card } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, Card } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import '../../../config/polyfills';
 import '../../style.scss';
 import { makeDetailsCall, makePayment } from '../../services';
@@ -7,7 +7,7 @@ import { shopperLocale, countryCode, environmentUrlsOverride } from '../../confi
 import { handleOnPaymentCompleted, handleOnPaymentFailed } from '../../handlers';
 
 (async () => {
-    const checkout = await AdyenCheckout({
+    const checkout = await PlexyCheckout({
         countryCode,
         locale: shopperLocale,
         environment: 'test',

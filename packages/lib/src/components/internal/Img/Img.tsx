@@ -20,9 +20,9 @@ export default function Img(props: ImgProps) {
 
     const classNames = cx(
         [className],
-        'adyen-checkout__image',
-        { 'adyen-checkout__image--loaded': loaded },
-        ...classNameModifiers.map(modifier => `adyen-checkout__image--${modifier}`)
+        'plexy-checkout__image',
+        { 'plexy-checkout__image--loaded': loaded },
+        ...classNameModifiers.map(modifier => `plexy-checkout__image--${modifier}`)
     );
 
     useEffect(() => {

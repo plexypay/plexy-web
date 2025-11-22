@@ -1,12 +1,12 @@
 import { AddressData } from '../../../types/global-types';
 
 /**
- * This function formats Apple Pay contact format to Adyen address format
+ * This function formats Apple Pay contact format to Plexy address format
  *
  * Setting 'houseNumberOrName' to ZZ won't affect the AVS check, and it will make the algorithm take the
  * house number from the 'street' property.
  */
-export function formatApplePayContactToAdyenAddressFormat(
+export function formatApplePayContactToPlexyAddressFormat(
     paymentContact: ApplePayJS.ApplePayPaymentContact,
     isDeliveryAddress?: boolean
 ): AddressData | undefined {

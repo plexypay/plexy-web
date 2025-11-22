@@ -1,11 +1,11 @@
 import { useCoreContext } from '../Context/CoreProvider';
-import AdyenCheckoutError from '../Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../Errors/PlexyCheckoutError';
 
 const useAnalytics = () => {
     const { analytics } = useCoreContext();
 
     if (analytics === undefined) {
-        throw new AdyenCheckoutError('SDK_ERROR', 'useAnalytics(): analytics module is not defined');
+        throw new PlexyCheckoutError('SDK_ERROR', 'useAnalytics(): analytics module is not defined');
     }
 
     return {

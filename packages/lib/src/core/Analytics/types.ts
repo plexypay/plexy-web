@@ -11,7 +11,7 @@ export interface Experiment {
 export interface AnalyticsData {
     /**
      * Relates to PMs used within Plugins
-     * https://docs.adyen.com/development-resources/application-information/?tab=integrator_built_2#application-information-fields
+     * https://docs.plexy.com/development-resources/application-information/?tab=integrator_built_2#application-information-fields
      * @internal
      */
     applicationInfo?: {

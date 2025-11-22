@@ -66,7 +66,7 @@ module.exports = (app = express(), options = {}) => {
         res.status(200).send('OK');
     });
 
-    app.all('/sdk/:adyenWebVersion/translations/:locale.json', (req, res) => getTranslation(res, req));
+    app.all('/sdk/:plexyWebVersion/translations/:locale.json', (req, res) => getTranslation(res, req));
 
     if (options.listen) {
         // If Express is hosting Storybook, we use the default port 3020.

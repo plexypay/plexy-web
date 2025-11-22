@@ -1,5 +1,5 @@
 {
-  "name": "@adyen/adyen-web-auto",
+  "name": "@plexy/plexy-web-auto",
   "private": true,
   "description": "Auto registering package. Exists to support bundlers without exports support such as webpack 4.",
   "type": "module",

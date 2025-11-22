@@ -6,7 +6,7 @@ import './DropinComponent.scss';
 import { sanitizeOrder } from '../../internal/UIElement/utils';
 import { PaymentAmount } from '../../../types/global-types';
 import { ANALYTICS_RENDERED_STR } from '../../../core/Analytics/constants';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import Button from '../../internal/Button';
 import type { DropinComponentProps, DropinComponentState, DropinStatus, DropinStatusProps, onOrderCancelData } from '../types';
 import UIElement from '../../internal/UIElement';
@@ -160,7 +160,7 @@ export class DropinComponent extends Component<DropinComponentProps, DropinCompo
                 })
                     .then(({ amount }) => this.props.elementRef.handleAdvanceFlowPaymentMethodsUpdate(null, amount))
                     .catch(error => {
-                        throw new AdyenCheckoutError('NETWORK_ERROR', error);
+                        throw new PlexyCheckoutError('NETWORK_ERROR', error);
                     });
             };
         }
@@ -207,7 +207,7 @@ export class DropinComponent extends Component<DropinComponentProps, DropinCompo
 
             default:
                 return (
-                    <div className={`adyen-checkout__dropin adyen-checkout__dropin--${status.type}`}>
+                    <div className={`plexy-checkout__dropin plexy-checkout__dropin--${status.type}`}>
                         {isRedirecting && status.props.component && status.props.component.render()}
                         {isLoading && status.props && status.props.component && status.props.component.render()}
 

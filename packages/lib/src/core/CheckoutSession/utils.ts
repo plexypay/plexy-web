@@ -1,9 +1,9 @@
 import { CheckoutSession } from './types';
-import AdyenCheckoutError from '../Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../Errors/PlexyCheckoutError';
 
 export function sanitizeSession(session): Partial<CheckoutSession> {
     if (!session || !session.id) {
-        throw new AdyenCheckoutError('IMPLEMENTATION_ERROR', 'Invalid session');
+        throw new PlexyCheckoutError('IMPLEMENTATION_ERROR', 'Invalid session');
     }
 
     const { shopperLocale, shopperEmail, telephoneNumber, id } = session;

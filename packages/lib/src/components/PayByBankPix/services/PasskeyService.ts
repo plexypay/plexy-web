@@ -2,14 +2,14 @@ import { PasskeySdkLoader } from './PasskeySdkLoader';
 import {
     PasskeyServiceConfig,
     IPasskeyService,
-    IAdyenPasskey,
+    IPlexyPasskey,
     PasskeyErrorTypes,
     RiskSignalsEnrollment,
     RiskSignalsAuthentication,
     NavigatorCredentialCreationsError,
     NavigatorCredentialRetrievalError
 } from './types';
-import AdyenCheckoutError, { SDK_ERROR } from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError, { SDK_ERROR } from '../../../core/Errors/PlexyCheckoutError';
 import { AnalyticsModule, DecodeObject } from '../../../types/global-types';
 import base64 from '../../../utils/base64';
 
@@ -17,7 +17,7 @@ export class PasskeyService implements IPasskeyService {
     private readonly passkeyServiceConfig: PasskeyServiceConfig;
     private readonly analytics: AnalyticsModule;
 
-    private passkeySdk: IAdyenPasskey;
+    private passkeySdk: IPlexyPasskey;
     private riskSignals: RiskSignalsEnrollment | RiskSignalsAuthentication;
     private initialized: Promise<void>;
 
@@ -67,7 +67,7 @@ export class PasskeyService implements IPasskeyService {
 
         const result = await this.passkeySdk.captureRiskSignalsEnrollment(this.deviceId);
         if (result && 'type' in result && result.type === PasskeyErrorTypes.RISK_SIGNALS_ERROR) {
-            throw new AdyenCheckoutError(SDK_ERROR, result.message);
+            throw new PlexyCheckoutError(SDK_ERROR, result.message);
         }
         this.riskSignals = result as RiskSignalsEnrollment;
         return this.riskSignals;
@@ -89,7 +89,7 @@ export class PasskeyService implements IPasskeyService {
         await this.initialized;
         const result = await this.passkeySdk.captureRiskSignalsAuthentication(this.deviceId);
         if (result && 'type' in result && result.type === PasskeyErrorTypes.RISK_SIGNALS_ERROR) {
-            throw new AdyenCheckoutError(SDK_ERROR, result.message);
+            throw new PlexyCheckoutError(SDK_ERROR, result.message);
         }
         return result as RiskSignalsAuthentication;
     }
@@ -99,7 +99,7 @@ export class PasskeyService implements IPasskeyService {
         const options = this.decodeJsonBase64(registrationOptions, 'Failed to decode registrationOptions');
         const result = await this.passkeySdk.createCredentialForEnrollment(options);
         if (result && 'type' in result && result.type === PasskeyErrorTypes.CREDENTIAL_CREATION_ERROR) {
-            throw new AdyenCheckoutError(SDK_ERROR, (result as NavigatorCredentialCreationsError).message);
+            throw new PlexyCheckoutError(SDK_ERROR, (result as NavigatorCredentialCreationsError).message);
         }
         return base64.encode(JSON.stringify(result));
     }
@@ -109,7 +109,7 @@ export class PasskeyService implements IPasskeyService {
         const options = this.decodeJsonBase64(authenticationOptions, 'Failed to decode authenticationOptions');
         const result = await this.passkeySdk.authenticateWithCredential(options);
         if (result && 'type' in result && result.type === PasskeyErrorTypes.CREDENTIAL_RETRIEVAL_ERROR) {
-            throw new AdyenCheckoutError(SDK_ERROR, (result as NavigatorCredentialRetrievalError).message);
+            throw new PlexyCheckoutError(SDK_ERROR, (result as NavigatorCredentialRetrievalError).message);
         }
         return base64.encode(JSON.stringify(result));
     }
@@ -117,7 +117,7 @@ export class PasskeyService implements IPasskeyService {
     private decodeJsonBase64(encoded: string, errorMessage: string) {
         const decoded: DecodeObject = base64.decode(encoded);
         if (!decoded.success) {
-            throw new AdyenCheckoutError(SDK_ERROR, errorMessage);
+            throw new PlexyCheckoutError(SDK_ERROR, errorMessage);
         }
         return JSON.parse(decoded.data);
     }

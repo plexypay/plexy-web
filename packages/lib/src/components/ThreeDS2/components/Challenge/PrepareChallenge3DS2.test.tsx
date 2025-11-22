@@ -6,11 +6,11 @@ import { THREEDS2_FULL, TIMEOUT } from '../../constants';
 import { Analytics3DS2Errors, Analytics3DS2Events, ANALYTICS_ERROR_TYPE } from '../../../../core/Analytics/constants';
 
 const challengeToken = {
-    acsReferenceNumber: 'ADYEN-ACS-SIMULATOR',
+    acsReferenceNumber: 'PLEXY-ACS-SIMULATOR',
     acsTransID: '4bc7960d',
-    acsURL: 'https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml',
+    acsURL: 'https://pal-test.plexy.com/threeds2simulator/acs/challenge.shtml',
     messageVersion: '2.1.0',
-    threeDSNotificationURL: 'https://checkoutshopper-test.adyen.com/checkoutshopper/3dnotif.shtml',
+    threeDSNotificationURL: 'https://checkoutshopper-test.plexy.com/checkoutshopper/3dnotif.shtml',
     threeDSServerTransID: '3fc4ead'
 };
 

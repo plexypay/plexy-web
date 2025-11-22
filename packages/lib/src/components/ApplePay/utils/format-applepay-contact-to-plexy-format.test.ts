@@ -1,6 +1,6 @@
-import { formatApplePayContactToAdyenAddressFormat } from './format-applepay-contact-to-adyen-format';
+import { formatApplePayContactToPlexyAddressFormat } from './format-applepay-contact-to-plexy-format';
 
-describe('formatApplePayContactToAdyenAddressFormat()', () => {
+describe('formatApplePayContactToPlexyAddressFormat()', () => {
     test('should build the street by merging the address lines and set houseNumberOrName to ZZ', () => {
         const billingContact = {
             addressLines: ['1 Infinite Loop', 'Unit 100'],
@@ -17,7 +17,7 @@ describe('formatApplePayContactToAdyenAddressFormat()', () => {
             subLocality: ''
         };
 
-        const billingAddress = formatApplePayContactToAdyenAddressFormat(billingContact);
+        const billingAddress = formatApplePayContactToPlexyAddressFormat(billingContact);
 
         expect(billingAddress).toStrictEqual({
             postalCode: '95014',
@@ -45,7 +45,7 @@ describe('formatApplePayContactToAdyenAddressFormat()', () => {
             subLocality: ''
         };
 
-        const billingAddress = formatApplePayContactToAdyenAddressFormat(billingContact);
+        const billingAddress = formatApplePayContactToPlexyAddressFormat(billingContact);
 
         expect(billingAddress).toStrictEqual({
             postalCode: '95014',
@@ -72,7 +72,7 @@ describe('formatApplePayContactToAdyenAddressFormat()', () => {
             subLocality: ''
         };
 
-        const deliveryAddress = formatApplePayContactToAdyenAddressFormat(deliveryContact, true);
+        const deliveryAddress = formatApplePayContactToPlexyAddressFormat(deliveryContact, true);
 
         expect(deliveryAddress).toStrictEqual({
             street: '802 Richardon Drive Brooklyn',
@@ -88,6 +88,6 @@ describe('formatApplePayContactToAdyenAddressFormat()', () => {
 
     test('should return undefined if no contact details is passed', () => {
         // @ts-ignore Testing passing no parameter
-        expect(formatApplePayContactToAdyenAddressFormat()).toBeUndefined();
+        expect(formatApplePayContactToPlexyAddressFormat()).toBeUndefined();
     });
 });

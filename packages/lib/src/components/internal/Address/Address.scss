@@ -1,7 +1,7 @@
 @use 'styles/index';
 
-.adyen-checkout__fieldset--address {
-    .adyen-checkout__field-group {
+.plexy-checkout__fieldset--address {
+    .plexy-checkout__field-group {
         @include index.fieldset-fields-layout;
     }
 }

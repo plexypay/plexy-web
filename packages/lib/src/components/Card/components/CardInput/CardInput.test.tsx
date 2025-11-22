@@ -49,7 +49,7 @@ describe('CardInput', () => {
 
     test('Has HolderName element', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} hasHolderName={true} />);
-        expect(wrapper.find('div.adyen-checkout__card__holderName')).toHaveLength(1);
+        expect(wrapper.find('div.plexy-checkout__card__holderName')).toHaveLength(1);
     });
 });
 
@@ -60,8 +60,8 @@ describe('CardInput - Brands beneath Card Number field', () => {
             { name: 'mc', icon: 'mc.png' }
         ];
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} brandsIcons={brandsIcons} />);
-        expect(wrapper.find('.adyen-checkout__card__brands__brand-wrapper')).toHaveLength(2);
-        expect(wrapper.find('.adyen-checkout__card__brands__brand-wrapper--disabled')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__brands__brand-wrapper')).toHaveLength(2);
+        expect(wrapper.find('.plexy-checkout__card__brands__brand-wrapper--disabled')).toHaveLength(0);
     });
 
     test('should hide all brand icons when brand is detected', () => {
@@ -72,7 +72,7 @@ describe('CardInput - Brands beneath Card Number field', () => {
             { name: 'amex', icon: 'amex.png' }
         ];
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} brand={detectedBrand} brandsIcons={brandsIcons} />);
-        expect(wrapper.find('.adyen-checkout__card__brands--hidden')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__card__brands--hidden')).toHaveLength(1);
     });
 
     test('should show all brand icons when no brand is detected', () => {
@@ -83,14 +83,14 @@ describe('CardInput - Brands beneath Card Number field', () => {
             { name: 'amex', icon: 'amex.png' }
         ];
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} brand={detectedBrand} brandsIcons={brandsIcons} />);
-        expect(wrapper.find('.adyen-checkout__card__brands--hidden')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__brands--hidden')).toHaveLength(0);
     });
 });
 
 describe('CardInput > holderName', () => {
     test('Does not have HolderName element', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} />);
-        expect(wrapper.find('div.adyen-checkout__card__holderName')).toHaveLength(0);
+        expect(wrapper.find('div.plexy-checkout__card__holderName')).toHaveLength(0);
     });
 
     test('holderName required, so valid.holderName is false', () => {
@@ -220,7 +220,7 @@ describe('CardInput shows/hides KCP fields when koreanAuthenticationRequired is 
 
     test('Renders a card form with kcp fields since countryCode is kr', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} configuration={configuration} countryCode="kr" />);
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(1);
     });
 
     test('Renders a card form with kcp fields since countryCode is kr & issuingCountryCode is kr', () => {
@@ -229,19 +229,19 @@ describe('CardInput shows/hides KCP fields when koreanAuthenticationRequired is 
         );
         cardInputRef?.processBinLookupResponse({ issuingCountryCode: 'kr' }, false);
         wrapper.update();
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(1);
     });
 
     test('Renders a card form with kcp fields since countryCode is not kr but issuingCountryCode is kr', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} configuration={configuration} setComponentRef={setComponentRef} />);
         cardInputRef?.processBinLookupResponse({ issuingCountryCode: 'kr' }, false);
         wrapper.update();
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(1);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(1);
     });
 
     test('Renders a card form with no kcp fields since countryCode is not kr', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} configuration={configuration} />);
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(0);
     });
 
     test('Renders a card form with no kcp fields since countryCode is kr but issuingCountryCode is not kr', () => {
@@ -250,14 +250,14 @@ describe('CardInput shows/hides KCP fields when koreanAuthenticationRequired is 
         );
         cardInputRef?.processBinLookupResponse({ issuingCountryCode: 'us' }, false);
         wrapper.update();
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(0);
     });
 
     test('Renders a card form with no kcp fields since countryCode is not kr & issuingCountryCode is not kr', () => {
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} configuration={configuration} setComponentRef={setComponentRef} />);
         cardInputRef?.processBinLookupResponse({ issuingCountryCode: 'us' }, false);
         wrapper.update();
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(0);
     });
 });
 
@@ -265,7 +265,7 @@ describe('CardInput never shows KCP fields when koreanAuthenticationRequired is 
     test('countryCode is kr', () => {
         configuration.koreanAuthenticationRequired = false;
         const wrapper = getWrapper(<CardInput {...cardInputRequiredProps} configuration={configuration} countryCode="kr" />);
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(0);
     });
 
     test('countryCode is kr & issuingCountryCode is kr', () => {
@@ -279,7 +279,7 @@ describe('CardInput never shows KCP fields when koreanAuthenticationRequired is 
         );
         cardInputRef?.processBinLookupResponse({ issuingCountryCode: 'kr' }, false);
         wrapper.update();
-        expect(wrapper.find('.adyen-checkout__card__kcp-authentication')).toHaveLength(0);
+        expect(wrapper.find('.plexy-checkout__card__kcp-authentication')).toHaveLength(0);
     });
 });
 

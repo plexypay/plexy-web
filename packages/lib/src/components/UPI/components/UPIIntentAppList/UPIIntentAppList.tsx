@@ -21,15 +21,15 @@ const UPIIntentAppList = ({ apps, selectedAppId, disabled, onAppSelect = () => {
         /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
         <ul
             className={classNames({
-                'adyen-checkout-upi-app-list': true,
-                'adyen-checkout-upi-app-list--loading': disabled
+                'plexy-checkout-upi-app-list': true,
+                'plexy-checkout-upi-app-list--loading': disabled
             })}
             role="radiogroup"
             aria-label={i18n.get('paymentMethodsList.aria.label')}
             required
         >
             {apps.map(app => {
-                const key = `adyen-checkout-upi-app-item-${app.id}`;
+                const key = `plexy-checkout-upi-app-item-${app.id}`;
                 const isSelected = selectedAppId === app.id;
                 const imgName = `upi/${app.id}`;
                 const imgSrc = getImage()(imgName.toLowerCase());

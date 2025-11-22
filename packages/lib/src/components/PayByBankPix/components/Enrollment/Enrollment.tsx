@@ -12,7 +12,7 @@ import './Enrollment.scss';
 import { LabelOnlyDisclaimerMessage } from '../../../internal/DisclaimerMessage/DisclaimerMessage';
 import { ComponentMethodsRef, UIElementStatus } from '../../../internal/UIElement/types';
 
-const TERMS_CONDITIONS_URL = 'https://www.adyen.com/pt_BR/legal/termo-de-consentimento-br';
+const TERMS_CONDITIONS_URL = 'https://www.plexy.com/pt_BR/legal/termo-de-consentimento-br';
 
 function Enrollment(props: EnrollmentProps) {
     const { i18n, loadingContext } = useCoreContext();
@@ -66,7 +66,7 @@ function Enrollment(props: EnrollmentProps) {
     }, [registrationOptions]);
 
     return (
-        <div className={'adyen-checkout-pix-enrollment'}>
+        <div className={'plexy-checkout-pix-enrollment'}>
             {isAwait(props) ? (
                 <PayByBankPixAwait
                     logos={logos}
@@ -82,7 +82,7 @@ function Enrollment(props: EnrollmentProps) {
                     endSlot={awaitEndSlot}
                 ></PayByBankPixAwait>
             ) : (
-                <div className="adyen-checkout-pix-enrollment-issuer-list">
+                <div className="plexy-checkout-pix-enrollment-issuer-list">
                     <IssuerListIntroduction txVariant={props.txVariant} />
                     <IssuerList
                         items={useIssuerWithLogo({ issuers: props.issuers, txVariant: props.txVariant })}
@@ -93,7 +93,7 @@ function Enrollment(props: EnrollmentProps) {
                         showPayButton={true}
                         ref={issuerListRef}
                     ></IssuerList>
-                    <span className="adyen-checkout-disclaimer__label">
+                    <span className="plexy-checkout-disclaimer__label">
                         <LabelOnlyDisclaimerMessage message={i18n.get('paybybankpix.issuerList.disclaimer')} urls={[TERMS_CONDITIONS_URL]} />
                     </span>
                 </div>

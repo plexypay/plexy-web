@@ -37,13 +37,13 @@ export default function CardNumber(props: CardNumberProps) {
             <DataSfSpan
                 encryptedFieldType={ENCRYPTED_CARD_NUMBER}
                 className={classNames({
-                    'adyen-checkout__input': true,
-                    'adyen-checkout__input--large': true,
-                    'adyen-checkout__card__cardNumber__input': true,
-                    'adyen-checkout__input--error': error,
-                    'adyen-checkout__input--focus': props.focused,
-                    'adyen-checkout__input--valid': isValid,
-                    'adyen-checkout__card__cardNumber__input--noBrand': !props.showBrandIcon
+                    'plexy-checkout__input': true,
+                    'plexy-checkout__input--large': true,
+                    'plexy-checkout__card__cardNumber__input': true,
+                    'plexy-checkout__input--error': error,
+                    'plexy-checkout__input--focus': props.focused,
+                    'plexy-checkout__input--valid': isValid,
+                    'plexy-checkout__card__cardNumber__input--noBrand': !props.showBrandIcon
                 })}
             ></DataSfSpan>
 
@@ -52,7 +52,7 @@ export default function CardNumber(props: CardNumberProps) {
             )}
 
             {dualBrandingElements && !error && (
-                <div className={classNames(['adyen-checkout__card__dual-branding__icons'])}>
+                <div className={classNames(['plexy-checkout__card__dual-branding__icons'])}>
                     {dualBrandingElements.map(element => (
                         <DualBrandingIcon
                             key={element.id}

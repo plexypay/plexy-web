@@ -1,8 +1,8 @@
 const express = require('express');
-const adyenWebServer = require('./index');
+const plexyWebServer = require('./index');
 
 const shouldHostStorybook = process.argv.at(-1) === 'storybook';
 
-console.log(`Starting @adyen/adyen-web-server ${shouldHostStorybook ? 'with storybook' : ''}`);
+console.log(`Starting @plexy/plexy-web-server ${shouldHostStorybook ? 'with storybook' : ''}`);
 
-adyenWebServer(express(), { listen: true, shouldHostStorybook });
+plexyWebServer(express(), { listen: true, shouldHostStorybook });

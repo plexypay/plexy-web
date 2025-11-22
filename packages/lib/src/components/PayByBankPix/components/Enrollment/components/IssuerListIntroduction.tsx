@@ -13,14 +13,14 @@ function IssuerListIntroduction({ txVariant }) {
     const getImage = useImage();
 
     return (
-        <div className={'adyen-checkout-issuer-list-introduction'}>
-            <div className="adyen-checkout-issuer-list-introduction-logo-container">
+        <div className={'plexy-checkout-issuer-list-introduction'}>
+            <div className="plexy-checkout-issuer-list-introduction-logo-container">
                 <img
                     src={getImage({ parentFolder: `${txVariant}/` })(LOGO.name)}
                     alt={i18n.get(LOGO.altI18nKey)}
-                    className="adyen-checkout-issuer-list-introduction-logo-container__logo"
+                    className="plexy-checkout-issuer-list-introduction-logo-container__logo"
                 />
-                <p className="adyen-checkout-issuer-list-introduction-logo-container__title">
+                <p className="plexy-checkout-issuer-list-introduction-logo-container__title">
                     {i18n.get('paybybankpix.issuerList.introduction.logo.content')}
                 </p>
             </div>

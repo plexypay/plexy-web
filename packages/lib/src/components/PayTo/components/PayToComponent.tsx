@@ -63,8 +63,8 @@ export default function PayToComponent(props: PayToComponentProps) {
     return (
         <div
             className={classNames({
-                'adyen-checkout__payto-component': true,
-                'adyen-checkout__payto-component--loading': status === 'loading'
+                'plexy-checkout__payto-component': true,
+                'plexy-checkout__payto-component--loading': status === 'loading'
             })}
         >
             <SegmentedControl selectedValue={selectedInput} options={inputOptions} onChange={setSelectedInput} />

@@ -1,5 +1,5 @@
-import { AdyenCheckout, Dropin } from '@adyen/adyen-web/auto';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, Dropin } from '@plexy/plexy-web/auto';
+import '@plexy/plexy-web/styles/plexy.css';
 import { createSession } from '../../services';
 import { amount, shopperLocale, shopperReference, countryCode, returnUrl, environmentUrlsOverride } from '../../config/commonConfig';
 import { handleOnPaymentCompleted, handleOnPaymentFailed } from '../../handlers';
@@ -12,11 +12,11 @@ export async function initSession() {
         shopperLocale,
         shopperReference,
         telephoneNumber: '+611223344',
-        shopperEmail: 'shopper.ctp1@adyen.com',
+        shopperEmail: 'shopper.ctp1@plexy.com',
         countryCode
     });
 
-    const checkout = await AdyenCheckout({
+    const checkout = await PlexyCheckout({
         environment: process.env.__CLIENT_ENV__,
         clientKey: process.env.__CLIENT_KEY__,
         session,

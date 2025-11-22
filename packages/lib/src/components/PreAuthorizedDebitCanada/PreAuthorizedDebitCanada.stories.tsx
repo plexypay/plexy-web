@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Checkout } from '../../../storybook/components/Checkout';
 import { ComponentContainer } from '../../../storybook/components/ComponentContainer';
 
-import { AdyenCheckout } from '../../core/AdyenCheckout';
+import { PlexyCheckout } from '../../core/PlexyCheckout';
 import Dropin from '../Dropin';
 import PreAuthorizedDebitCanada from './PreAuthorizedDebitCanada';
 
@@ -28,7 +28,7 @@ export const Default: PreAuthorizedDebitCanadaStory = {
 
 export const WithDropin: PreAuthorizedDebitCanadaStory = {
     render: ({ componentConfiguration, ...checkoutConfig }) => {
-        AdyenCheckout.register(PreAuthorizedDebitCanada);
+        PlexyCheckout.register(PreAuthorizedDebitCanada);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>

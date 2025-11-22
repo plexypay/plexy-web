@@ -1,7 +1,7 @@
 @use 'styles/index';
 @import 'styles/variable-generator';
 
-.adyen-checkout__radio_group__label--no-radio {
+.plexy-checkout__radio_group__label--no-radio {
     margin: 0;
     padding-bottom: 0;
     padding-left: token(spacer-090);
@@ -14,21 +14,21 @@
     overflow: visible;
 }
 
-.adyen-checkout__radio_group__label--no-radio:hover {
+.plexy-checkout__radio_group__label--no-radio:hover {
     border-color: token(color-label-primary);
     cursor: pointer;
 }
 
-.adyen-checkout__label--focused .adyen-checkout__radio_group__label--no-radio {
+.plexy-checkout__label--focused .plexy-checkout__radio_group__label--no-radio {
     color: inherit;
 }
 
-.adyen-checkout__radio_group__label--no-radio.adyen-checkout__radio_group__label--no-radio--invalid {
+.plexy-checkout__radio_group__label--no-radio.plexy-checkout__radio_group__label--no-radio--invalid {
     color: token(color-outline-critical);
 }
 
-.adyen-checkout__radio_group--button {
-    .adyen-checkout__radio_group__label--no-radio {
+.plexy-checkout__radio_group--button {
+    .plexy-checkout__radio_group__label--no-radio {
         padding: token(spacer-060);
         padding-left: calc(token(spacer-060) + token(spacer-090));
         width: 100%;
@@ -37,38 +37,38 @@
         background-color: token(color-background-primary);
     }
 
-    .adyen-checkout__radio_group__input:checked + .adyen-checkout__radio_group__label--no-radio {
+    .plexy-checkout__radio_group__input:checked + .plexy-checkout__radio_group__label--no-radio {
         box-shadow: 0 0 0 0.5px token(color-outline-primary-active);
         border-color: token(color-outline-primary-active);
     }
 
-    .adyen-checkout__radio_group__input + .adyen-checkout__radio_group__label--no-radio:hover {
+    .plexy-checkout__radio_group__input + .plexy-checkout__radio_group__label--no-radio:hover {
         border-color: token(color-outline-primary-active);
     }
 
-    .adyen-checkout__radio_group__input:checked:focus + .adyen-checkout__radio_group__label--no-radio,
-    .adyen-checkout__radio_group__input:checked:active + .adyen-checkout__radio_group__label--no-radio {
+    .plexy-checkout__radio_group__input:checked:focus + .plexy-checkout__radio_group__label--no-radio,
+    .plexy-checkout__radio_group__input:checked:active + .plexy-checkout__radio_group__label--no-radio {
         box-shadow: 0 0 0 0.5px token(color-outline-primary-active);
         border-color: token(color-outline-primary-active);
     }
 
-    .adyen-checkout__radio_group__input:checked:focus + .adyen-checkout__radio_group__label--no-radio {
+    .plexy-checkout__radio_group__input:checked:focus + .plexy-checkout__radio_group__label--no-radio {
         outline: token(border-width-m) solid token(color-outline-primary-active);
     }
 
-    .adyen-checkout__radio_group-extended__label-wrapper {
+    .plexy-checkout__radio_group-extended__label-wrapper {
         display: flex;
 
-        .adyen-checkout__radio_group-extended__label {
+        .plexy-checkout__radio_group-extended__label {
             width: 100%;
         }
 
-        .adyen-checkout-input__inline-validation {
+        .plexy-checkout-input__inline-validation {
             margin-right: token(spacer-000);
             display: none;
         }
 
-        .adyen-checkout-input__inline-validation.adyen-checkout-input__inline-validation--valid {
+        .plexy-checkout-input__inline-validation.plexy-checkout-input__inline-validation--valid {
             display: block;
             margin-left: token(spacer-040);
             margin-top: 1px;
@@ -76,8 +76,8 @@
     }
 }
 
-.adyen-checkout__radio_group__input-wrapper {
-    &.adyen-checkout__field--50 {
+.plexy-checkout__radio_group__input-wrapper {
+    &.plexy-checkout__field--50 {
         @include index.media-s-and-down {
             min-width: 100%;
         }

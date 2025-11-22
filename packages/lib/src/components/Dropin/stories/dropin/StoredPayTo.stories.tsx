@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { MetaConfiguration, PaymentMethodStoryProps } from '../../../../../storybook/types';
 import { DropinConfiguration } from '../../types';
-import { AdyenCheckout, components } from '../../../..';
+import { PlexyCheckout, components } from '../../../..';
 import { Checkout } from '../../../../../storybook/components/Checkout';
 import { ComponentContainer } from '../../../../../storybook/components/ComponentContainer';
 import DropinComponent from '../../Dropin';
@@ -49,7 +49,7 @@ export const PayToWithMandate = {
     render: ({ componentConfiguration, ...checkoutConfig }: PaymentMethodStoryProps<DropinConfiguration>) => {
         const { Dropin, ...Components } = components;
         const Classes = Object.keys(Components).map(key => Components[key]);
-        AdyenCheckout.register(...Classes);
+        PlexyCheckout.register(...Classes);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>
@@ -76,7 +76,7 @@ export const StoredPayToMandate = {
     render: ({ componentConfiguration, ...checkoutConfig }: PaymentMethodStoryProps<DropinConfiguration>) => {
         const { Dropin, ...Components } = components;
         const Classes = Object.keys(Components).map(key => Components[key]);
-        AdyenCheckout.register(...Classes);
+        PlexyCheckout.register(...Classes);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>

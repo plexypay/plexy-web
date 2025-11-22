@@ -1,5 +1,5 @@
 import { test } from '../../../../fixtures/base-fixture';
-import LANG from '@adyen/adyen-web-server/translations/en-US.json';
+import LANG from '@plexy/plexy-web-server/translations/en-US.json';
 
 const BASE_REF = 'securedFields';
 const UNSUPPORTED_CARD = LANG['cc.num.903'];
@@ -117,7 +117,7 @@ test.describe('Testing persistence of "Unsupported card" error and state at both
             //
             // await t.expect(headerObj.alg).eql(JWE_ALG).expect(headerObj.enc).eql(JWE_CONTENT_ALG).expect(headerObj.version).eql(JWE_VERSION);
             //
-            // // await t.expect(cardPage.getFromState(BASE_REF, 'data.encryptedCardNumber')).contains('adyenjs_0_1_');
+            // // await t.expect(cardPage.getFromState(BASE_REF, 'data.encryptedCardNumber')).contains('plexyjs_0_1_');
             //
             // /**
             //  * Validity received & processed at SF level
@@ -186,7 +186,7 @@ test.describe('Testing persistence of "Unsupported card" error and state at both
             //
             // await t.expect(headerObj.alg).eql(JWE_ALG).expect(headerObj.enc).eql(JWE_CONTENT_ALG).expect(headerObj.version).eql(JWE_VERSION);
             //
-            // // await t.expect(cardPage.getFromState(BASE_REF, 'data.encryptedCardNumber')).contains('adyenjs_0_1_');
+            // // await t.expect(cardPage.getFromState(BASE_REF, 'data.encryptedCardNumber')).contains('plexyjs_0_1_');
             //
             // /**
             //  * Validity received & processed at SF level

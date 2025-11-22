@@ -30,7 +30,7 @@ describe('ExpirationDate', () => {
         renderWithCoreContext(<ExpirationDate {...defaultProps} classNameModifiers={modifiers} />);
 
         const fieldElement = screen.getByTestId('form-field');
-        expect(fieldElement).toHaveClass('adyen-checkout__field--custom-modifier-1', 'adyen-checkout__field--custom-modifier-2');
-        expect(fieldElement).toHaveClass('adyen-checkout__field--expiryDate');
+        expect(fieldElement).toHaveClass('plexy-checkout__field--custom-modifier-1', 'plexy-checkout__field--custom-modifier-2');
+        expect(fieldElement).toHaveClass('plexy-checkout__field--expiryDate');
     });
 });

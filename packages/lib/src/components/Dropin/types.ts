@@ -128,7 +128,7 @@ export interface DropinConfiguration extends UIElementProps {
 
     /**
      * Called when a shopper clicks Remove on a stored payment method
-     * Use this to call the {@link https://docs.adyen.com/api-explorer/#/Recurring/v49/post/disable /disable endpoint}
+     * Use this to call the {@link https://docs.plexy.com/api-explorer/#/Recurring/v49/post/disable /disable endpoint}
      * Call resolve() if the removal was successful, or call reject() if there was an error
      * @defaultValue false
      */

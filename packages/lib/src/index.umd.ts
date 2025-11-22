@@ -1,4 +1,4 @@
-import { AdyenCheckout, Core } from './core/AdyenCheckout';
+import { PlexyCheckout, Core } from './core/PlexyCheckout';
 import { NewableComponent } from './core/core.registry';
 import * as components from './components';
 import * as utilities from './components/utilities';
@@ -8,17 +8,17 @@ const { Dropin, ...Components } = components;
 const Classes: NewableComponent[] = Object.keys(Components).map(key => Components[key]);
 
 // Register all Components
-AdyenCheckout.register(...Classes);
+PlexyCheckout.register(...Classes);
 
-const AdyenWeb = {
+const PlexyWeb = {
     Core,
-    AdyenCheckout,
+    PlexyCheckout,
     createComponent,
     ...components,
     ...utilities
 };
 
 if (typeof window !== 'undefined') {
-    if (!window.AdyenWeb) window.AdyenWeb = {};
-    window.AdyenWeb = AdyenWeb;
+    if (!window.PlexyWeb) window.PlexyWeb = {};
+    window.PlexyWeb = PlexyWeb;
 }

@@ -2,7 +2,7 @@ import { Fragment, h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { PayByBankPix } from '../../..';
 import { MetaConfiguration, PaymentMethodStoryProps } from '../../../../../storybook/types';
-import { AdyenCheckout, OnChangeData, UIElement } from '../../../../types';
+import { PlexyCheckout, OnChangeData, UIElement } from '../../../../types';
 import { DropinConfiguration } from '../../types';
 import { handleError, handleFinalState } from '../../../../../storybook/helpers/checkout-handlers';
 import DropinComponent from '../../Dropin';
@@ -28,12 +28,12 @@ const meta: MetaConfiguration<DropinConfiguration> = {
     }
 };
 const render = ({ redirectResult, sessionId, componentConfiguration, ...checkoutConfig }: PaymentMethodStoryProps<DropinConfiguration>) => {
-    AdyenCheckout.register(PayByBankPix);
+    PlexyCheckout.register(PayByBankPix);
     const [element, setElement] = useState<UIElement>(null);
 
     useEffect(() => {
         if (redirectResult && sessionId) {
-            void AdyenCheckout({
+            void PlexyCheckout({
                 clientKey: process.env.CLIENT_KEY,
                 // @ts-ignore CLIENT_ENV has valid value
                 environment: process.env.CLIENT_ENV,
@@ -43,7 +43,7 @@ const render = ({ redirectResult, sessionId, componentConfiguration, ...checkout
                 afterAdditionalDetails: (actionElement: UIElement) => {
                     if (actionElement) {
                         // @ts-ignore simulate hosted checkout page locally
-                        actionElement.props._isAdyenHosted = true;
+                        actionElement.props._isPlexyHosted = true;
                         void actionElement.isAvailable().then(() => {
                             setElement(actionElement);
                         });
@@ -103,7 +103,7 @@ export const CreateEnrollment = {
                     onChange: (state: OnChangeData) => {
                         console.log({ state });
                     },
-                    _isAdyenHosted: true
+                    _isPlexyHosted: true
                 }
             }
         }
@@ -127,7 +127,7 @@ export const PayWithEnrolledDevice = {
             showRemovePaymentMethodButton: false,
             paymentMethodsConfiguration: {
                 paybybank_pix: {
-                    _isAdyenHosted: true
+                    _isPlexyHosted: true
                 }
             }
         }

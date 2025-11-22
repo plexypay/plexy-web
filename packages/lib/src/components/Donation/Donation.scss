@@ -1,33 +1,33 @@
 @use 'styles/index';
 @import 'styles/variable-generator';
 
-.adyen-checkout__adyen-giving {
-    .adyen-checkout__status__icon {
+.plexy-checkout__plexy-giving {
+    .plexy-checkout__status__icon {
         display: block;
         margin: token(spacer-130) auto token(spacer-100);
     }
 
-    .adyen-checkout__status__text {
+    .plexy-checkout__status__text {
         color: token(color-label-primary);
         margin-bottom: token(spacer-130);
         text-align: center;
     }
 
-    .adyen-checkout-disclaimer__label {
+    .plexy-checkout-disclaimer__label {
         margin-top: 0;
         color: token(color-label-primary);
     }
 }
 
-.adyen-checkout__campaign {
+.plexy-checkout__campaign {
     position: relative;
 }
 
-.adyen-checkout__campaign-link:hover .adyen-checkout__campaign-description {
+.plexy-checkout__campaign-link:hover .plexy-checkout__campaign-description {
     text-decoration: underline;
 }
 
-.adyen-checkout__campaign-logo {
+.plexy-checkout__campaign-logo {
     border-radius: token(border-radius-s);
     border: token(border-width-s) solid token(color-outline-primary);
     display: block;
@@ -39,7 +39,7 @@
     width: token(spacer-120);
 }
 
-.adyen-checkout__campaign-background-image {
+.plexy-checkout__campaign-background-image {
     aspect-ratio: 5 / 2;
     background-color: token(color-label-primary);
     background-position: center;
@@ -54,7 +54,7 @@
     }
 }
 
-.adyen-checkout__campaign-link {
+.plexy-checkout__campaign-link {
     text-decoration: none;
 
     &:hover {
@@ -62,43 +62,43 @@
     }
 }
 
-.adyen-checkout__campaign-content {
+.plexy-checkout__campaign-content {
     align-items: flex-start;
     display: flex;
     gap: token(spacer-060);
 }
 
-.adyen-checkout__campaign-title,
-.adyen-checkout__campaign-description {
+.plexy-checkout__campaign-title,
+.plexy-checkout__campaign-description {
     color: token(color-label-primary);
     margin: 0;
 }
 
-.adyen-checkout__campaign-title {
-    @include index.adyen-checkout-text-title;
+.plexy-checkout__campaign-title {
+    @include index.plexy-checkout-text-title;
 }
 
-.adyen-checkout__campaign-cause {
-    @include index.adyen-checkout-text-caption;
+.plexy-checkout__campaign-cause {
+    @include index.plexy-checkout-text-caption;
 
     font-weight: token(text-caption-stronger-font-weight);
 }
 
-.adyen-checkout__campaign-description {
-    @include index.adyen-checkout-text-caption;
+.plexy-checkout__campaign-description {
+    @include index.plexy-checkout-text-caption;
 
     margin-top: token(spacer-060);
 }
 
-.adyen-checkout-roundup-description {
-    @include index.adyen-checkout-text-caption;
+.plexy-checkout-roundup-description {
+    @include index.plexy-checkout-text-caption;
 
     display: inline-block;
     color: token(color-label-secondary);
     padding-left: 0;
 }
 
-.adyen-checkout__adyen-giving-actions {
+.plexy-checkout__plexy-giving-actions {
     margin-top: token(spacer-070);
     display: flex;
     flex-direction: column;
@@ -106,12 +106,12 @@
     text-align: center;
 }
 
-.adyen-checkout__button {
-    &.adyen-checkout__button--donate {
+.plexy-checkout__button {
+    &.plexy-checkout__button--donate {
         margin: token(spacer-000);
     }
 
-    &.adyen-checkout__button--decline {
+    &.plexy-checkout__button--decline {
         display: block;
         margin: auto;
     }

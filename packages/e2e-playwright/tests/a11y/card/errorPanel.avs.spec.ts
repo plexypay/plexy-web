@@ -13,9 +13,9 @@ test('#1 avsCard error fields and inputs should have correct aria attributes', a
     await cardWithAvs.pay();
     await expect(cardWithAvs.cvcErrorElement).toHaveAttribute('aria-hidden', 'true');
     await expect(cardWithAvs.cvcErrorElement).not.toHaveAttribute('aria-live');
-    await expect(cardWithAvs.cardNumberInput).toHaveAttribute('aria-describedby', /^adyen-checkout-encryptedCardNumber.*ariaContext$/);
-    await expect(cardWithAvs.billingAddress.streetInput).toHaveAttribute('aria-describedby', /^adyen-checkout-street.*ariaError$/);
-    await expect(cardWithAvs.billingAddress.streetInputError).not.toHaveAttribute('aria-describedby', /^adyen-checkout-street.*ariaError$/);
+    await expect(cardWithAvs.cardNumberInput).toHaveAttribute('aria-describedby', /^plexy-checkout-encryptedCardNumber.*ariaContext$/);
+    await expect(cardWithAvs.billingAddress.streetInput).toHaveAttribute('aria-describedby', /^plexy-checkout-street.*ariaError$/);
+    await expect(cardWithAvs.billingAddress.streetInputError).not.toHaveAttribute('aria-describedby', /^plexy-checkout-street.*ariaError$/);
 });
 
 test('#2 Click pay with empty fields and error panel in avsCard is populated', async ({ page, cardWithAvs, srPanel }) => {
@@ -33,7 +33,7 @@ test('#2 Click pay with empty fields and error panel in avsCard is populated', a
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     // check individual messages
@@ -59,7 +59,7 @@ test('#3 fill out credit card fields & see that first error in error panel is co
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     // check individual messages
@@ -89,7 +89,7 @@ test('#4 Switch country to US, click pay with empty fields and error panel in av
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     const srErrorMessages = await srPanel.allMessages;
@@ -113,7 +113,7 @@ test('#5 Switch country to US, fill out credit card fields & see that first erro
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     const srErrorMessages = await srPanel.allMessages;
@@ -142,7 +142,7 @@ test('#6 Switch country to UK, click pay with empty fields and error panel in av
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     const srErrorMessages = await srPanel.allMessages;
@@ -166,7 +166,7 @@ test('#7 Switch country to UK, fill out credit card fields & see that first erro
     await cardWithAvs.pay();
     // Wait for all sr panel messages
     await page.waitForFunction(
-        expectedLength => [...document.querySelectorAll('.adyen-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
+        expectedLength => [...document.querySelectorAll('.plexy-checkout-sr-panel__msg')].map(el => el.textContent).length === expectedLength,
         expectedSRPanelTexts.length
     );
     const srErrorMessages = await srPanel.allMessages;

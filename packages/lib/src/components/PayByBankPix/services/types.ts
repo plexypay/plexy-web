@@ -89,7 +89,7 @@ export type NavigatorCredentialRetrievalError = {
     message: string;
 };
 
-export interface IAdyenPasskey {
+export interface IPlexyPasskey {
     captureRiskSignalsEnrollment: (deviceId?: string) => Promise<RiskSignalsEnrollment | RiskSignalsError>;
     captureRiskSignalsAuthentication: (deviceId: string) => Promise<RiskSignalsAuthentication | RiskSignalsError>;
     createCredentialForEnrollment: (

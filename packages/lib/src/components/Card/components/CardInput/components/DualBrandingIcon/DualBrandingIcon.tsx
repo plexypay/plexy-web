@@ -15,7 +15,7 @@ const DualBrandingIcon = ({ brand, onClick, dataValue, brandsConfiguration = {} 
     return (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
         <img
-            className={`adyen-checkout-card-input__icon adyen-checkout__card__cardNumber__brandIcon`}
+            className={`plexy-checkout-card-input__icon plexy-checkout__card__cardNumber__brandIcon`}
             onError={handleError}
             alt={getFullBrandName(brand)}
             src={imageUrl}

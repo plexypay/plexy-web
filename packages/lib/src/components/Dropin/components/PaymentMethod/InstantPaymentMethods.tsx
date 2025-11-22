@@ -9,7 +9,7 @@ interface InstantPaymentMethodsProps {
 
 function InstantPaymentMethods({ paymentMethods, onSelect }: InstantPaymentMethodsProps) {
     return (
-        <ul className="adyen-checkout__instant-payment-methods-list">
+        <ul className="plexy-checkout__instant-payment-methods-list">
             {paymentMethods.map(pm => (
                 /**
                  * Apple Pay button click event does not bubble up, therefore we need to use 'onClickCapture' here

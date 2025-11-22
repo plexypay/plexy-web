@@ -7,8 +7,8 @@ export function displayResultMessage(isAuthorized: boolean, resultCode: string):
     image.setAttribute(
         'src',
         isAuthorized
-            ? 'https://checkoutshopper-test.adyen.com/checkoutshopper/images/components/success.gif'
-            : 'https://checkoutshopper-test.adyen.com/checkoutshopper/images/components/error.gif'
+            ? 'https://checkoutshopper-test.plexy.com/checkoutshopper/images/components/success.gif'
+            : 'https://checkoutshopper-test.plexy.com/checkoutshopper/images/components/error.gif'
     );
     image.setAttribute('height', '100');
     image.style.display = 'flex';
@@ -16,7 +16,7 @@ export function displayResultMessage(isAuthorized: boolean, resultCode: string):
 
     const resultText = document.createElement('div');
     resultText.setAttribute('data-testid', 'result-message');
-    resultText.classList.add('adyen-checkout__status', 'storybook-status-container');
+    resultText.classList.add('plexy-checkout__status', 'storybook-status-container');
     resultText.appendChild(image);
     resultText.appendChild(document.createTextNode(resultCode));
 

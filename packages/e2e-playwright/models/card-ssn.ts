@@ -6,7 +6,7 @@ class CardWithSSN extends Card {
 
     constructor(page: Page) {
         super(page);
-        this.ssnField = this.rootElement.locator('.adyen-checkout__field--socialSecurityNumber');
+        this.ssnField = this.rootElement.locator('.plexy-checkout__field--socialSecurityNumber');
     }
 
     get ssnInput() {

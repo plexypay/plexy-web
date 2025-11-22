@@ -232,8 +232,8 @@ test.describe('Card - Fastlane Sign up', () => {
                     baseUrl: URL_MAP.cardWithFastlane,
                     componentConfig: {
                         fastlaneConfiguration: {
-                            termsAndConditionsLink: 'https://adyen.com',
-                            privacyPolicyLink: 'https://adyen.com',
+                            termsAndConditionsLink: 'https://plexy.com',
+                            privacyPolicyLink: 'https://plexy.com',
                             termsAndConditionsVersion: 'v1',
                             fastlaneSessionId: 'ABC-123'
                         }

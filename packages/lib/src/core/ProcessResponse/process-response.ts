@@ -1,7 +1,7 @@
 import { PaymentResponseData, ProcessedResponse } from '../../types/global-types';
 
 /**
- * Processes a complete response from Adyen by resultCode
+ * Processes a complete response from Plexy by resultCode
  * @param response - to be processed
  * @returns a new object describing the response result (ready for onStatusChange)
  */
@@ -24,7 +24,7 @@ const processCompleteResponse = (response: PaymentResponseData): ProcessedRespon
 };
 
 /**
- * Processes a response from Adyen by type
+ * Processes a response from Plexy by type
  * @param response - to be processed
  * @returns a new object describing the response result (ready for onStatusChange)
  */

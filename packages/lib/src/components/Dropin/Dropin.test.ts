@@ -2,7 +2,7 @@ import { screen, render, fireEvent, waitFor } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { mock } from 'jest-mock-extended';
 
-import { AdyenCheckout } from '../../index';
+import { PlexyCheckout } from '../../index';
 import ThreeDS2DeviceFingerprint from '../ThreeDS2/ThreeDS2DeviceFingerprint';
 import ThreeDS2Challenge from '../ThreeDS2/ThreeDS2Challenge';
 import Dropin from './Dropin';
@@ -19,11 +19,11 @@ jest.mock('../../core/Services/get-translations');
 const mockedGetTranslations = getTranslations as jest.Mock;
 mockedGetTranslations.mockResolvedValue(enUS);
 
-async function createAdyenCheckout(configuration) {
-    return await AdyenCheckout(configuration);
+async function createPlexyCheckout(configuration) {
+    return await PlexyCheckout(configuration);
 }
 
-function getAdyenCheckoutConfiguration(config?): CoreConfiguration {
+function getPlexyCheckoutConfiguration(config?): CoreConfiguration {
     return {
         amount: {
             value: 2999,
@@ -52,8 +52,8 @@ describe('Dropin', () => {
     let configObj: any;
 
     beforeEach(async () => {
-        configObj = getAdyenCheckoutConfiguration();
-        checkout = await AdyenCheckout(configObj);
+        configObj = getPlexyCheckoutConfiguration();
+        checkout = await PlexyCheckout(configObj);
     });
 
     describe('Configuration "disableFinalAnimation"', () => {
@@ -157,7 +157,7 @@ describe('Dropin', () => {
                 paymentMethodType: 'scheme'
             };
 
-            const checkout = await AdyenCheckout({
+            const checkout = await PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -307,7 +307,7 @@ describe('Dropin', () => {
 
     describe('Dropin with Fastlane', () => {
         test('should render Fastlane if available and configured and should hide other payment methods', async () => {
-            const config = getAdyenCheckoutConfiguration({
+            const config = getPlexyCheckoutConfiguration({
                 paymentMethodsResponse: {
                     paymentMethods: [
                         { name: 'AliPay', type: 'alipay' },
@@ -316,7 +316,7 @@ describe('Dropin', () => {
                     ]
                 }
             });
-            const checkout = await createAdyenCheckout(config);
+            const checkout = await createPlexyCheckout(config);
 
             const dropin = new Dropin(checkout, {
                 paymentMethodComponents: [Fastlane],
@@ -325,7 +325,7 @@ describe('Dropin', () => {
                         tokenId: 'xxx',
                         lastFour: '1111',
                         brand: 'visa',
-                        email: 'email@adyen.com',
+                        email: 'email@plexy.com',
                         fastlaneSessionId: 'session-id'
                     }
                 }
@@ -344,7 +344,7 @@ describe('Dropin', () => {
         });
 
         test('should not return Fastlane if available and but not configured', async () => {
-            const config = getAdyenCheckoutConfiguration({
+            const config = getPlexyCheckoutConfiguration({
                 paymentMethodsResponse: {
                     paymentMethods: [
                         { name: 'AliPay', type: 'alipay' },
@@ -353,7 +353,7 @@ describe('Dropin', () => {
                     ]
                 }
             });
-            const checkout = await createAdyenCheckout(config);
+            const checkout = await createPlexyCheckout(config);
 
             const dropin = new Dropin(checkout, {
                 paymentMethodComponents: [Fastlane]
@@ -371,7 +371,7 @@ describe('Dropin', () => {
         });
 
         test('should remove Fastlane and display remaining payment methods once "Other payment methods" button is clicked', async () => {
-            const config = getAdyenCheckoutConfiguration({
+            const config = getPlexyCheckoutConfiguration({
                 paymentMethodsResponse: {
                     paymentMethods: [
                         { name: 'AliPay', type: 'alipay' },
@@ -380,7 +380,7 @@ describe('Dropin', () => {
                     ]
                 }
             });
-            const checkout = await createAdyenCheckout(config);
+            const checkout = await createPlexyCheckout(config);
             const user = userEvent.setup();
 
             const dropin = new Dropin(checkout, {
@@ -390,7 +390,7 @@ describe('Dropin', () => {
                         tokenId: 'xxx',
                         lastFour: '1111',
                         brand: 'visa',
-                        email: 'email@adyen.com',
+                        email: 'email@plexy.com',
                         fastlaneSessionId: 'session-id'
                     }
                 }
@@ -417,10 +417,10 @@ describe('Dropin', () => {
     describe('Detecting Enter key presses', () => {
         test('should see merchant defined onEnterKeyPressed callback fired', async () => {
             const onEnterKeyPressedMock = jest.fn();
-            const config = getAdyenCheckoutConfiguration({
+            const config = getPlexyCheckoutConfiguration({
                 onEnterKeyPressed: onEnterKeyPressedMock
             });
-            const checkout = await createAdyenCheckout(config);
+            const checkout = await createPlexyCheckout(config);
 
             render(new Dropin(checkout).mount('body'));
 

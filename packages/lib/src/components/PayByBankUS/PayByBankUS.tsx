@@ -74,11 +74,11 @@ export default class PayByBankUS extends RedirectElement {
                     )
                 ) : (
                     <Fragment>
-                        <div className="adyen-checkout-paybybank_AIS_DD">
-                            <p className="adyen-checkout-paybybank_AIS_DD__description-header">
+                        <div className="plexy-checkout-paybybank_AIS_DD">
+                            <p className="plexy-checkout-paybybank_AIS_DD__description-header">
                                 {this.props.i18n.get('payByBankAISDD.disclaimer.header')}
                             </p>
-                            <p className="adyen-checkout-paybybank_AIS_DD__description-body">
+                            <p className="plexy-checkout-paybybank_AIS_DD__description-body">
                                 {this.props.i18n.get('payByBankAISDD.disclaimer.body')}
                             </p>
                         </div>

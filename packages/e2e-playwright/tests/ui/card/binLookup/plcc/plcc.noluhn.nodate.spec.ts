@@ -27,7 +27,7 @@ test.describe('Testing binLookup endpoint for a response that should indicate a 
         // ...with "optional" text
         await expect(card.expiryDateLabelText).toHaveText(DATE_LABEL_OPTIONAL);
         // ...and optional class
-        await expect(card.expiryDateField).toHaveClass(/adyen-checkout__field__exp-date--optional/);
+        await expect(card.expiryDateField).toHaveClass(/plexy-checkout__field__exp-date--optional/);
 
         // Fill cvc
         await card.typeCvc(TEST_CVC_VALUE);

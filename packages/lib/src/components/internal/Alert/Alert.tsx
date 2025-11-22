@@ -16,8 +16,8 @@ export default function Alert({ children, classNames = [], type = 'error', icon 
     const role = type === 'error' || type === 'warning' ? 'alert' : 'status';
 
     return (
-        <div role={role} className={cx('adyen-checkout__alert-message', `adyen-checkout__alert-message--${type}`, classNames)}>
-            {icon && <Icon className={'adyen-checkout__alert-message__icon'} type={icon} />}
+        <div role={role} className={cx('plexy-checkout__alert-message', `plexy-checkout__alert-message--${type}`, classNames)}>
+            {icon && <Icon className={'plexy-checkout__alert-message__icon'} type={icon} />}
             {children}
         </div>
     );

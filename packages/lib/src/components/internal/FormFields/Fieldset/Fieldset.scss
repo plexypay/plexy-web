@@ -1,7 +1,7 @@
 @use 'styles/index';
 @import 'styles/variable-generator';
 
-.adyen-checkout__fieldset {
+.plexy-checkout__fieldset {
     display: block;
     padding-bottom: token(spacer-040);
     width: 100%;
@@ -24,16 +24,16 @@
     }
 }
 
-.adyen-checkout__fieldset:last-of-type {
+.plexy-checkout__fieldset:last-of-type {
     padding-bottom: 0;
 }
 
-.adyen-checkout__fieldset + .adyen-checkout__fieldset {
+.plexy-checkout__fieldset + .plexy-checkout__fieldset {
     margin-top: token(spacer-070);
 }
 
-.adyen-checkout__fieldset__title {
-    @include index.adyen-checkout-text-subtitle;
+.plexy-checkout__fieldset__title {
+    @include index.plexy-checkout-text-subtitle;
 
     color: token(color-label-primary);
     font-weight: token(text-subtitle-font-weight);
@@ -41,16 +41,16 @@
     margin: 0;
     padding: 0 0 token(spacer-060);
 
-    &:has(+ .adyen-checkout__fieldset__description) {
+    &:has(+ .plexy-checkout__fieldset__description) {
         padding: 0;
     }
 }
 
-.adyen-checkout__fieldset__fields {
+.plexy-checkout__fieldset__fields {
     @include index.fieldset-fields-layout;
 }
 
-.adyen-checkout__fieldset--readonly .adyen-checkout__fieldset__fields {
+.plexy-checkout__fieldset--readonly .plexy-checkout__fieldset__fields {
     color: token(color-label-primary);
     font-size: token(text-body-font-size);
     line-height: token(text-caption-line-height);

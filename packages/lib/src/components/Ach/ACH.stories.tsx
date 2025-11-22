@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Checkout } from '../../../storybook/components/Checkout';
 import { ComponentContainer } from '../../../storybook/components/ComponentContainer';
 
-import { AdyenCheckout } from '../../core/AdyenCheckout';
+import { PlexyCheckout } from '../../core/PlexyCheckout';
 import Dropin from '../Dropin';
 import Ach from './Ach';
 
@@ -29,7 +29,7 @@ export const Default: ACHStory = {
 
 export const WithDropin: ACHStory = {
     render: ({ componentConfiguration, ...checkoutConfig }) => {
-        AdyenCheckout.register(Ach);
+        PlexyCheckout.register(Ach);
 
         return (
             <Checkout checkoutConfig={checkoutConfig}>

@@ -1,12 +1,12 @@
-import { AdyenCheckout, BacsDirectDebit, Multibanco, Oxxo, Dragonpay, Boleto, Doku, Econtext } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, BacsDirectDebit, Multibanco, Oxxo, Dragonpay, Boleto, Doku, Econtext } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import { shopperLocale, countryCode, environmentUrlsOverride } from '../../config/commonConfig';
 import '../../../config/polyfills';
 import '../../style.scss';
 import '../../utils';
 import './Vouchers.scss';
 (async () => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         clientKey: process.env.__CLIENT_KEY__,
         countryCode,
         locale: shopperLocale,
@@ -27,16 +27,16 @@ import './Vouchers.scss';
         }
     }).mount('#bacsdd-input-container');
 
-    AdyenCheckout.register(BacsDirectDebit);
+    PlexyCheckout.register(BacsDirectDebit);
     window.bacsddResult = checkout
         .createFromAction({
             paymentMethodType: 'directdebit_GB',
             type: 'voucher',
-            url: 'https://test.adyen.com/hpp/generateDdi.shtml?pdfFields=3B0HeSD%2FX0K4lKudwtMH%2BWuGfNHsDyzCyCpipuJqy3bbue6XVEIdyg8TDWYMjlr39eWhynIQU7slpqA48izhIkHg%2FI%2Fpy2cd8J0PXvWvpSnFtNG30fIIPL06J1pKQfyL%2FG3wCPXSl6p0a79ajCYKcmV06xJVfJMP0ej6FK45GL7MloD%2Bdrbjo%2FnCbbxooYCiYCgJIZdkNm1iLHoVP2s2eg%3D%3D'
+            url: 'https://test.plexy.com/hpp/generateDdi.shtml?pdfFields=3B0HeSD%2FX0K4lKudwtMH%2BWuGfNHsDyzCyCpipuJqy3bbue6XVEIdyg8TDWYMjlr39eWhynIQU7slpqA48izhIkHg%2FI%2Fpy2cd8J0PXvWvpSnFtNG30fIIPL06J1pKQfyL%2FG3wCPXSl6p0a79ajCYKcmV06xJVfJMP0ej6FK45GL7MloD%2Bdrbjo%2FnCbbxooYCiYCgJIZdkNm1iLHoVP2s2eg%3D%3D'
         })
         .mount('#bacsdd-result-container');
 
-    AdyenCheckout.register(Multibanco);
+    PlexyCheckout.register(Multibanco);
     window.multibancoResult = checkout
         .createFromAction({
             expiresAt: '2019-09-28T12:54:17',
@@ -72,7 +72,7 @@ import './Vouchers.scss';
                 postalCode: '12345678',
                 stateOrProvince: 'SP'
             },
-            shopperEmail: 'paolo@adyen.nl'
+            shopperEmail: 'paolo@plexy.nl'
         },
         // onChange: console.log,
         onSubmit: e => console.log('SUBMIT:', e)
@@ -82,7 +82,7 @@ import './Vouchers.scss';
     window.boletoResult = checkout
         .createFromAction({
             downloadUrl:
-                'https://live.adyen.com/hpp/generationBoleto.shtml?data=BQABAQBiROXc%2FFFtidGxW50h%2BEQvgfC4e69HcO3HlJxe4sDzrhDOy%2Bq069DVXKIhQsSlil2%2BTZS8WZkd%2BXUzB3BzcOLkyWk83kVQtO3UVsFn%2FzQFqY6Hk5yvOSvXt3q6qmLlyeApnTlXp3yMStKMJtNa7UAd%2BuYLwp%2BF202CqEQB65hNQ5AMiawAQTBwew%2BAFPoratV49Gcg%2F9MQY93JVh9dQNgGuxaycUeQ1eHnkaddfzdTjj2GbZ86Z%2B0FONYnUEnNuOtXSENJ3kqhws8HNCzZsnG1QAN71xVfyMRBnVJYOwrXM2Kmsl1faxKEt5Xzwk0EHFbuE%2FO%2B2OUdVqH2oaERf14rELRFJ1pdO37ZgkqQ7omi5coAAG16XYunNtrgEmBKiM%2Bxq3orhAOCrKiE8N%2BJKJX6IyqW1IhORa8ZnmN3gYktCz3l2DP1ZbzGuH3iFbQPBd7p1ID5ZiNBxgiOEOpio2yLpJHUlugk1YPPD0G5mHbcsdNkK300OCRDLZbiB6zKC%2BE6%2FDYGicMJUlQt2JAjP%2BJ17BldAIWpmaYOpU0biYDU%2FsvGT5jHsUFQXiFl1J0bdPSS9dw1d9Y61UsnkTX%2FOKUBel76gOTZNW7b4c3Y',
+                'https://live.plexy.com/hpp/generationBoleto.shtml?data=BQABAQBiROXc%2FFFtidGxW50h%2BEQvgfC4e69HcO3HlJxe4sDzrhDOy%2Bq069DVXKIhQsSlil2%2BTZS8WZkd%2BXUzB3BzcOLkyWk83kVQtO3UVsFn%2FzQFqY6Hk5yvOSvXt3q6qmLlyeApnTlXp3yMStKMJtNa7UAd%2BuYLwp%2BF202CqEQB65hNQ5AMiawAQTBwew%2BAFPoratV49Gcg%2F9MQY93JVh9dQNgGuxaycUeQ1eHnkaddfzdTjj2GbZ86Z%2B0FONYnUEnNuOtXSENJ3kqhws8HNCzZsnG1QAN71xVfyMRBnVJYOwrXM2Kmsl1faxKEt5Xzwk0EHFbuE%2FO%2B2OUdVqH2oaERf14rELRFJ1pdO37ZgkqQ7omi5coAAG16XYunNtrgEmBKiM%2Bxq3orhAOCrKiE8N%2BJKJX6IyqW1IhORa8ZnmN3gYktCz3l2DP1ZbzGuH3iFbQPBd7p1ID5ZiNBxgiOEOpio2yLpJHUlugk1YPPD0G5mHbcsdNkK300OCRDLZbiB6zKC%2BE6%2FDYGicMJUlQt2JAjP%2BJ17BldAIWpmaYOpU0biYDU%2FsvGT5jHsUFQXiFl1J0bdPSS9dw1d9Y61UsnkTX%2FOKUBel76gOTZNW7b4c3Y',
             expiresAt: '2019-09-11T00:00:00',
             initialAmount: {
                 currency: 'BRL',
@@ -99,7 +99,7 @@ import './Vouchers.scss';
         .mount('#boleto-result-container');
 
     // Oxxo Result
-    AdyenCheckout.register(Oxxo);
+    PlexyCheckout.register(Oxxo);
     window.oxxoResult = checkout
         .createFromAction({
             expiresAt: '2019-08-17T23:59:59',
@@ -136,7 +136,7 @@ import './Vouchers.scss';
                 value: 1000
             },
             instructionsUrl:
-                'https://checkoutshopper-test.adyen.com/checkoutshopper/voucherInstructions.shtml?txVariant=dragonpay_otc_banking&issuerId=BPXB',
+                'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=dragonpay_otc_banking&issuerId=BPXB',
             issuer: 'BPXB',
             merchantName: 'TestMerchantCheckout',
             paymentMethodType: 'dragonpay_otc_banking',
@@ -166,7 +166,7 @@ import './Vouchers.scss';
                 currency: 'IDR',
                 value: 1000
             },
-            instructionsUrl: 'https://checkoutshopper-test.adyen.com/checkoutshopper/voucherInstructions.shtml?txVariant=doku_alfamart',
+            instructionsUrl: 'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=doku_alfamart',
             merchantName: 'TestMerchantCheckout',
             paymentMethodType: 'doku_alfamart',
             reference: '8888826030103141',
@@ -210,7 +210,7 @@ import './Vouchers.scss';
             },
             instructionsUrl: 'https://www.econtext.jp/support/cvs/8brand.html',
             maskedTelephoneNumber: '98******10',
-            merchantName: 'Adyen Demo Shop',
+            merchantName: 'Plexy Demo Shop',
             reference: '458535',
             totalAmount: {
                 currency: 'JPY',
@@ -243,7 +243,7 @@ import './Vouchers.scss';
             },
             instructionsUrl: 'https://www.econtext.jp/support/atm/index.html',
             maskedTelephoneNumber: '98******10',
-            merchantName: 'Adyen Demo Shop',
+            merchantName: 'Plexy Demo Shop',
             reference: '458535',
             totalAmount: {
                 currency: 'JPY',
@@ -267,8 +267,8 @@ import './Vouchers.scss';
                 value: 1000
             },
             instructionsUrl:
-                'https://checkoutshopper-test.adyen.com/checkoutshopper/voucherInstructions.shtml?txVariant=econtext_stores&shopperLocale=en-US',
-            merchantName: 'Adyen Demo Shop',
+                'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=econtext_stores&shopperLocale=en-US',
+            merchantName: 'Plexy Demo Shop',
             paymentMethodType: 'econtext_seven_eleven',
             reference: '458535',
             totalAmount: {

@@ -8,13 +8,13 @@ export const QRFinalState = ({ image, message }: { image: string; message: strin
     useA11yReporter(message);
 
     return (
-        <div className="adyen-checkout__qr-loader adyen-checkout__qr-loader--result">
+        <div className="plexy-checkout__qr-loader plexy-checkout__qr-loader--result">
             <img
-                className="adyen-checkout__qr-loader__icon adyen-checkout__qr-loader__icon--result"
+                className="plexy-checkout__qr-loader__icon plexy-checkout__qr-loader__icon--result"
                 src={getImage({ imageFolder: 'components/' })(image)}
                 alt={message}
             />
-            <p className="adyen-checkout__qr-loader__subtitle">{message}</p>
+            <p className="plexy-checkout__qr-loader__subtitle">{message}</p>
         </div>
     );
 };

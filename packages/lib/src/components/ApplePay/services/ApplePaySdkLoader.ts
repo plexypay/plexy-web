@@ -1,5 +1,5 @@
 import Script from '../../../utils/Script';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import { AnalyticsModule } from '../../../types/global-types';
 
 export const APPLE_PAY_SDK_URL = 'https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js';
@@ -26,7 +26,7 @@ class ApplePaySdkLoader {
 
             return window?.ApplePaySession;
         } catch (error) {
-            throw new AdyenCheckoutError('SCRIPT_ERROR', 'ApplePaySDK failed to load', { cause: error });
+            throw new PlexyCheckoutError('SCRIPT_ERROR', 'ApplePaySDK failed to load', { cause: error });
         }
     }
 

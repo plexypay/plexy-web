@@ -1,6 +1,6 @@
 @import 'styles/variable-generator';
 
-.adyen-checkout__segmented-control {
+.plexy-checkout__segmented-control {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(token(spacer-140), 1fr));
     gap: token(spacer-020);
@@ -11,13 +11,13 @@
     &--disabled {
         pointer-events: none;
 
-        > .adyen-checkout__segmented-control-segment {
+        > .plexy-checkout__segmented-control-segment {
             color: token(color-label-disabled);
         }
     }
 }
 
-.adyen-checkout__segmented-control-segment {
+.plexy-checkout__segmented-control-segment {
     cursor: pointer;
     padding: token(spacer-040) token(spacer-060);
     color: token(color-label-primary);

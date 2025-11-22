@@ -18,11 +18,11 @@ jobs:
         api-version: ["v71"] # Using only latest API version for a11y tests
         runner-browser: ["chromium"] # Often a11y tests only need to run on one browser
     env:
-      CHECKOUT_API_KEY: ${{secrets.ADYEN_CHECKOUT_API_KEY}}
-      MERCHANT_ACCOUNT: ${{secrets.ADYEN_CHECKOUT_MERCHANT_ACCOUNT}}
-      CLIENT_KEY: ${{secrets.ADYEN_CHECKOUT_CLIENT_KEY}}
+      CHECKOUT_API_KEY: ${{secrets.PLEXY_CHECKOUT_API_KEY}}
+      MERCHANT_ACCOUNT: ${{secrets.PLEXY_CHECKOUT_MERCHANT_ACCOUNT}}
+      CLIENT_KEY: ${{secrets.PLEXY_CHECKOUT_CLIENT_KEY}}
       CLIENT_ENV: test
-      TESTING_ENVIRONMENT: https://checkout-test.adyen.com/checkout/${{matrix.api-version}}
+      TESTING_ENVIRONMENT: https://checkout-test.plexy.com/checkout/${{matrix.api-version}}
       API_VERSION: ${{matrix.api-version}}
     steps:
     - name: Checkout

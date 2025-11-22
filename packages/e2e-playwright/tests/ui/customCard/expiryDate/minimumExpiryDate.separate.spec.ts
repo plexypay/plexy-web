@@ -1,5 +1,5 @@
 import { test } from '../../../../fixtures/base-fixture';
-import LANG from '@adyen/adyen-web-server/translations/en-US.json';
+import LANG from '@plexy/plexy-web-server/translations/en-US.json';
 
 const errorHolder = '.pm-form-label__error-text';
 const CARD_TOO_OLD = LANG['cc.dat.912'];

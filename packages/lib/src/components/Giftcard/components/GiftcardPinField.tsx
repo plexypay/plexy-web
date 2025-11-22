@@ -30,11 +30,11 @@ export const GiftcardPinField = ({
                 encryptedFieldType="encryptedSecurityCode"
                 data-info='{"length":"3-10", "maskInterval": 0}'
                 className={classNames({
-                    'adyen-checkout__input': true,
-                    'adyen-checkout__input--large': true,
-                    'adyen-checkout__card__cvc__input': true,
-                    'adyen-checkout__input--error': sfpState.errors.encryptedSecurityCode,
-                    'adyen-checkout__input--focus': focusedElement === 'encryptedSecurityCode'
+                    'plexy-checkout__input': true,
+                    'plexy-checkout__input--large': true,
+                    'plexy-checkout__card__cvc__input': true,
+                    'plexy-checkout__input--error': sfpState.errors.encryptedSecurityCode,
+                    'plexy-checkout__input--focus': focusedElement === 'encryptedSecurityCode'
                 })}
             />
         </Field>

@@ -25,7 +25,7 @@ export type PayByBankPixConfiguration = UIElementProps &
         /**
          * @internal
          */
-        _isAdyenHosted?: boolean;
+        _isPlexyHosted?: boolean;
         /**
          * @internal from backend, action object
          */

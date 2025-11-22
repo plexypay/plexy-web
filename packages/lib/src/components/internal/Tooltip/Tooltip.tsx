@@ -88,15 +88,15 @@ export function Tooltip(props: TooltipProps) {
             role="tooltip"
             aria-live={'polite'}
             className={cx({
-                'adyen-checkout-tooltip': true,
-                'adyen-checkout-tooltip--hidden': !props.visible || !isAnchorVisible,
-                [`adyen-checkout-tooltip--${position}`]: true
+                'plexy-checkout-tooltip': true,
+                'plexy-checkout-tooltip--hidden': !props.visible || !isAnchorVisible,
+                [`plexy-checkout-tooltip--${position}`]: true
             })}
             ref={tooltipRef}
             style={style}
         >
             {props.text}
-            <div className={`adyen-checkout-tooltip-arrow adyen-checkout-tooltip-arrow--${position}`} />
+            <div className={`plexy-checkout-tooltip-arrow plexy-checkout-tooltip-arrow--${position}`} />
         </div>,
         document.body
     );

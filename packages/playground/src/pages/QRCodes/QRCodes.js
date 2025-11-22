@@ -1,5 +1,5 @@
-import { AdyenCheckout, WeChat, BcmcMobile, Swish, PromptPay, PayNow, DuitNow } from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+import { PlexyCheckout, WeChat, BcmcMobile, Swish, PromptPay, PayNow, DuitNow } from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 import { makePayment } from '../../services';
 import { shopperLocale, countryCode, environmentUrlsOverride } from '../../config/commonConfig';
 import '../../../config/polyfills';
@@ -33,7 +33,7 @@ const handleQRCodePayment = async (state, component, actions, countryCode) => {
 };
 
 (async () => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         clientKey: process.env.__CLIENT_KEY__,
         countryCode,
         locale: shopperLocale,

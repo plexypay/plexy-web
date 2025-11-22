@@ -188,7 +188,7 @@ class Giftcard extends Component<GiftcardComponentProps> {
         };
 
         return (
-            <div className="adyen-checkout__giftcard">
+            <div className="plexy-checkout__giftcard">
                 {this.state.status === 'error' && <Alert icon={'cross'}>{i18n.get('error.message.unknown')}</Alert>}
 
                 <SecuredFieldsProvider

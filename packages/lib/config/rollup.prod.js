@@ -103,8 +103,8 @@ export default () => {
                 minify({ isESM: false })
             ],
             output: {
-                name: 'AdyenCheckout',
-                file: 'dist/umd/adyen.js',
+                name: 'PlexyCheckout',
+                file: 'dist/umd/plexy.js',
                 format: 'umd',
                 indent: true,
                 sourcemap: true

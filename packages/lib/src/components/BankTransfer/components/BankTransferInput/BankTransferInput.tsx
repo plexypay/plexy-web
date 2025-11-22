@@ -37,9 +37,9 @@ function BankTransferInput(props: Readonly<BankTransferInputProps>) {
     }, [props.setComponentRef]);
 
     return (
-        <div className="adyen-checkout__bankTransfer">
-            <p className="adyen-checkout__bankTransfer__introduction">{i18n.get('bankTransfer.introduction')}</p>
-            <div className="adyen-checkout__fieldset adyen-checkout__fieldset--sendCopyToEmail adyen-checkout__bankTransfer__emailField">
+        <div className="plexy-checkout__bankTransfer">
+            <p className="plexy-checkout__bankTransfer__introduction">{i18n.get('bankTransfer.introduction')}</p>
+            <div className="plexy-checkout__fieldset plexy-checkout__fieldset--sendCopyToEmail plexy-checkout__bankTransfer__emailField">
                 <Field
                     label={emailOptionalLabel}
                     classNameModifiers={['shopperEmail']}

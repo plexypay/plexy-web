@@ -265,7 +265,7 @@ function Select({
 
     return (
         <div
-            className={cx(['adyen-checkout__dropdown', className, ...classNameModifiers.map(m => `adyen-checkout__dropdown--${m}`)])}
+            className={cx(['plexy-checkout__dropdown', className, ...classNameModifiers.map(m => `plexy-checkout__dropdown--${m}`)])}
             ref={selectContainerRef}
         >
             <SelectButton

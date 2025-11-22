@@ -14,7 +14,7 @@ interface LinkProps {
 
 const Link = ({ to, children }: LinkProps) => {
     return (
-        <a className="adyen-checkout-link" href={to} target="_blank" rel="noopener noreferrer">
+        <a className="plexy-checkout-link" href={to} target="_blank" rel="noopener noreferrer">
             {children}
         </a>
     );

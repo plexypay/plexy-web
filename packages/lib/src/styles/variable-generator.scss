@@ -1,6 +1,6 @@
-@import '~@adyen/bento-design-tokens/dist/scss-map/bento/aliases';
-@import '~@adyen/bento-design-tokens/dist/scss-map/bento/definitions';
-@import '~@adyen/bento-design-tokens/dist/scss-map/bento/components';
+@import '~@plexy/bento-design-tokens/dist/scss-map/bento/aliases';
+@import '~@plexy/bento-design-tokens/dist/scss-map/bento/definitions';
+@import '~@plexy/bento-design-tokens/dist/scss-map/bento/components';
 @import 'overrides';
 
 // simple re-mapping
@@ -14,23 +14,23 @@ $color: map-merge(
     )
 );
 
-@function adyen-sdk-generate-css-variables($maps...) {
-    $adyen-output-map: ();
+@function plexy-sdk-generate-css-variables($maps...) {
+    $plexy-output-map: ();
 
     @each $map in $maps {
         @each $name, $value in $map {
-            $adyen-output-map: map-merge($adyen-output-map, (#{$name}: var(--adyen-sdk-#{$name}, #{$value})));
+            $plexy-output-map: map-merge($plexy-output-map, (#{$name}: var(--plexy-sdk-#{$name}, #{$value})));
         }
     }
 
-    @return $adyen-output-map;
+    @return $plexy-output-map;
 }
 
 @function token($token, $generate-css-var: true) {
-    $adyen-tokens-map: ();
+    $plexy-tokens-map: ();
 
     @if $generate-css-var {
-        $adyen-tokens-map: adyen-sdk-generate-css-variables(
+        $plexy-tokens-map: plexy-sdk-generate-css-variables(
             $color,
             $text,
             $focus-ring,
@@ -45,7 +45,7 @@ $color: map-merge(
             $text-overrides
         );
     } @else {
-        $adyen-tokens-map: map-merge(
+        $plexy-tokens-map: map-merge(
             $color,
             $text,
             $focus-ring,
@@ -61,5 +61,5 @@ $color: map-merge(
         );
     }
 
-    @return map-get($adyen-tokens-map, '#{$token}');
+    @return map-get($plexy-tokens-map, '#{$token}');
 }

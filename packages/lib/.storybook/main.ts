@@ -65,7 +65,7 @@ const config: StorybookConfig = {
                 cssCodeSplit: false,
                 rollupOptions: {
                     output: {
-                        assetFileNames: 'adyen.[ext]' // Matches Rollup's extract: 'adyen.css'
+                        assetFileNames: 'plexy.[ext]' // Matches Rollup's extract: 'plexy.css'
                     }
                 }
             },

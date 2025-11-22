@@ -1,5 +1,5 @@
 import { render } from '@testing-library/preact';
-import AdyenCheckout from './core';
+import PlexyCheckout from './core';
 import BCMCMobileElement from '../components/BcmcMobile';
 import Session from './CheckoutSession';
 import { Dropin, Ach } from '../components';
@@ -37,14 +37,14 @@ const setupSessionSpy = jest.spyOn(Session.prototype, 'setupSession').mockImplem
 describe('Core', () => {
     describe('Setting locale', () => {
         test('should default locale to en-US', async () => {
-            const checkout = new AdyenCheckout({ countryCode: 'US', environment: 'test', clientKey: 'test_123456' });
+            const checkout = new PlexyCheckout({ countryCode: 'US', environment: 'test', clientKey: 'test_123456' });
             await checkout.initialize();
             expect(checkout.options.locale).toBe('en-US');
             expect(checkout.modules.i18n.locale).toBe('en-US');
         });
 
         test('should set a custom locale', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -59,7 +59,7 @@ describe('Core', () => {
 
     describe('initialize', () => {
         test('should do the setup call with the correct session data for the session flow', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -73,13 +73,13 @@ describe('Core', () => {
 
     describe('Creating modules', () => {
         test('should create the modules when initializing on Advanced Flow', async () => {
-            const checkout = new AdyenCheckout({ countryCode: 'US', environment: 'test', clientKey: 'test_123456' });
+            const checkout = new PlexyCheckout({ countryCode: 'US', environment: 'test', clientKey: 'test_123456' });
             await checkout.initialize();
             expect(Object.keys(checkout.modules).length).toBe(5);
         });
 
         test('should create the modules when initializing on Sessions flow', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -94,7 +94,7 @@ describe('Core', () => {
 
     describe('createFromAction', () => {
         test('should create a component from an action object', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456'
@@ -113,7 +113,7 @@ describe('Core', () => {
         });
 
         test('should handle threeDS2 subtype "fingerprint" action', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456'
@@ -139,7 +139,7 @@ describe('Core', () => {
         });
 
         test('should handle threeDS2 subtype "challenge" action', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456'
@@ -166,7 +166,7 @@ describe('Core', () => {
 
         test('should call (global) onAdditionalDetails with correct params when the action object (= a UIElement) calls onComplete', async () => {
             const onAdditionalDetails = jest.fn().mockName('onAdditionalDetailsGlobal');
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -174,10 +174,10 @@ describe('Core', () => {
             });
             await checkout.initialize();
 
-            AdyenCheckout.register(BCMCMobileElement);
+            PlexyCheckout.register(BCMCMobileElement);
             const paymentAction = checkout.createFromAction({
                 paymentMethodType: 'bcmc_mobile_QR',
-                qrCodeData: 'BEP://1bcmc-test.adyen.com/pal/bep$ZTHYT3DHKVXYJ3GHBQNNCX4M',
+                qrCodeData: 'BEP://1bcmc-test.plexy.com/pal/bep$ZTHYT3DHKVXYJ3GHBQNNCX4M',
                 type: 'qrCode',
                 paymentData: 'test'
             });
@@ -203,7 +203,7 @@ describe('Core', () => {
         const onAdditionalDetailsCreateFromAction = jest.fn().mockName('onSubmitMockComponent');
 
         test('should use Component property instead of the global one', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -220,7 +220,7 @@ describe('Core', () => {
         });
 
         test('should use global property as the Component property is omitted', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -234,7 +234,7 @@ describe('Core', () => {
         });
 
         test('should use prop from "paymentMethodsConfiguration" instead of global and local Component properties', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 analytics: { enabled: false },
@@ -272,7 +272,7 @@ describe('Core', () => {
         });
 
         test('createFromAction - should use local onAdditionalDetails property instead of global configuration property', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -280,11 +280,11 @@ describe('Core', () => {
             });
             await checkout.initialize();
 
-            AdyenCheckout.register(BCMCMobileElement);
+            PlexyCheckout.register(BCMCMobileElement);
             const paymentAction = checkout.createFromAction(
                 {
                     paymentMethodType: 'bcmc_mobile_QR',
-                    qrCodeData: 'BEP://1bcmc-test.adyen.com/pal/bep$ZTHYT3DHKVXYJ3GHBQNNCX4M',
+                    qrCodeData: 'BEP://1bcmc-test.plexy.com/pal/bep$ZTHYT3DHKVXYJ3GHBQNNCX4M',
                     type: 'qrCode',
                     paymentData: 'test'
                 },
@@ -311,7 +311,7 @@ describe('Core', () => {
 
     describe('update()', () => {
         test('should update all components under main instance', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'test_123456',
@@ -328,7 +328,7 @@ describe('Core', () => {
         });
 
         test('should update the payment method list for the advanced flow', async () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 clientKey: 'xxxx'
@@ -343,7 +343,7 @@ describe('Core', () => {
 
     describe('Customizing URLs (PBL use-case)', () => {
         test('should use custom checkoutshopper URL url if available', () => {
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 countryCode: 'US',
                 environment: 'test',
                 _environmentUrls: {
@@ -358,7 +358,7 @@ describe('Core', () => {
 
     describe('Initialising without a countryCode', () => {
         test('AdvancedFlow, without a countryCode, should throw an error', () => {
-            const core = new AdyenCheckout({
+            const core = new PlexyCheckout({
                 environment: 'test',
                 _environmentUrls: {
                     api: 'https://localhost:8080/checkoutshopper/'
@@ -372,7 +372,7 @@ describe('Core', () => {
         test('SessionsFlow, without a countryCode, should throw an error', () => {
             delete sessionSetupResponseMock.countryCode;
 
-            const checkout = new AdyenCheckout({
+            const checkout = new PlexyCheckout({
                 environment: 'test',
                 clientKey: 'test_123456',
                 session: { id: 'session-id', sessionData: 'session-data' }
@@ -395,7 +395,7 @@ describe('Core', () => {
                 return Promise.resolve(submitDetailsRes);
             });
 
-            const core = new AdyenCheckout({
+            const core = new PlexyCheckout({
                 countryCode: 'US',
                 clientKey: 'test_CLIENT_KEY',
                 session: { id: 'session-id' },
@@ -427,7 +427,7 @@ describe('Core', () => {
                 return Promise.resolve(submitDetailsRes);
             });
 
-            const core = new AdyenCheckout({
+            const core = new PlexyCheckout({
                 countryCode: 'US',
                 clientKey: 'test_CLIENT_KEY',
                 session: { id: 'session-id' },

@@ -1,4 +1,4 @@
-import '@adyen/adyen-web/styles/adyen.css';
+import '@plexy/plexy-web/styles/plexy.css';
 import { getPaymentMethods, makePayment, checkBalance, createOrder, cancelOrder, makeDetailsCall } from '../../services';
 import { amount, shopperLocale, countryCode, returnUrl, environmentUrlsOverride } from '../../config/commonConfig';
 import { getSearchParameters } from '../../utils';
@@ -7,9 +7,9 @@ import { handleOnPaymentCompleted, handleOnPaymentFailed } from '../../handlers'
 export async function initManual() {
     const paymentMethodsResponse = await getPaymentMethods({ amount, shopperLocale });
 
-    const { AdyenCheckout, Dropin } = window.AdyenWeb;
+    const { PlexyCheckout, Dropin } = window.PlexyWeb;
 
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         amount,
         countryCode,
         clientKey: process.env.__CLIENT_KEY__,

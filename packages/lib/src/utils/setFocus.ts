@@ -21,7 +21,7 @@ export const setFocusOnField = (holder: Element | string, fieldToFocus: string, 
         // Set focus on dropdown
         const field: HTMLElement = selectOne(
             pdHolder,
-            `${focusContextSelector}.adyen-checkout__field--${fieldToFocus} .adyen-checkout__filter-input`
+            `${focusContextSelector}.plexy-checkout__field--${fieldToFocus} .plexy-checkout__filter-input`
         );
         field?.focus();
     } else {

@@ -3,12 +3,12 @@ import { RETURN_URL, SHOPPER_REFERENCE, STORYBOOK_ENVIRONMENT_URLS } from '../co
 import { handleError, handleFinalState } from './checkout-handlers';
 import getCurrency from '../utils/get-currency';
 import Checkout from '../../src/core/core';
-import { AdyenCheckout } from '../../src/core/AdyenCheckout';
+import { PlexyCheckout } from '../../src/core/PlexyCheckout';
 
-import type { AdyenCheckoutProps, ShopperDetails } from '../types';
+import type { PlexyCheckoutProps, ShopperDetails } from '../types';
 
 async function createSessionsCheckout(
-    checkoutProps: Omit<AdyenCheckoutProps, 'srConfig'> & {
+    checkoutProps: Omit<PlexyCheckoutProps, 'srConfig'> & {
         srConfig?: { showPanel: boolean; moveFocus: boolean };
     },
     shopperDetails?: ShopperDetails
@@ -33,12 +33,12 @@ async function createSessionsCheckout(
         reference: 'ABC123',
         returnUrl: RETURN_URL,
         shopperReference: SHOPPER_REFERENCE,
-        shopperEmail: 'shopper.ctp1@adyen.com',
+        shopperEmail: 'shopper.ctp1@plexy.com',
         ...(shopperDetails && { ...shopperDetails }),
         ...sessionData
     });
 
-    return AdyenCheckout({
+    return PlexyCheckout({
         clientKey: process.env.CLIENT_KEY,
         environment: process.env.CLIENT_ENV as any,
         countryCode,

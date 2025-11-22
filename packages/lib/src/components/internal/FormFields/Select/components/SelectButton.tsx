@@ -53,12 +53,12 @@ function SelectButton(props: Readonly<SelectButtonProps>) {
     return (
         <SelectButtonElement
             className={cx({
-                'adyen-checkout__dropdown__button': true,
-                'adyen-checkout__dropdown__button--readonly': readonly,
-                'adyen-checkout__dropdown__button--active': showList,
-                'adyen-checkout__dropdown__button--invalid': props.isInvalid,
-                'adyen-checkout__dropdown__button--valid': props.isValid,
-                'adyen-checkout__dropdown__button--disabled': selected.disabled
+                'plexy-checkout__dropdown__button': true,
+                'plexy-checkout__dropdown__button--readonly': readonly,
+                'plexy-checkout__dropdown__button--active': showList,
+                'plexy-checkout__dropdown__button--invalid': props.isInvalid,
+                'plexy-checkout__dropdown__button--valid': props.isValid,
+                'plexy-checkout__dropdown__button--disabled': selected.disabled
             })}
             disabled={props.disabled}
             filterable={props.filterable}
@@ -72,19 +72,19 @@ function SelectButton(props: Readonly<SelectButtonProps>) {
         >
             {!props.filterable ? (
                 <Fragment>
-                    {selected.icon && <Img className="adyen-checkout__dropdown__button__icon" src={selected.icon} alt={selected.name} />}
+                    {selected.icon && <Img className="plexy-checkout__dropdown__button__icon" src={selected.icon} alt={selected.name} />}
                     <span
-                        className={classnames('adyen-checkout__dropdown__button__text', {
-                            'adyen-checkout__dropdown__button__text-placeholder': isShowingPlaceholder
+                        className={classnames('plexy-checkout__dropdown__button__text', {
+                            'plexy-checkout__dropdown__button__text-placeholder': isShowingPlaceholder
                         })}
                     >
                         {displayText}
                     </span>
-                    {selected.secondaryText && <span className="adyen-checkout__dropdown__button__secondary-text">{selected.secondaryText}</span>}
+                    {selected.secondaryText && <span className="plexy-checkout__dropdown__button__secondary-text">{selected.secondaryText}</span>}
                 </Fragment>
             ) : (
                 <Fragment>
-                    {!showList && selected.icon && <Img className="adyen-checkout__dropdown__button__icon" src={selected.icon} alt={selected.name} />}
+                    {!showList && selected.icon && <Img className="plexy-checkout__dropdown__button__icon" src={selected.icon} alt={selected.name} />}
                     <input
                         value={displayInputText}
                         aria-autocomplete="list"
@@ -92,7 +92,7 @@ function SelectButton(props: Readonly<SelectButtonProps>) {
                         aria-expanded={showList}
                         aria-owns={props.selectListId}
                         autoComplete="off"
-                        className="adyen-checkout__filter-input"
+                        className="plexy-checkout__filter-input"
                         onInput={props.onInput}
                         onFocus={onFocusHandler}
                         ref={props.filterInputRef}
@@ -105,7 +105,7 @@ function SelectButton(props: Readonly<SelectButtonProps>) {
                         required={required}
                     />
                     {!showList && selected.secondaryText && (
-                        <span className="adyen-checkout__dropdown__button__secondary-text">{selected.secondaryText}</span>
+                        <span className="plexy-checkout__dropdown__button__secondary-text">{selected.secondaryText}</span>
                     )}
                 </Fragment>
             )}

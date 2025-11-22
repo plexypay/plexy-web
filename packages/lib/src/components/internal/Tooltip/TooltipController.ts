@@ -4,7 +4,7 @@ import { getUniqueId } from '../../../utils/idGenerator';
 type setTooltipState = (state: TooltipProps | null) => void;
 
 export class TooltipController {
-    public static readonly tooltipId = getUniqueId('adyen-checkout-tooltip');
+    public static readonly tooltipId = getUniqueId('plexy-checkout-tooltip');
     private static readonly DEFAULT_TIMEOUT = 100;
     private static readonly PRIMARY_TOOLTIP_RESET_EVENT = 'primary-tooltip-reset';
     private static timeoutId: ReturnType<typeof setTimeout> | null = null;

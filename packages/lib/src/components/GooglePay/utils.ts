@@ -19,12 +19,12 @@ export function resolveEnvironment(env = 'TEST'): google.payments.api.Environmen
 }
 
 /**
- * This function formats Google Pay contact format to Adyen address format
+ * This function formats Google Pay contact format to Plexy address format
  *
  * Setting 'houseNumberOrName' to ZZ won't affect the AVS check, and it will make the algorithm take the
  * house number from the 'street' property.
  */
-export function formatGooglePayContactToAdyenAddressFormat(
+export function formatGooglePayContactToPlexyAddressFormat(
     paymentContact?: Partial<google.payments.api.Address>,
     isDeliveryAddress?: boolean
 ): AddressData | undefined {

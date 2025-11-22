@@ -1,17 +1,17 @@
 import { Component, ElementRef, ViewChild, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {
-    AdyenCheckout,
+    PlexyCheckout,
     CoreConfiguration,
     Dropin,
     Card,
     PaymentCompletedData,
     UIElement,
-    AdyenCheckoutError,
+    PlexyCheckoutError,
     PaymentFailedData,
     PayPal,
     GooglePay
-} from '@adyen/adyen-web';
+} from '@plexy/plexy-web';
 import { environment } from '../../environments/environment';
 import { parseAmount } from '../../utils/amount-utils';
 import { DEFAULT_AMOUNT, DEFAULT_COUNTRY, DEFAULT_LOCALE } from '../../utils/constants';
@@ -19,7 +19,7 @@ import { ModeSwitcher } from '../mode-switcher/mode-switcher';
 import { SessionsFlowApi } from '../../services/SessionsFlowApi.service';
 
 @Component({
-    selector: 'adyen-sessions-flow',
+    selector: 'plexy-sessions-flow',
     templateUrl: './sessions.component.html',
     imports: [ModeSwitcher]
 })
@@ -61,7 +61,7 @@ export class SessionsFlow implements OnInit {
                 environment: 'test',
                 clientKey: environment.clientKey,
 
-                onError(error: AdyenCheckoutError) {
+                onError(error: PlexyCheckoutError) {
                     console.error('Something went wrong', error);
                 },
                 onPaymentCompleted(data: PaymentCompletedData, element: UIElement) {
@@ -72,7 +72,7 @@ export class SessionsFlow implements OnInit {
                 }
             };
 
-            const checkout = await AdyenCheckout(options);
+            const checkout = await PlexyCheckout(options);
             this.dropin = new Dropin(checkout, {
                 paymentMethodsConfiguration: {
                     card: {

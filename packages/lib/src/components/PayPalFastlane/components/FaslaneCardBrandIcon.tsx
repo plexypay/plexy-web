@@ -7,16 +7,16 @@ interface FastlaneCardBrandIconProps {
     brand: string;
 }
 
-function mapFastlaneCardBrandToAdyenBrand(brand: string) {
+function mapFastlaneCardBrandToPlexyBrand(brand: string) {
     return brand === 'mastercard' ? 'mc' : brand;
 }
 
 const FastlaneCardBrandIcon = ({ brand }: FastlaneCardBrandIconProps) => {
     const getImage = useImage();
-    const mappedBrand = mapFastlaneCardBrandToAdyenBrand(brand);
+    const mappedBrand = mapFastlaneCardBrandToPlexyBrand(brand);
 
     return (
-        <span className="adyen-checkout-fastlane__card-brand--wrapper">
+        <span className="plexy-checkout-fastlane__card-brand--wrapper">
             <Img src={getImage()(mappedBrand)} alt={getFullBrandName(mappedBrand)} />
         </span>
     );

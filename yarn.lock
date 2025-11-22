@@ -7,9 +7,9 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.4.tgz#2856c55443d3d461693f32d2b96fb6ea92e1ffa9"
   integrity sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==
 
-"@adyen/bento-design-tokens@1.10.0":
+"@plexy/bento-design-tokens@1.10.0":
   version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@adyen/bento-design-tokens/-/bento-design-tokens-1.10.0.tgz#6e93631410db39c916665ddc3ea4a3361c95a6d5"
+  resolved "https://registry.yarnpkg.com/@plexy/bento-design-tokens/-/bento-design-tokens-1.10.0.tgz#6e93631410db39c916665ddc3ea4a3361c95a6d5"
   integrity sha512-ZaWLGTLLW0bh69mu9ibGMaZ2DXkrB07XU3gc5Mt1fTZgNDAnCsdfJ/Wq7BxW3zYhtQLU69oz0QayZ3RDKTlHEA==
 
 "@axe-core/playwright@^4.10.1":

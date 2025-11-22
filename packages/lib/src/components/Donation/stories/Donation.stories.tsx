@@ -19,7 +19,7 @@ const componentConfiguration: DonationConfiguration = {
         currency: 'EUR',
         values: [50, 199, 300]
     },
-    termsAndConditionsUrl: 'https://www.adyen.com',
+    termsAndConditionsUrl: 'https://www.plexy.com',
     bannerUrl: '/banner.png',
     logoUrl: '/logo.png',
     commercialTxAmount: 1000,

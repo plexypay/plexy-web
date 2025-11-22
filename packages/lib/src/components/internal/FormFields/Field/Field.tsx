@@ -53,7 +53,7 @@ const Field: FunctionalComponent<FieldProps> = props => {
     const showError = showErrorElement && typeof errorMessage === 'string' && errorMessage.length > 0;
     const showContext = showContextualElement && !showError && contextualText?.length > 0;
 
-    const uniqueId = useRef(getUniqueId(`adyen-checkout-${name}`));
+    const uniqueId = useRef(getUniqueId(`plexy-checkout-${name}`));
     const staticValueId = useMemo(() => (staticValue ? `input-static-value-${uuid()}` : null), [staticValue]);
 
     const [focused, setFocused] = useState(false);
@@ -88,8 +88,8 @@ const Field: FunctionalComponent<FieldProps> = props => {
                 {typeof label === 'string' && (
                     <span
                         className={classNames({
-                            'adyen-checkout__label__text': true,
-                            'adyen-checkout__label__text--error': errorMessage
+                            'plexy-checkout__label__text': true,
+                            'plexy-checkout__label__text--error': errorMessage
                         })}
                         data-id={name}
                     >
@@ -101,9 +101,9 @@ const Field: FunctionalComponent<FieldProps> = props => {
                 {/*@ts-ignore - function is callable*/}
                 {typeof label === 'function' && label()}
 
-                {labelEndAdornment && <span className="adyen-checkout__label-adornment--end">{labelEndAdornment}</span>}
+                {labelEndAdornment && <span className="plexy-checkout__label-adornment--end">{labelEndAdornment}</span>}
 
-                {helper && <span className={'adyen-checkout__helper-text'}>{helper}</span>}
+                {helper && <span className={'plexy-checkout__helper-text'}>{helper}</span>}
             </Fragment>
         );
     }, [label, errorMessage, labelEndAdornment, helper]);
@@ -111,7 +111,7 @@ const Field: FunctionalComponent<FieldProps> = props => {
     const renderInputRelatedElements = useCallback(() => {
         const errorElem = (
             <span
-                className={classNames({ 'adyen-checkout-contextual-text--error': true, 'adyen-checkout-contextual-text--hidden': !showError })}
+                className={classNames({ 'plexy-checkout-contextual-text--error': true, 'plexy-checkout-contextual-text--hidden': !showError })}
                 {...(contextVisibleToSR && { id: `${uniqueId.current}${ARIA_ERROR_SUFFIX}` })}
                 aria-hidden={contextVisibleToSR ? null : 'true'}
             >
@@ -120,7 +120,7 @@ const Field: FunctionalComponent<FieldProps> = props => {
         );
         const contextualElem = (
             <span
-                className={classNames({ 'adyen-checkout-contextual-text': true, 'adyen-checkout-contextual-text--hidden': !showContext })}
+                className={classNames({ 'plexy-checkout-contextual-text': true, 'plexy-checkout-contextual-text--hidden': !showContext })}
                 {...(contextVisibleToSR && { id: `${uniqueId.current}${ARIA_CONTEXT_SUFFIX}` })}
                 aria-hidden={contextVisibleToSR ? null : 'true'}
             >
@@ -134,14 +134,14 @@ const Field: FunctionalComponent<FieldProps> = props => {
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
                 <div
                     className={classNames([
-                        'adyen-checkout__input-wrapper',
-                        ...inputWrapperModifiers.map(m => `adyen-checkout__input-wrapper--${m}`)
+                        'plexy-checkout__input-wrapper',
+                        ...inputWrapperModifiers.map(m => `plexy-checkout__input-wrapper--${m}`)
                     ])}
                     dir={dir}
                     onClick={onInputContainerClick}
                 >
                     {staticValue && (
-                        <span id={staticValueId} className="adyen-checkout__field-static-value">
+                        <span id={staticValueId} className="plexy-checkout__field-static-value">
                             {staticValue}
                         </span>
                     )}
@@ -161,19 +161,19 @@ const Field: FunctionalComponent<FieldProps> = props => {
                     })}
 
                     {isLoading && (
-                        <span className="adyen-checkout-input__inline-validation adyen-checkout-input__inline-validation--loading">
+                        <span className="plexy-checkout-input__inline-validation plexy-checkout-input__inline-validation--loading">
                             <Spinner size="small" />
                         </span>
                     )}
 
                     {isValid && showValidIcon !== false && (
-                        <span className="adyen-checkout-input__inline-validation adyen-checkout-input__inline-validation--valid">
+                        <span className="plexy-checkout-input__inline-validation plexy-checkout-input__inline-validation--valid">
                             <Icon type={`${PREFIX}checkmark`} alt={i18n?.get('field.valid')} />
                         </span>
                     )}
 
                     {errorMessage && (
-                        <span className="adyen-checkout-input__inline-validation adyen-checkout-input__inline-validation--invalid">
+                        <span className="plexy-checkout-input__inline-validation plexy-checkout-input__inline-validation--invalid">
                             <Icon type={`${PREFIX}field_error`} alt={i18n?.get('error.title')} />
                         </span>
                     )}
@@ -194,10 +194,10 @@ const Field: FunctionalComponent<FieldProps> = props => {
             const defaultWrapperProps = {
                 onClick: onFocusField,
                 className: classNames({
-                    'adyen-checkout__label': true,
-                    'adyen-checkout__label--focused': focused,
-                    'adyen-checkout__label--filled': filled,
-                    'adyen-checkout__label--disabled': disabled
+                    'plexy-checkout__label': true,
+                    'plexy-checkout__label--focused': focused,
+                    'plexy-checkout__label--filled': filled,
+                    'plexy-checkout__label--disabled': disabled
                 })
             };
 
@@ -230,13 +230,13 @@ const Field: FunctionalComponent<FieldProps> = props => {
         <div
             data-testid="form-field"
             className={classNames(
-                'adyen-checkout__field',
+                'plexy-checkout__field',
                 className,
-                classNameModifiers.map(m => `adyen-checkout__field--${m}`),
+                classNameModifiers.map(m => `plexy-checkout__field--${m}`),
                 {
-                    'adyen-checkout__field--error': errorMessage,
-                    'adyen-checkout__field--valid': isValid,
-                    'adyen-checkout__field--inactive': readOnly || disabled
+                    'plexy-checkout__field--error': errorMessage,
+                    'plexy-checkout__field--valid': isValid,
+                    'plexy-checkout__field--inactive': readOnly || disabled
                 }
             )}
         >

@@ -44,7 +44,7 @@ export default function CardFields({
         : i18n.get('creditCard.securityCode.contextualText.3digits');
 
     return (
-        <div className="adyen-checkout__card__form">
+        <div className="plexy-checkout__card__form">
             <CardNumber
                 brand={brand}
                 brandsConfiguration={brandsConfiguration}
@@ -61,8 +61,8 @@ export default function CardFields({
             <AvailableBrands activeBrand={brand} brands={allowedBrands} />
 
             <div
-                className={classNames('adyen-checkout__card__exp-cvc', {
-                    'adyen-checkout__card__exp-cvc__exp-date__input--hidden': expiryDatePolicy === DATE_POLICY_HIDDEN
+                className={classNames('plexy-checkout__card__exp-cvc', {
+                    'plexy-checkout__card__exp-cvc__exp-date__input--hidden': expiryDatePolicy === DATE_POLICY_HIDDEN
                 })}
             >
                 <ExpirationDate

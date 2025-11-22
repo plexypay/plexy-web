@@ -1,6 +1,6 @@
 /* Shared css variables and styles are imported once here at the root level for all UI components. */
 @use 'styles/index';
 
-[class^='adyen-checkout'] {
+[class^='plexy-checkout'] {
     @include index.box-sizing-setter(true);
 }

@@ -28,15 +28,15 @@ const FastlaneComponent = ({ lastFour, brand, payButton, setComponentRef, showPa
     }, []);
 
     return (
-        <div className="adyen-checkout-fastlane" data-testid="payment-method-fastlane">
-            <div className="adyen-checkout-fastlane__card-section">
+        <div className="plexy-checkout-fastlane" data-testid="payment-method-fastlane">
+            <div className="plexy-checkout-fastlane__card-section">
                 <FastlaneCardBrandIcon brand={brand} />
-                <span className="adyen-checkout-fastlane__card-number">•••• {lastFour}</span>
+                <span className="plexy-checkout-fastlane__card-number">•••• {lastFour}</span>
             </div>
 
             {showPayButton && payButton({ status, icon: getImage({ imageFolder: 'components/' })(`${PREFIX}lock`) })}
 
-            <div className="adyen-checkout-fastlane__brand">
+            <div className="plexy-checkout-fastlane__brand">
                 <Img src={getImage({ imageFolder: 'components/' })(`paypal_fastlane_gray`)} alt="Fastlane logo" />
             </div>
         </div>

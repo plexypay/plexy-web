@@ -1,5 +1,5 @@
 import {
-    AdyenCheckout,
+    PlexyCheckout,
     BankTransfer,
     MBWay,
     Klarna,
@@ -13,8 +13,8 @@ import {
     Oxxo,
     Redirect,
     Twint
-} from '@adyen/adyen-web';
-import '@adyen/adyen-web/styles/adyen.css';
+} from '@plexy/plexy-web';
+import '@plexy/plexy-web/styles/plexy.css';
 
 import '../../../config/polyfills';
 import '../../style.scss';
@@ -23,7 +23,7 @@ import { handleSubmit, handleAdditionalDetails, handleChange, handleOnPaymentFai
 import { amount, shopperLocale, countryCode, environmentUrlsOverride } from '../../config/commonConfig';
 
 getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse => {
-    window.checkout = await AdyenCheckout({
+    window.checkout = await PlexyCheckout({
         amount, // Optional. Used to display the amount in the Pay Button.
         countryCode,
         clientKey: process.env.__CLIENT_KEY__,
@@ -54,7 +54,7 @@ getPaymentMethods({ amount, shopperLocale }).then(async paymentMethodsResponse =
                 currency: 'EUR',
                 value: 1000
             },
-            beneficiary: 'Adyen',
+            beneficiary: 'Plexy',
             iban: 'NL13TEST0123456789',
             bic: 'TESTNL02',
             reference: '991-6068-3254-7284F',

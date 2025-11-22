@@ -26,7 +26,7 @@ describe('DragonpayVoucherResult', () => {
     });
 
     test('should render an issuer image for dragonpay_otc_non_banking', () => {
-        const imageUrl = 'https://checkoutshopper-live.adyen.com/checkoutshopper/images/logos/dragonpay_otc_non_banking/bpxb.svg';
+        const imageUrl = 'https://checkoutshopper-live.plexy.com/checkoutshopper/images/logos/dragonpay_otc_non_banking/bpxb.svg';
 
         global.resources.getImage.mockImplementation(() => () => imageUrl);
 

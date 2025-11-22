@@ -5,7 +5,7 @@ import checkPaymentStatus from '../../../core/Services/payment-status';
 import { CoreProvider } from '../../../core/Context/CoreProvider';
 import { SRPanel } from '../../../core/Errors/SRPanel';
 import SRPanelProvider from '../../../core/Errors/SRPanelProvider';
-import AdyenCheckoutError from '../../../core/Errors/AdyenCheckoutError';
+import PlexyCheckoutError from '../../../core/Errors/PlexyCheckoutError';
 import type { QRLoaderProps } from './types';
 
 jest.mock('../../../core/Services/payment-status');
@@ -94,7 +94,7 @@ describe('QRLoader', () => {
 
         // Wait for the onError callback to be called
         await waitFor(() => expect(onErrorMock).toHaveBeenCalledTimes(1));
-        expect(onErrorMock).toHaveBeenCalledWith(new AdyenCheckoutError('ERROR', 'error result with no payload in response'));
+        expect(onErrorMock).toHaveBeenCalledWith(new PlexyCheckoutError('ERROR', 'error result with no payload in response'));
         expect(onCompleteMock).not.toHaveBeenCalled();
 
         await waitFor(() => {

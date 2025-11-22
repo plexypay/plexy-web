@@ -12,7 +12,7 @@ function MountButton(props) {
                 setIsMounted(!isMounted);
                 props.onClick();
             },
-            className: 'adyen-checkout__button adyen-checkout__button--secondary'
+            className: 'plexy-checkout__button plexy-checkout__button--secondary'
         },
         isMounted ? 'Unmount' : 'Mount'
     );

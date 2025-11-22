@@ -29,7 +29,7 @@ function StoreDetails({ storeDetails = false, disabled = false, className = '', 
     }, [value]);
 
     return (
-        <div className={cx('adyen-checkout__store-details', className)}>
+        <div className={cx('plexy-checkout__store-details', className)}>
             <Checkbox onChange={onChange} disabled={disabled} label={i18n.get('storeDetails')} name={'storeDetails'} />
         </div>
     );

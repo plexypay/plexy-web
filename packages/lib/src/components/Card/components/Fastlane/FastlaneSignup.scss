@@ -1,7 +1,7 @@
 @use 'styles/mixins';
 @import 'styles/variable-generator';
 
-.adyen-checkout-card__fastlane {
+.plexy-checkout-card__fastlane {
     background: token(color-background-primary);
     border: token(border-width-s) solid token(color-outline-primary);
     border-radius: token(border-radius-m);
@@ -24,7 +24,7 @@
     &-consent-text {
         margin-bottom: token(spacer-070);
 
-        @include mixins.adyen-checkout-text-caption;
+        @include mixins.plexy-checkout-text-caption;
     }
 
     &-brand {
@@ -33,7 +33,7 @@
     }
 }
 
-.adyen-checkout__button.adyen-checkout__button--fastlane-info-modal {
+.plexy-checkout__button.plexy-checkout__button--fastlane-info-modal {
     vertical-align: bottom;
     margin-left: token(spacer-020);
     width: 20px;

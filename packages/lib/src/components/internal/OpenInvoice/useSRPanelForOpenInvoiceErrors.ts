@@ -122,11 +122,11 @@ const useSRPanelForOpenInvoiceErrors = ({ errors, data, props, isValidating }: U
                     let focusContextSelector = '';
                     const focusContext = srPanelResp.fieldToFocus.includes(':') ? srPanelResp.fieldToFocus.split(':')[0] : ''; // 'billingAddress' | 'deliveryAddress'
                     if (focusContext.length) {
-                        focusContextSelector = `.adyen-checkout__fieldset--${focusContext} `;
+                        focusContextSelector = `.plexy-checkout__fieldset--${focusContext} `;
                     }
 
                     // Focus first field in error, if required
-                    if (shouldMoveFocusSR) setFocusOnField('.adyen-checkout__open-invoice', fieldToFocus, focusContextSelector);
+                    if (shouldMoveFocusSR) setFocusOnField('.plexy-checkout__open-invoice', fieldToFocus, focusContextSelector);
                     // Remove 'showValidation' mode - allowing time for collation of all the fields in error whilst it is 'showValidation' mode (some errors come in a second render pass)
                     setTimeout(() => {
                         isValidating.current = false;

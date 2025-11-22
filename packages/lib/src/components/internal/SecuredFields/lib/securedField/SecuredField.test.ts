@@ -231,7 +231,7 @@ describe('SecuredField handling placeholders from the placeholders config', () =
      * Testing postMessageListenerFn
      */
     describe('Testing SecuredField postMessageListenerFn', () => {
-        const origin = 'https://checkoutshopper-test.adyen.com';
+        const origin = 'https://checkoutshopper-test.plexy.com';
         let card: any;
         let data: any;
         let myCallback: any;
@@ -239,7 +239,7 @@ describe('SecuredField handling placeholders from the placeholders config', () =
         let loggingMsg: string;
 
         beforeEach(() => {
-            setupObj.loadingContext = 'https://checkoutshopper-test.adyen.com/checkoutshopper/';
+            setupObj.loadingContext = 'https://checkoutshopper-test.plexy.com/checkoutshopper/';
             card = new SecuredField({ ...setupObj }, global.i18n);
             data = {
                 action: '',
