@@ -1,4 +1,3 @@
-![Web](https://user-images.githubusercontent.com/7724351/198588741-f522c3ed-ff3c-4f70-b8cb-8ff9e6d41cfa.png)
 
 # Plexy Web
 
