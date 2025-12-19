@@ -24,7 +24,7 @@ export default function Redirect() {
                     enabled: false,
                 },
                 clientKey: process.env.NEXT_PUBLIC_CLIENT_KEY,
-                environment: "test",
+                environment: "live",
                 countryCode: "US",
 
                 // If it is sessions flow, pass the sessionId back to the library

@@ -57,7 +57,7 @@ export default function AdvancedFlow() {
             countryCode,
             amount,
             locale,
-            environment: "test",
+            environment: "live",
             analytics: {
                 enabled: false,
             },

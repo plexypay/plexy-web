@@ -6,7 +6,7 @@ export default defineEventHandler(async event => {
         merchantAccount: config.merchantAccount
     };
 
-    const response = await fetch(`https://checkout-test.plexy.com/${config.apiVersion}/paymentMethods`, {
+    const response = await fetch(`https://api.plexypay.com/${config.apiVersion}/paymentMethods`, {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {

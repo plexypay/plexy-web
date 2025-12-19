@@ -7,7 +7,7 @@ export async function POST(request: Request, context: any) {
     };
 
     const res = await fetch(
-        `https://checkout-test.plexy.com/${process.env.CHECKOUT_API_VERSION}/payments`,
+        `https://api.plexypay.com/${process.env.CHECKOUT_API_VERSION}/payments`,
         {
             method: "POST",
             body: JSON.stringify(fullRequest),
