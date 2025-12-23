@@ -32,7 +32,7 @@ const currencies = {
     VN: "VND",
     LA: "LAK",
     RS: "RSD",
-    default: "EUR",
+    default: "KZT",
 };
 
 const getCurrency = (countryCode: string) =>
