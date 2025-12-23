@@ -1,4 +1,7 @@
-module.exports = (req, res) => {
+const withCors = require('../_utils/withCors');
+const withLogging = require('../_utils/withLogging');
+
+function handler(req, res) {
     const MOCK_ADDRESS_ARRAY = [
         {
             id: 376,
@@ -646,4 +649,6 @@ module.exports = (req, res) => {
     }).slice(0, 9);
 
     res.send(JSON.stringify(filteredAddresses));
-};
+}
+
+module.exports = withCors(withLogging('mock/addressSearch', handler));
