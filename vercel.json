@@ -2,5 +2,10 @@
   "buildCommand": "yarn build:storybook",
   "outputDirectory": "packages/lib/storybook-static",
   "installCommand": "yarn install",
-  "framework": null
+  "framework": null,
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
+  }
 }
