@@ -21,7 +21,10 @@ export const Default: ApplePayStory = {
         componentConfiguration: {
             buttonColor: 'white-outline',
             // Setting to Modal here because Storybook will run the Component within an iframe, which means the ApplePay code would be displayed as a new window by default
-            renderApplePayCodeAs: 'modal'
+            renderApplePayCodeAs: 'modal',
+            configuration: {
+                merchantName: 'merchant.com.plexypay'
+            }
         }
     }
 };
