@@ -20,6 +20,7 @@ async function createAdvancedFlowCheckout(
         countryCode,
         shopperLocale,
         amount,
+        currency,
         allowedPaymentTypes = [],
         paymentMethodsOverride,
         paymentsOptions,
@@ -28,7 +29,7 @@ async function createAdvancedFlowCheckout(
     } = checkoutProps;
 
     const paymentAmount = {
-        currency: getCurrency(countryCode),
+        currency: currency || getCurrency(countryCode),
         value: Number(amount)
     };
 

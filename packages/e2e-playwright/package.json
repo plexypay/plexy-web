@@ -13,9 +13,9 @@
     "test:automated-a11y:ui-mode": "npx playwright test --config=automated-a11y.config.ts --ui"
   },
   "devDependencies": {
-    "@plexy/plexy-web-server": "1.0.0",
     "@axe-core/playwright": "^4.10.1",
     "@playwright/test": "1.50.0",
+    "@plexy/plexy-web-server": "1.0.0",
     "dotenv": "17.2.3",
     "ts-loader": "9.4.4",
     "typescript": "5.2.2"

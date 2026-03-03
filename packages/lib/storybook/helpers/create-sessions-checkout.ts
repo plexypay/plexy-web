@@ -18,6 +18,7 @@ async function createSessionsCheckout(
         countryCode,
         shopperLocale,
         amount,
+        currency,
         sessionData,
         srConfig = { showPanel: false, moveFocus: true },
         ...restCheckoutProps
@@ -25,7 +26,7 @@ async function createSessionsCheckout(
 
     const session = await createSession({
         amount: {
-            currency: getCurrency(countryCode),
+            currency: currency || getCurrency(countryCode),
             value: Number(amount)
         },
         shopperLocale,

@@ -34,9 +34,9 @@
         "validate:fix": "yarn workspaces foreach --all run validate:fix"
     },
     "devDependencies": {
-        "@plexy/plexy-web-server": "1.0.0",
         "@changesets/cli": "2.29.7",
         "@changesets/get-github-info": "0.6.0",
+        "@plexy/plexy-web-server": "1.0.0",
         "concurrently": "9.2.1",
         "cross-env": "10.1.0",
         "husky": "9.1.7",

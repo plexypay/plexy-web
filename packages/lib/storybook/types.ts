@@ -41,6 +41,7 @@ export type PlexyCheckoutProps = {
     countryCode: string;
     shopperLocale: string;
     amount: number;
+    currency?: string;
     sessionData?: PaymentMethodsResponse & {
         mandate?: Partial<MandateType>;
     };
