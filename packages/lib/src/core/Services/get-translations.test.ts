@@ -30,6 +30,24 @@ describe('Service: getTranslations', () => {
         expect(translation).toStrictEqual(mockedPtBR);
     });
 
+    test('should request translations for kk-KZ locale', async () => {
+        const mockedKkKZ = {
+            storeDetails: 'Келесі төлем үшін сақтау'
+        };
+        mockedHttpGet.mockResolvedValue(mockedKkKZ);
+
+        const translation = await getTranslations(LOADING_CONTEXT, PLEXY_WEB_VERSION, 'kk-KZ');
+
+        expect(mockedHttpGet).toHaveBeenCalledTimes(1);
+        expect(mockedHttpGet).toHaveBeenCalledWith({
+            errorLevel: 'fatal',
+            errorMessage: 'Translations: Failed to fetch translations for locale "kk-KZ"',
+            loadingContext: 'https://checkoutshopper-test.plexy.com/checkoutshopper/',
+            path: 'sdk/6.0.0/translations/kk-KZ.json'
+        });
+        expect(translation).toStrictEqual(mockedKkKZ);
+    });
+
     test('should fallback to en-US locale if merchant tries to load unsupported locale (en-SA)', async () => {
         const mockedEnUS = {
             storeDetails: 'Save for my next payment'

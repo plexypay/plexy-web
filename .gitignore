@@ -42,3 +42,5 @@ cert
 # Local Netlify folder
 .netlify
 .vercel
+
+.claude

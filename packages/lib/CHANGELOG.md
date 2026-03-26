@@ -1,5 +1,11 @@
 # @plexy/plexy-web
 
+## 6.25.2
+
+### Patch Changes
+
+- Added support for Kazakh locale (kk-KZ)
+
 ## 6.25.1
 
 ### Patch Changes
