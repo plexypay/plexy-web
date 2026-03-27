@@ -6,7 +6,7 @@ import { Analytics3DS2Errors, Analytics3DS2Events, ANALYTICS_ERROR_TYPE } from '
 
 const fingerPrintToken = {
     threeDSMessageVersion: '2.1.0',
-    threeDSMethodNotificationURL: 'https://checkoutshopper-test.plexy.com/checkoutshopper/threeDSMethodNotification.shtml',
+    threeDSMethodNotificationURL: 'https://api.plexypay.com/v2/checkoutshopper/threeDSMethodNotification.shtml',
     threeDSMethodUrl: 'https://pal-test.plexy.com/threeds2simulator/acs/startMethod.shtml',
     threeDSServerTransID: 'dfa501d6'
 };

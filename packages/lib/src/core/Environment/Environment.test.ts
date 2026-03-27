@@ -4,7 +4,7 @@ describe('Environments', () => {
     test('should return proper URLs for the "test" environment', () => {
         const { apiUrl, analyticsUrl, cdnImagesUrl, cdnTranslationsUrl } = resolveEnvironments('test');
 
-        expect(apiUrl).toBe('https://checkoutshopper-test.plexy.com/checkoutshopper/');
+        expect(apiUrl).toBe('https://api.plexypay.com/v2/checkoutshopper/');
         expect(analyticsUrl).toBe('https://checkoutanalytics-test.plexy.com/checkoutanalytics/');
         expect(cdnImagesUrl).toBe('https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/');
         expect(cdnTranslationsUrl).toBe('https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/');
@@ -14,7 +14,7 @@ describe('Environments', () => {
         // @ts-ignore Passing uppercase value is expected here
         const { apiUrl, analyticsUrl, cdnImagesUrl, cdnTranslationsUrl } = resolveEnvironments('TEST');
 
-        expect(apiUrl).toBe('https://checkoutshopper-test.plexy.com/checkoutshopper/');
+        expect(apiUrl).toBe('https://api.plexypay.com/v2/checkoutshopper/');
         expect(analyticsUrl).toBe('https://checkoutanalytics-test.plexy.com/checkoutanalytics/');
         expect(cdnImagesUrl).toBe('https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/');
         expect(cdnTranslationsUrl).toBe('https://checkoutshopper-test.cdn.plexy.com/checkoutshopper/');

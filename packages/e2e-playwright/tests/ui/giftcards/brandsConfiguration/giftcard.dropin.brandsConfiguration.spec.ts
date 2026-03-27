@@ -9,7 +9,7 @@ window.dropinConfig = {
         giftcard: {
             brandsConfiguration: {
                 genericgiftcard: {
-                    icon: 'https://checkoutshopper-test.plexy.com/checkoutshopper/images/logos/mc.svg',
+                    icon: 'https://api.plexypay.com/v2/checkoutshopper/images/logos/mc.svg',
                     name: 'Gifty mcGiftface'
                 }
             }

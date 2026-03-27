@@ -96,7 +96,7 @@ describe('KlarnaPayments', () => {
             const action: PaymentAction = {
                 paymentMethodType: 'klarna_paynow',
                 type: 'redirect',
-                url: 'https://checkoutshopper-test.plexy.com/checkoutshopper/checkoutPaymentRedirect?redirectData=X3XtfGC9%21H4s...',
+                url: 'https://api.plexypay.com/v2/checkoutshopper/checkoutPaymentRedirect?redirectData=X3XtfGC9%21H4s...',
                 method: 'GET'
             };
 

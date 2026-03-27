@@ -23,6 +23,7 @@ export const SHOPPER_LOCALES = [
     'is-IS',
     'it-IT',
     'ja-JP',
+    'kk-KZ',
     'ko-KR',
     'lt-LT',
     'lv-LV',

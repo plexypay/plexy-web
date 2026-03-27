@@ -17,6 +17,7 @@ const currencies: Record<string, string> = {
     IS: 'ISK',
     JP: 'JPY',
     KR: 'KRW',
+    KZ: 'KZT',
     MG: 'MGA',
     MX: 'MXN',
     MY: 'MYR',

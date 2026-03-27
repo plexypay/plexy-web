@@ -72,7 +72,7 @@ export const CustomCardDefault = ({ contextArgs }) => {
                             <img
                                 className="pm-image-1"
                                 width="40"
-                                src="https://checkoutshopper-test.plexy.com/checkoutshopper/images/logos/nocard.svg"
+                                src="https://api.plexypay.com/v2/checkoutshopper/images/logos/nocard.svg"
                                 alt=""
                             />
                         </span>

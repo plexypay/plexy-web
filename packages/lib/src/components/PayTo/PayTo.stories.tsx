@@ -60,7 +60,7 @@ const passMandateToPayments = (mandate: MandateType, checkoutConfig: GlobalStory
 };
 
 const createPayToMockHandlers = () => [
-    http.post('https://checkoutshopper-test.plexy.com/checkoutshopper/services/PaymentInitiation/v1/status', () => {
+    http.post('https://api.plexypay.com/v2/checkoutshopper/services/PaymentInitiation/v1/status', () => {
         return HttpResponse.json({
             payload: '',
             resultCode: 'pending',

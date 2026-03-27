@@ -136,7 +136,7 @@ import './Vouchers.scss';
                 value: 1000
             },
             instructionsUrl:
-                'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=dragonpay_otc_banking&issuerId=BPXB',
+                'https://api.plexypay.com/v2/checkoutshopper/voucherInstructions.shtml?txVariant=dragonpay_otc_banking&issuerId=BPXB',
             issuer: 'BPXB',
             merchantName: 'TestMerchantCheckout',
             paymentMethodType: 'dragonpay_otc_banking',
@@ -166,7 +166,7 @@ import './Vouchers.scss';
                 currency: 'IDR',
                 value: 1000
             },
-            instructionsUrl: 'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=doku_alfamart',
+            instructionsUrl: 'https://api.plexypay.com/v2/checkoutshopper/voucherInstructions.shtml?txVariant=doku_alfamart',
             merchantName: 'TestMerchantCheckout',
             paymentMethodType: 'doku_alfamart',
             reference: '8888826030103141',
@@ -267,7 +267,7 @@ import './Vouchers.scss';
                 value: 1000
             },
             instructionsUrl:
-                'https://checkoutshopper-test.plexy.com/checkoutshopper/voucherInstructions.shtml?txVariant=econtext_stores&shopperLocale=en-US',
+                'https://api.plexypay.com/v2/checkoutshopper/voucherInstructions.shtml?txVariant=econtext_stores&shopperLocale=en-US',
             merchantName: 'Plexy Demo Shop',
             paymentMethodType: 'econtext_seven_eleven',
             reference: '458535',

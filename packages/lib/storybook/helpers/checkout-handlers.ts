@@ -7,8 +7,8 @@ export function displayResultMessage(isAuthorized: boolean, resultCode: string):
     image.setAttribute(
         'src',
         isAuthorized
-            ? 'https://checkoutshopper-test.plexy.com/checkoutshopper/images/components/success.gif'
-            : 'https://checkoutshopper-test.plexy.com/checkoutshopper/images/components/error.gif'
+            ? 'https://api.plexypay.com/v2/checkoutshopper/images/components/success.gif'
+            : 'https://api.plexypay.com/v2/checkoutshopper/images/components/error.gif'
     );
     image.setAttribute('height', '100');
     image.style.display = 'flex';

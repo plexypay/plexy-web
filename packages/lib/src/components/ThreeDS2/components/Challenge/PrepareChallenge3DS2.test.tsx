@@ -10,7 +10,7 @@ const challengeToken = {
     acsTransID: '4bc7960d',
     acsURL: 'https://pal-test.plexy.com/threeds2simulator/acs/challenge.shtml',
     messageVersion: '2.1.0',
-    threeDSNotificationURL: 'https://checkoutshopper-test.plexy.com/checkoutshopper/3dnotif.shtml',
+    threeDSNotificationURL: 'https://api.plexypay.com/v2/checkoutshopper/3dnotif.shtml',
     threeDSServerTransID: '3fc4ead'
 };
 

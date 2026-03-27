@@ -8,7 +8,16 @@ import { Checkout } from '../../../storybook/components/Checkout';
 type ApplePayStory = StoryConfiguration<ApplePayConfiguration>;
 
 const meta: MetaConfiguration<ApplePayConfiguration> = {
-    title: 'Components/Wallets/ApplePay'
+    title: 'Components/Wallets/ApplePay',
+    argTypes: {
+        currency: {
+            control: 'select',
+            options: ['USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'SEK', 'NOK', 'DKK', 'PLN', 'BRL', 'KZT']
+        }
+    },
+    args: {
+        currency: 'USD'
+    }
 };
 
 export const Default: ApplePayStory = {

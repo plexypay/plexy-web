@@ -240,7 +240,7 @@ describe('PayTo', () => {
 
     describe('PayTo await screen', () => {
         const server = setupServer(
-            http.post('https://checkoutshopper-test.plexy.com/checkoutshopper/services/PaymentInitiation/v1/status', () => {
+            http.post('https://api.plexypay.com/v2/checkoutshopper/services/PaymentInitiation/v1/status', () => {
                 return HttpResponse.json({
                     payload: 'mockPaymentData',
                     resultCode: 'pending',
