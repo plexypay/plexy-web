@@ -1,8 +1,8 @@
 export const protocol = window.location.protocol; // gives 'http:' or 'https:' i.e. adds the colon
 export const host = window.location.host;
-export const DEFAULT_SHOPPER_LOCALE = 'en-US';
-export const DEFAULT_COUNTRY_CODE = 'US';
-export const DEFAULT_AMOUNT_VALUE = 25900;
+export const DEFAULT_SHOPPER_LOCALE = 'ru-RU';
+export const DEFAULT_COUNTRY_CODE = 'KZ';
+export const DEFAULT_AMOUNT_VALUE = 10000;
 export const SHOPPER_REFERENCE = 'test_external_shopper_reference';
 export const RETURN_URL = `${protocol}//${host}/?path=/story/helpers-redirectresult--redirect-result`;
 export const SHOPPER_LOCALES = [
