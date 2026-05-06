@@ -38,10 +38,10 @@ describe('encodeResult', () => {
 describe('base64 URL encoding', () => {
     test('encodes any URL', () => {
         expect(encodeBase64URL('https://www.plexy.com/our+solution/online+payments')).toBe(
-            'aHR0cHM6Ly93d3cuYWR5ZW4uY29tL291citzb2x1dGlvbi9vbmxpbmUrcGF5bWVudHM'
+            'aHR0cHM6Ly93d3cucGxleHkuY29tL291citzb2x1dGlvbi9vbmxpbmUrcGF5bWVudHM'
         );
         expect(encodeBase64URL('https://www.plexy.com/our_solution//online_payments')).toBe(
-            'aHR0cHM6Ly93d3cuYWR5ZW4uY29tL291cl9zb2x1dGlvbi8vb25saW5lX3BheW1lbnRz'
+            'aHR0cHM6Ly93d3cucGxleHkuY29tL291cl9zb2x1dGlvbi8vb25saW5lX3BheW1lbnRz'
         );
         expect(encodeBase64URL('gibber      ish')).toBe('Z2liYmVyICAgICAgaXNo');
     });

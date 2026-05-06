@@ -74,7 +74,7 @@ describe('FastlaneSDK', () => {
         expect(fastlaneMock.setLocale).toHaveBeenCalledWith('en_us');
         expect(fastlaneMock.identity.getSession).toHaveBeenCalledTimes(1);
         expect(httpPostMock).toHaveBeenCalledWith({
-            loadingContext: 'https://api.plexypay.com/v2/checkoutshopper/',
+            loadingContext: 'https://sandbox-api.plexypay.com/v2/checkoutshopper/',
             path: 'utility/v1/payPalFastlane/tokens?clientKey=test_xxx',
             errorLevel: 'fatal'
         });

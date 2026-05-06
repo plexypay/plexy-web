@@ -32,7 +32,7 @@ test('should place expired cards at the end of the list, placing the most recent
                             dateOfCardLastUsed: '2022-09-28T08:10:02.312Z',
                             paymentCardDescriptor: 'visa',
                             panExpirationMonth: '12',
-                            panExpirationYear: '2025',
+                            panExpirationYear: '2030',
                             digitalCardData: {
                                 descriptorName: 'Visa',
                                 artUri: 'https://image.com/visa',
@@ -82,7 +82,7 @@ test('should place expired cards at the end of the list, placing the most recent
             descriptorName: 'Visa',
             isExpired: false,
             panExpirationMonth: '12',
-            panExpirationYear: '2025',
+            panExpirationYear: '2030',
             panLastFour: '8902',
             scheme: 'visa',
             srcCorrelationId: '123456',

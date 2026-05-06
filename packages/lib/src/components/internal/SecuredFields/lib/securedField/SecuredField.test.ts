@@ -231,7 +231,7 @@ describe('SecuredField handling placeholders from the placeholders config', () =
      * Testing postMessageListenerFn
      */
     describe('Testing SecuredField postMessageListenerFn', () => {
-        const origin = 'https://api.plexypay.com/v2';
+        const origin = 'https://api.plexypay.com';
         let card: any;
         let data: any;
         let myCallback: any;

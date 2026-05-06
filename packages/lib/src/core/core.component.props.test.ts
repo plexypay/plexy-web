@@ -72,7 +72,7 @@ describe('Core - tests ensuring props reach components', () => {
             expect(component.core).toEqual(checkout);
 
             // Props from core.getCorePropsForComponent()
-            expect(component.props.loadingContext).toEqual('https://api.plexypay.com/v2/checkoutshopper/');
+            expect(component.props.loadingContext).toEqual('https://sandbox-api.plexypay.com/v2/checkoutshopper/');
             expect(component.props.clientKey).toEqual('test_F7_FEKJHF');
             expect(component.props.amount.value).toEqual(19000);
 
@@ -91,7 +91,7 @@ describe('Core - tests ensuring props reach components', () => {
             expect(component.core).toEqual(checkout);
 
             // Props from core.getCorePropsForComponent()
-            expect(component.props.loadingContext).toEqual('https://api.plexypay.com/v2/checkoutshopper/');
+            expect(component.props.loadingContext).toEqual('https://sandbox-api.plexypay.com/v2/checkoutshopper/');
             expect(component.props.clientKey).toEqual('test_F7_FEKJHF');
             expect(component.props.amount.value).toEqual(19000);
 
