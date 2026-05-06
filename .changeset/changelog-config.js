@@ -4,7 +4,7 @@ const { getInfo, getInfoFromPullRequest } = require('@changesets/get-github-info
 
 config();
 
-const repo = 'plexy/plexy-web';
+const repo = 'plexypay/plexy-web';
 
 const changelogFunctions = {
     getDependencyReleaseLine: async (changesets, dependenciesUpdated) => {
