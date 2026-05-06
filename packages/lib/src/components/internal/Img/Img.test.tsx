@@ -12,7 +12,7 @@ describe('Image', () => {
     });
 
     test('has passed className', () => {
-        const wrapper = getWrapper({ className: 'abc123' });
-        expect(wrapper.find('img').hasClass('abc123')).toBe(true);
+        const wrapper = getWrapper({ className: 'ABC1234' });
+        expect(wrapper.find('img').hasClass('ABC1234')).toBe(true);
     });
 });

@@ -23,7 +23,7 @@ import '../../style.scss';
             value: 123,
             currency: 'EUR'
         },
-        reference: 'ABC123',
+        reference: 'ABC1234',
         returnUrl,
         countryCode
     });

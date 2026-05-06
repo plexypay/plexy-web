@@ -14,7 +14,7 @@ const paymentsActionAncvMockData = {
         expiresAt: '2023-10-10T13:12:59.00Z',
         orderData: ORDER_DATA_MOCK,
         pspReference: 'MHCDBZCH4NF96292',
-        reference: 'ABC123'
+        reference: 'ABC1234'
     },
     resultCode: 'Pending',
     sessionData: SESSION_DATA_MOCK,
@@ -29,7 +29,7 @@ const paymentsSuccessCardMockData = {
         },
         expiresAt: '2023-10-10T13:12:59.00Z',
         pspReference: 'MHCDBZCH4NF96292',
-        reference: 'ABC123',
+        reference: 'ABC1234',
         remainingAmount: {
             currency: 'EUR',
             value: 0

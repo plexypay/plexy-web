@@ -73,12 +73,16 @@ export interface DropinConfiguration extends UIElementProps {
     instantPaymentTypes?: InstantPaymentTypes[];
 
     /**
-     * Pre-select a specific payment method when Drop-in is rendered
+     * Pre-select a specific payment method when Drop-in is rendered.
+     * Provide `type` to match a non-stored payment method, or `storedPaymentMethodId`
+     * to match a specific stored payment method by its id.
+     * `storedPaymentMethodId` takes priority over `type` when both are provided.
      *
      * @default undefined
      */
     openPaymentMethod?: {
-        type: string;
+        type?: string;
+        storedPaymentMethodId?: string;
     };
 
     /**

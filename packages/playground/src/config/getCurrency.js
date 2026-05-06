@@ -16,6 +16,7 @@ const currencies = {
     IS: 'ISK',
     JP: 'JPY',
     KR: 'KRW',
+    KZ: 'KZT',
     MG: 'MGA',
     MX: 'MXN',
     MY: 'MYR',

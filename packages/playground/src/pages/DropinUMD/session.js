@@ -6,7 +6,7 @@ import { handleOnPaymentCompleted, handleOnPaymentFailed } from '../../handlers'
 export async function initSession() {
     const session = await createSession({
         amount,
-        reference: 'ABC123',
+        reference: 'ABC1234',
         returnUrl,
         shopperReference,
         telephoneNumber: '+611223344',

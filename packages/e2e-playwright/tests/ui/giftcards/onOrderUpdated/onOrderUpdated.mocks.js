@@ -22,7 +22,7 @@ const sessionsResponse = {
     expiresAt: '2021-10-15T13:02:27+02:00',
     id: MOCK_SESSION_ID,
     merchantAccount: 'TestMerchantCheckout',
-    reference: 'ABC123',
+    reference: 'ABC1234',
     returnUrl: 'http://localhost:3024/result',
     shopperLocale: 'en-US',
     shopperReference: 'newshoppert',
@@ -76,7 +76,7 @@ const paymentResponse = {
             currency: 'USD',
             value: 25900
         },
-        reference: 'ABC123',
+        reference: 'ABC1234',
         remainingAmount: {
             currency: 'USD',
             value: 19900

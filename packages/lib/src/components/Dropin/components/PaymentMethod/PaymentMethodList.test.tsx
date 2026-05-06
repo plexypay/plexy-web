@@ -146,6 +146,90 @@ test('should call onSelect if openFirstStoredPaymentMethod is set and there is n
     expect(onSelectMock).toHaveBeenCalledTimes(1);
 });
 
+test('should pre-select stored payment method matched by storedPaymentMethodId', () => {
+    const onSelectMock = jest.fn();
+    const storedPaymentMethods = [
+        mock<UIElement>({
+            props: { type: 'scheme', storedPaymentMethodId: 'first-id', oneClick: true },
+            _id: 'scheme-first',
+            displayName: 'Card 1234'
+        }),
+        mock<UIElement>({
+            props: { type: 'scheme', storedPaymentMethodId: 'second-id', oneClick: true },
+            _id: 'scheme-second',
+            displayName: 'Card 5678'
+        })
+    ];
+
+    customRender(
+        <PaymentMethodList
+            storedPaymentMethods={storedPaymentMethods}
+            paymentMethods={[]}
+            cachedPaymentMethods={{}}
+            isLoading={false}
+            onSelect={onSelectMock}
+            openPaymentMethod={{ storedPaymentMethodId: 'second-id' }}
+        />
+    );
+
+    expect(onSelectMock).toHaveBeenCalledTimes(1);
+    expect(onSelectMock).toHaveBeenCalledWith(storedPaymentMethods[1]);
+});
+
+test('should warn and fall through when storedPaymentMethodId is not found', () => {
+    const onSelectMock = jest.fn();
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    const storedPaymentMethods = [
+        mock<UIElement>({
+            props: { type: 'scheme', storedPaymentMethodId: 'first-id', oneClick: true },
+            _id: 'scheme-first',
+            displayName: 'Card 1234'
+        })
+    ];
+
+    customRender(
+        <PaymentMethodList
+            storedPaymentMethods={storedPaymentMethods}
+            paymentMethods={[]}
+            cachedPaymentMethods={{}}
+            isLoading={false}
+            onSelect={onSelectMock}
+            openFirstStoredPaymentMethod={true}
+            openPaymentMethod={{ storedPaymentMethodId: 'missing-id' }}
+        />
+    );
+
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('missing-id'));
+    expect(onSelectMock).toHaveBeenCalledWith(storedPaymentMethods[0]);
+    warnSpy.mockRestore();
+});
+
+test('storedPaymentMethodId takes priority over type in openPaymentMethod', () => {
+    const onSelectMock = jest.fn();
+    const storedPaymentMethods = [
+        mock<UIElement>({
+            props: { type: 'scheme', storedPaymentMethodId: 'card-id', oneClick: true },
+            _id: 'scheme-stored',
+            displayName: 'Card 1234'
+        })
+    ];
+    const paymentMethods = createPaymentMethodsMock();
+
+    customRender(
+        <PaymentMethodList
+            storedPaymentMethods={storedPaymentMethods}
+            paymentMethods={paymentMethods}
+            cachedPaymentMethods={{}}
+            isLoading={false}
+            onSelect={onSelectMock}
+            openPaymentMethod={{ storedPaymentMethodId: 'card-id', type: 'wechat' }}
+        />
+    );
+
+    expect(onSelectMock).toHaveBeenCalledTimes(1);
+    expect(onSelectMock).toHaveBeenCalledWith(storedPaymentMethods[0]);
+});
+
 test('should display instant payment methods', () => {
     const instantPaymentMethods = createInstantPaymentMethods();
     const paymentMethods = createPaymentMethodsMock();

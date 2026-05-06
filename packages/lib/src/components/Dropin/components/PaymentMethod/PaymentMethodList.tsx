@@ -15,7 +15,8 @@ interface PaymentMethodListProps extends Omit<PaymentMethodsContainerProps, 'lab
     openFirstStoredPaymentMethod?: boolean;
     openFirstPaymentMethod?: boolean;
     openPaymentMethod?: {
-        type: string;
+        type?: string;
+        storedPaymentMethodId?: string;
     };
     order?: Order;
     orderStatus?: OrderStatus;
@@ -42,6 +43,18 @@ const PaymentMethodList = ({
     const pmListLabel = hasInstantPaymentMethods || hasStoredPaymentMethods ? i18n.get('paymentMethodsList.otherPayments.label') : '';
 
     useEffect(() => {
+        if (openPaymentMethod?.storedPaymentMethodId) {
+            const storedPaymentMethod = storedPaymentMethods?.find(
+                paymentMethod => getProp(paymentMethod, 'props.storedPaymentMethodId') === openPaymentMethod.storedPaymentMethodId
+            );
+            if (!storedPaymentMethod) {
+                console.warn(`Drop-in: stored payment method id "${openPaymentMethod.storedPaymentMethodId}" not found`);
+            } else {
+                onSelect(storedPaymentMethod);
+                return;
+            }
+        }
+
         if (openPaymentMethod?.type) {
             const paymentMethod = paymentMethods?.find(paymentMethod => paymentMethod.type === openPaymentMethod?.type);
             if (!paymentMethod) {

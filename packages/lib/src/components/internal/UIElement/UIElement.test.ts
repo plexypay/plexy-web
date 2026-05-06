@@ -406,7 +406,7 @@ describe('UIElement', () => {
                 expiresAt: '2023-10-10T13:12:59.00Z',
                 orderData: 'order-mock',
                 pspReference: 'MHCDBZCH4NF96292',
-                reference: 'ABC123',
+                reference: 'ABC1234',
                 remainingAmount: {
                     currency: 'EUR',
                     value: 100
@@ -450,7 +450,7 @@ describe('UIElement', () => {
                 expiresAt: '2023-10-10T13:12:59.00Z',
                 orderData: 'order-mock',
                 pspReference: 'MHCDBZCH4NF96292',
-                reference: 'ABC123',
+                reference: 'ABC1234',
                 remainingAmount: {
                     currency: 'EUR',
                     value: 100
@@ -518,7 +518,7 @@ describe('UIElement', () => {
                 expiresAt: '2023-10-10T13:12:59.00Z',
                 orderData: 'order-mock',
                 pspReference: 'MHCDBZCH4NF96292',
-                reference: 'ABC123',
+                reference: 'ABC1234',
                 remainingAmount: {
                     currency: 'EUR',
                     value: 100

@@ -54,7 +54,7 @@ describe('AmazonPay', () => {
         });
 
         test('should call getShopperDetails', async () => {
-            const amazonPay = getElement({ amazonCheckoutSessionId: 'ABC123' });
+            const amazonPay = getElement({ amazonCheckoutSessionId: 'ABC1234' });
             const shopperDetails = { billingAddress: {} };
             spyFetch.mockResolvedValueOnce(shopperDetails);
             expect(await amazonPay.getShopperDetails()).toBe(shopperDetails);
@@ -74,7 +74,7 @@ describe('AmazonPay', () => {
                 writable: true,
                 value: { assign: jest.fn() }
             });
-            const amazonPay = getElement({ amazonCheckoutSessionId: 'ABC123' });
+            const amazonPay = getElement({ amazonCheckoutSessionId: 'ABC1234' });
             /* eslint-disable @typescript-eslint/await-thenable */
             void (await amazonPay.handleDeclineFlow());
             expect(window.location.assign).toHaveBeenCalledTimes(1);

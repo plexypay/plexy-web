@@ -31,7 +31,7 @@ async function createSessionsCheckout(
         },
         shopperLocale,
         countryCode,
-        reference: 'ABC123',
+        reference: 'ABC1234',
         returnUrl: RETURN_URL,
         shopperReference: SHOPPER_REFERENCE,
         shopperEmail: 'shopper.ctp1@plexy.com',
