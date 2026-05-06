@@ -1,6 +1,6 @@
 {
     "name": "@plexy/plexy-web",
-    "version": "6.25.1",
+    "version": "6.26.0",
     "license": "MIT",
     "homepage": "https://docs.plexy.com/checkout",
     "type": "module",

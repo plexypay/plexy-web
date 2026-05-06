@@ -40,6 +40,6 @@
         "whatwg-fetch": "^3.6.2"
     },
     "dependencies": {
-        "@plexy/plexy-web": "6.25.1"
+        "@plexy/plexy-web": "6.26.0"
     }
 }

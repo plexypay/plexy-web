@@ -1,5 +1,13 @@
 # @plexy/plexy-web
 
+## 6.26.0
+
+### Minor Changes
+
+- `Dropin`: `openPaymentMethod` now accepts `storedPaymentMethodId` to pre-open a specific stored payment method when Drop-in is rendered. When both `storedPaymentMethodId` and `type` are provided, `storedPaymentMethodId` takes priority. If no stored payment method matches the given id, a warning is logged and selection falls through to the existing `type` / `openFirstStoredPaymentMethod` logic.
+
+- Fixed a typo in the `PayByBankUS` component, renaming the `showOtherInsteafOfNumber` prop to `showOtherInsteadOfNumber`.
+
 ## 6.25.2
 
 ### Patch Changes
