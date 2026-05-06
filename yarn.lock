@@ -1802,7 +1802,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plexy/plexy-web-playground@workspace:packages/playground"
   dependencies:
-    "@plexy/plexy-web": "npm:6.25.1"
+    "@plexy/plexy-web": "npm:6.26.0"
     "@plexy/plexy-web-server": "npm:1.0.0"
     autoprefixer: "npm:^10.4.9"
     core-js-pure: "npm:^3.25.3"
@@ -1846,7 +1846,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@plexy/plexy-web@npm:6.25.1, @plexy/plexy-web@workspace:packages/lib":
+"@plexy/plexy-web@npm:6.26.0, @plexy/plexy-web@workspace:packages/lib":
   version: 0.0.0-use.local
   resolution: "@plexy/plexy-web@workspace:packages/lib"
   dependencies:
