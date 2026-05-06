@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": ["./changelog-config.js", {"repo": "plexy/plexy-web"}],
+  "changelog": ["./changelog-config.js", {"repo": "plexypay/plexy-web"}],
   "commit": false,
   "fixed": [],
   "linked": [],
